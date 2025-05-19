@@ -9,5 +9,6 @@ import lombok.*;
 @Builder
 public class GroupList {
     private String handle;
-    private String groupLabel;
+    private String type;
+    private String label;
 }
