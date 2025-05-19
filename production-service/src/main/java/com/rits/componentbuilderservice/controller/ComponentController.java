@@ -8,7 +8,7 @@ import com.rits.componentbuilderservice.model.Component;
 import com.rits.componentbuilderservice.model.MessageModel;
 import com.rits.componentbuilderservice.service.ComponentService;
 import com.rits.componentbuilderservice.service.ComponentServiceImpl;
-import com.rits.customdataservice.Exception.CustomDataException;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

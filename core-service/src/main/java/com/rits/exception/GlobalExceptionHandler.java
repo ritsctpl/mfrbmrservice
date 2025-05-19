@@ -4,7 +4,6 @@ import com.rits.activitygroupservice.exception.ActivityGroupException;
 import com.rits.activityservice.exception.ActivityException;
 import com.rits.auditlogservice.exception.AuditLogException;
 import com.rits.barcodeservice.exception.BarCodeException;
-import com.rits.componentbuilderservice.exception.ComponentBuilderException;
 import com.rits.customdataservice.Exception.CustomDataException;
 import com.rits.cycletimeservice.exception.CycleTimeException;
 import com.rits.dataFieldService.exception.DataFieldException;
@@ -129,12 +128,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.OK).body(errorDetails);
     }
 
-    @ExceptionHandler(ComponentBuilderException.class)
-    public ResponseEntity<ErrorDetails> handleComponentBuilderException(ComponentBuilderException ex, WebRequest request) {
-        String errorMessage = messageSource.getMessage(String.valueOf(ex.getCode()), ex.getArgs(), Locale.getDefault());
-        ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), errorMessage, request.getDescription(false), String.valueOf(ex.getCode()));
-        return ResponseEntity.status(HttpStatus.OK).body(errorDetails);
-    }
+
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetails> handleAllExceptions(Exception ex, WebRequest request) {
