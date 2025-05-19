@@ -1,6 +1,5 @@
 package com.rits.componentbuilderservice.model;
 
-import com.rits.customdataservice.model.CustomData;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

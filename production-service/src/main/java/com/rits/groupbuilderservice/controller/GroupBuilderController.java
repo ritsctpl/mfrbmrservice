@@ -1,8 +1,7 @@
 
 package com.rits.groupbuilderservice.controller;
 
-import com.rits.auditlogservice.dto.AuditLogRequest;
-import com.rits.auditlogservice.service.ProducerEvent;
+
 import com.rits.groupbuilderservice.dto.GroupBuilderRequest;
 import com.rits.groupbuilderservice.exception.GroupBuilderException;
 import com.rits.groupbuilderservice.model.GroupBuilder;
@@ -29,20 +28,20 @@ public class GroupBuilderController {
         if(request.getSite() != null && !request.getSite().isEmpty()) {
             try {
                 MessageModel response =groupBuilderService.create(request);
-                AuditLogRequest auditlog = AuditLogRequest.builder()
-                        .site(request.getSite())
-                        .action_code("GROUP-BUILDER-CREATED"+request.getGroupLabel())
-                        .action_detail("Group Builder Created "+request.getGroupLabel())
-                        .action_detail_handle("ActionDetailBO:"+request.getSite()+","+"GROUP-BUILDER-CREATED"+","+request.getUserId()+":"+"com.rits.groupbuilderservice.controller")
-                        .activity("From Service")
-                        .date_time(String.valueOf(LocalDateTime.now()))
-                        .userId(request.getUserId())
-                        .txnId("GROUP-BUILDER-CREATED"+String.valueOf(LocalDateTime.now())+request.getUserId())
-                        .created_date_time(String.valueOf(LocalDateTime.now()))
-                        .category("Create")
-                        .topic("audit-log")
-                        .build();
-                eventPublisher.publishEvent(new ProducerEvent(auditlog));
+//                AuditLogRequest auditlog = AuditLogRequest.builder()
+//                        .site(request.getSite())
+//                        .action_code("GROUP-BUILDER-CREATED"+request.getGroupLabel())
+//                        .action_detail("Group Builder Created "+request.getGroupLabel())
+//                        .action_detail_handle("ActionDetailBO:"+request.getSite()+","+"GROUP-BUILDER-CREATED"+","+request.getUserId()+":"+"com.rits.groupbuilderservice.controller")
+//                        .activity("From Service")
+//                        .date_time(String.valueOf(LocalDateTime.now()))
+//                        .userId(request.getUserId())
+//                        .txnId("GROUP-BUILDER-CREATED"+String.valueOf(LocalDateTime.now())+request.getUserId())
+//                        .created_date_time(String.valueOf(LocalDateTime.now()))
+//                        .category("Create")
+//                        .topic("audit-log")
+//                        .build();
+//                eventPublisher.publishEvent(new ProducerEvent(auditlog));
                 return response;
             } catch (GroupBuilderException groupBuilderException) {
                 throw groupBuilderException;
@@ -58,20 +57,20 @@ public class GroupBuilderController {
         if(request.getSite() != null && !request.getSite().isEmpty()) {
             try {
                 MessageModel response = groupBuilderService.update(request);
-                AuditLogRequest auditlog = AuditLogRequest.builder()
-                        .site(request.getSite())
-                        .action_code("GROUP-BUILDER-UPDATED"+request.getGroupLabel())
-                        .action_detail("Group Builder Updated")
-                        .action_detail_handle("ActionDetailBO:"+request.getSite()+","+"GROUP-BUILDER-UPDATED"+","+request.getUserId()+":"+"com.rits.groupbuilderservice.controller")
-                        .activity("From Service")
-                        .date_time(String.valueOf(LocalDateTime.now()))
-                        .userId(request.getUserId())
-                        .txnId("GROUP-BUILDER-UPDATED"+String.valueOf(LocalDateTime.now())+request.getUserId())
-                        .created_date_time(String.valueOf(LocalDateTime.now()))
-                        .category("Update")
-                        .topic("audit-log")
-                        .build();
-                eventPublisher.publishEvent(new ProducerEvent(auditlog));
+//                AuditLogRequest auditlog = AuditLogRequest.builder()
+//                        .site(request.getSite())
+//                        .action_code("GROUP-BUILDER-UPDATED"+request.getGroupLabel())
+//                        .action_detail("Group Builder Updated")
+//                        .action_detail_handle("ActionDetailBO:"+request.getSite()+","+"GROUP-BUILDER-UPDATED"+","+request.getUserId()+":"+"com.rits.groupbuilderservice.controller")
+//                        .activity("From Service")
+//                        .date_time(String.valueOf(LocalDateTime.now()))
+//                        .userId(request.getUserId())
+//                        .txnId("GROUP-BUILDER-UPDATED"+String.valueOf(LocalDateTime.now())+request.getUserId())
+//                        .created_date_time(String.valueOf(LocalDateTime.now()))
+//                        .category("Update")
+//                        .topic("audit-log")
+//                        .build();
+//                eventPublisher.publishEvent(new ProducerEvent(auditlog));
                 return response;
             } catch (GroupBuilderException groupBuilderException) {
                 throw groupBuilderException;
@@ -87,21 +86,21 @@ public class GroupBuilderController {
         if(request.getSite() != null && !request.getSite().isEmpty()) {
             try {
                 MessageModel response = groupBuilderService.delete(request);
-                AuditLogRequest auditlog = AuditLogRequest.builder()
-
-                        .site(request.getSite())
-                        .action_code("GROUP-BUILDER-DELETED")
-                        .action_detail("Group Builder Deleted "+request.getGroupLabel())
-                        .action_detail_handle("ActionDetailBO:"+request.getGroupLabel()+","+"GROUP-BUILDER-DELETED"+","+request.getUserId()+":"+"com.rits.groupbuilderservice.controller")
-                        .activity("From Service")
-                        .date_time(String.valueOf(LocalDateTime.now()))
-                        .userId(request.getUserId())
-                        .txnId("GROUP-BUILDER-DELETED"+String.valueOf(LocalDateTime.now())+request.getUserId())
-                        .created_date_time(String.valueOf(LocalDateTime.now()))
-                        .category("Delete")
-                        .topic("audit-log")
-                        .build();
-                eventPublisher.publishEvent(new ProducerEvent(auditlog));
+//                AuditLogRequest auditlog = AuditLogRequest.builder()
+//
+//                        .site(request.getSite())
+//                        .action_code("GROUP-BUILDER-DELETED")
+//                        .action_detail("Group Builder Deleted "+request.getGroupLabel())
+//                        .action_detail_handle("ActionDetailBO:"+request.getGroupLabel()+","+"GROUP-BUILDER-DELETED"+","+request.getUserId()+":"+"com.rits.groupbuilderservice.controller")
+//                        .activity("From Service")
+//                        .date_time(String.valueOf(LocalDateTime.now()))
+//                        .userId(request.getUserId())
+//                        .txnId("GROUP-BUILDER-DELETED"+String.valueOf(LocalDateTime.now())+request.getUserId())
+//                        .created_date_time(String.valueOf(LocalDateTime.now()))
+//                        .category("Delete")
+//                        .topic("audit-log")
+//                        .build();
+//                eventPublisher.publishEvent(new ProducerEvent(auditlog));
                 return response;
             } catch (GroupBuilderException groupBuilderException) {
                 throw groupBuilderException;

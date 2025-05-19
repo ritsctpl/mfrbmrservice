@@ -1,7 +1,6 @@
 package com.rits.sectionbuilderservice.controller;
 
-import com.rits.auditlogservice.dto.AuditLogRequest;
-import com.rits.auditlogservice.service.ProducerEvent;
+
 import com.rits.sectionbuilderservice.dto.SectionBuilderRequest;
 import com.rits.sectionbuilderservice.exception.SectionBuilderException;
 import com.rits.sectionbuilderservice.model.MessageModel;
@@ -28,20 +27,20 @@ public class SectionBuilderController {
         if(request.getSite() != null && !request.getSite().isEmpty()) {
             try {
                 MessageModel response =sectionBuilderService.create(request);
-                AuditLogRequest auditlog = AuditLogRequest.builder()
-                        .site(request.getSite())
-                        .action_code("SECTION-BUILDER-CREATED "+request.getSectionLabel())
-                        .action_detail("Section Builder Created "+request.getSectionLabel())
-                        .action_detail_handle("ActionDetailBO:"+request.getSite()+","+"SECTION-BUILDER-CREATED"+","+request.getUserId()+":"+"com.rits.sectionbuilderservice.controller")
-                        .activity("From Service")
-                        .date_time(String.valueOf(LocalDateTime.now()))
-                        .userId(request.getUserId())
-                        .txnId("SECTION-BUILDER-CREATED"+String.valueOf(LocalDateTime.now())+request.getUserId())
-                        .created_date_time(String.valueOf(LocalDateTime.now()))
-                        .category("Create")
-                        .topic("audit-log")
-                        .build();
-                eventPublisher.publishEvent(new ProducerEvent(auditlog));
+//                AuditLogRequest auditlog = AuditLogRequest.builder()
+//                        .site(request.getSite())
+//                        .action_code("SECTION-BUILDER-CREATED "+request.getSectionLabel())
+//                        .action_detail("Section Builder Created "+request.getSectionLabel())
+//                        .action_detail_handle("ActionDetailBO:"+request.getSite()+","+"SECTION-BUILDER-CREATED"+","+request.getUserId()+":"+"com.rits.sectionbuilderservice.controller")
+//                        .activity("From Service")
+//                        .date_time(String.valueOf(LocalDateTime.now()))
+//                        .userId(request.getUserId())
+//                        .txnId("SECTION-BUILDER-CREATED"+String.valueOf(LocalDateTime.now())+request.getUserId())
+//                        .created_date_time(String.valueOf(LocalDateTime.now()))
+//                        .category("Create")
+//                        .topic("audit-log")
+//                        .build();
+//                eventPublisher.publishEvent(new ProducerEvent(auditlog));
                 return response;
             } catch (SectionBuilderException sectionBuilderException) {
                 throw sectionBuilderException;
@@ -57,20 +56,20 @@ public class SectionBuilderController {
         if(request.getSite() != null && !request.getSite().isEmpty()) {
             try {
                 MessageModel response = sectionBuilderService.update(request);
-                AuditLogRequest auditlog = AuditLogRequest.builder()
-                        .site(request.getSite())
-                        .action_code("SECTION-BUILDER-UPDATED "+request.getSectionLabel())
-                        .action_detail("Section Builder Updated")
-                        .action_detail_handle("ActionDetailBO:"+request.getSite()+","+"SECTION-BUILDER-UPDATED"+","+request.getUserId()+":"+"com.rits.sectionbuilderservice.controller")
-                        .activity("From Service")
-                        .date_time(String.valueOf(LocalDateTime.now()))
-                        .userId(request.getUserId())
-                        .txnId("SECTION-BUILDER-UPDATED"+String.valueOf(LocalDateTime.now())+request.getUserId())
-                        .created_date_time(String.valueOf(LocalDateTime.now()))
-                        .category("Update")
-                        .topic("audit-log")
-                        .build();
-                eventPublisher.publishEvent(new ProducerEvent(auditlog));
+//                AuditLogRequest auditlog = AuditLogRequest.builder()
+//                        .site(request.getSite())
+//                        .action_code("SECTION-BUILDER-UPDATED "+request.getSectionLabel())
+//                        .action_detail("Section Builder Updated")
+//                        .action_detail_handle("ActionDetailBO:"+request.getSite()+","+"SECTION-BUILDER-UPDATED"+","+request.getUserId()+":"+"com.rits.sectionbuilderservice.controller")
+//                        .activity("From Service")
+//                        .date_time(String.valueOf(LocalDateTime.now()))
+//                        .userId(request.getUserId())
+//                        .txnId("SECTION-BUILDER-UPDATED"+String.valueOf(LocalDateTime.now())+request.getUserId())
+//                        .created_date_time(String.valueOf(LocalDateTime.now()))
+//                        .category("Update")
+//                        .topic("audit-log")
+//                        .build();
+//                eventPublisher.publishEvent(new ProducerEvent(auditlog));
                 return response;
             } catch (SectionBuilderException sectionBuilderException) {
                 throw sectionBuilderException;
@@ -86,21 +85,21 @@ public class SectionBuilderController {
         if(request.getSite() != null && !request.getSite().isEmpty()) {
             try {
                 MessageModel response = sectionBuilderService.delete(request);
-                AuditLogRequest auditlog = AuditLogRequest.builder()
-
-                        .site(request.getSite())
-                        .action_code("SECTION-BUILDER-DELETED")
-                        .action_detail("Section Builder Deleted "+request.getSectionLabel())
-                        .action_detail_handle("ActionDetailBO:"+request.getSectionLabel()+","+"SECTION-BUILDER-DELETED"+","+request.getUserId()+":"+"com.rits.sectionbuilderservice.controller")
-                        .activity("From Service")
-                        .date_time(String.valueOf(LocalDateTime.now()))
-                        .userId(request.getUserId())
-                        .txnId("SECTION-BUILDER-DELETED"+String.valueOf(LocalDateTime.now())+request.getUserId())
-                        .created_date_time(String.valueOf(LocalDateTime.now()))
-                        .category("Delete")
-                        .topic("audit-log")
-                        .build();
-                eventPublisher.publishEvent(new ProducerEvent(auditlog));
+//                AuditLogRequest auditlog = AuditLogRequest.builder()
+//
+//                        .site(request.getSite())
+//                        .action_code("SECTION-BUILDER-DELETED")
+//                        .action_detail("Section Builder Deleted "+request.getSectionLabel())
+//                        .action_detail_handle("ActionDetailBO:"+request.getSectionLabel()+","+"SECTION-BUILDER-DELETED"+","+request.getUserId()+":"+"com.rits.sectionbuilderservice.controller")
+//                        .activity("From Service")
+//                        .date_time(String.valueOf(LocalDateTime.now()))
+//                        .userId(request.getUserId())
+//                        .txnId("SECTION-BUILDER-DELETED"+String.valueOf(LocalDateTime.now())+request.getUserId())
+//                        .created_date_time(String.valueOf(LocalDateTime.now()))
+//                        .category("Delete")
+//                        .topic("audit-log")
+//                        .build();
+//                eventPublisher.publishEvent(new ProducerEvent(auditlog));
                 return response;
             } catch (SectionBuilderException sectionBuilderException) {
                 throw sectionBuilderException;
