@@ -1,0 +1,11 @@
+[{
+  "_id": "SiteBO:*",
+  "site": "*",
+  "description": "DefaultSite",
+  "type": "Production",
+  "timeZone": "Asia/Kolkata",
+  "activityHookLists": [],
+  "local": false,
+  "createdBy": "rits_admin",
+  "userId": "rits_admin"
+}]

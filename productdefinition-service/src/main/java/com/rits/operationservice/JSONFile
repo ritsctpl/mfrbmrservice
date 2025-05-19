@@ -1,0 +1,240 @@
+create :
+
+
+                {
+                    "site": "Rits",
+                        "operation": "OP3",
+                        "revision": "",
+                        "description": "",
+                        "status": "releasable",
+                        "operationType": "special",
+                        "resourceType": "ResourceType1",
+
+                        "defaultResource": "",
+                        "erpOperation": "",
+                        "workCenter": "",
+                        "currentVersion": true,
+                        "maxLoopCount": 1,
+                        "certificationList": [
+                    {
+                        "certification": "",
+                            "certificationDescription": ""
+                    },
+                    {
+                        "certification": "",
+                            "certificationDescription": ""
+                    }
+              ],
+                    "subStepList": [
+                    {
+                        "subStep": "",
+                            "subStepDescription": ""
+                    },
+                    {
+                        "subStep": "",
+                            "subStepDescription": ""
+                    }
+              ],
+                    "activityHookList": [
+                    {
+                        "hookPoint": "",
+                            "activity": "",
+                            "enable":true,
+                            "userArgument":""
+                    },
+                    {
+                        "hookPoint": "",
+                            "activity": "",
+                            "enable":true,
+                            "userArgument":""
+                    }
+              ],
+                    "operationCustomDataList": [
+                    {
+                        "customData": "",
+                            "value": ""
+                    },
+                    {
+                        "customData": "",
+                            "value": ""
+                    }
+              ]
+                }
+
+===============================================================================================
+
+retrieveTop50:
+        {
+        "site":"Rits",
+
+    }
+===============================================================================================
+
+retrieveByOperation:
+
+    {
+        "site":"Rits",
+            "operation":"O"    //partial or conataining letter
+    }
+============================================================================================
+
+retrieve:
+    {
+        "site":"Rits",
+            "operation":"OP1"
+    }
+=================================================================================================
+
+update:
+      {
+                            "site": "Rits",
+                                "operation": "OP1",
+                                "revision": "aaaaa",
+                                "description": "bbbbbb",
+                                "status": "releasable",
+                                "operationType": "special",
+                                "resourceType": "ResourceType1",
+
+                                "defaultResource": "",
+                                "erpOperation": "",
+                                "workCenter": "",
+                                "currentVersion": true,
+                                "maxLoopCount": 1,
+                                "certificationList": [
+                            {
+                                "certification": "",
+                                    "certificationDescription": ""
+                            },
+                            {
+                                "certification": "",
+                                    "certificationDescription": ""
+                            }
+                      ],
+                            "subStepList": [
+                            {
+                                "subStep": "",
+                                    "subStepDescription": ""
+                            },
+                            {
+                                "subStep": "",
+                                    "subStepDescription": ""
+                            }
+                      ],
+                            "activityHookList": [
+                            {
+                                "hookPoint": "",
+                                    "activity": "",
+                                    "enable":true,
+                                    "userArgument":""
+                            },
+                            {
+                                "hookPoint": "",
+                                    "activity": "",
+                                    "enable":true,
+                                    "userArgument":""
+                            }
+                      ],
+                            "operationCustomDataList": [
+                            {
+                                "customData": "",
+                                    "value": ""
+                            },
+                            {
+                                "customData": "",
+                                    "value": ""
+                            }
+                      ]
+                        }
+======================================================================================================================================
+isExist:
+    {
+        "site":"Rits",
+            "operation":"OP1"
+    }
+
+============================================================================================================================================
+delete:
+
+    {
+        "site":"Rits",
+            "operation":"OP10"
+    }
+========================================================================================================================================
+retrieveByErpOperation:
+    {
+        "site":"RITS"
+    }
+
+=========================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

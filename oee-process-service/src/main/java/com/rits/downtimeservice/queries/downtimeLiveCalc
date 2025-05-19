@@ -1,0 +1,179 @@
+CREATE OR REPLACE FUNCTION liveDowntimeCalc(
+    in_site VARCHAR(255),
+    in_resource VARCHAR(255),
+    in_workcenter VARCHAR(255),
+    in_shift VARCHAR(255),
+    in_start_time TIMESTAMP,
+    in_end_time TIMESTAMP
+)
+RETURNS TABLE (
+    site_id VARCHAR(255),
+    shift_id VARCHAR(255),
+    workcenter_id VARCHAR(255),
+    resource_id VARCHAR(255),
+    item_id VARCHAR(255),
+    operation_id VARCHAR(255),
+    totalDowntime DECIMAL(10,3)
+) AS
+$$
+DECLARE
+    retrieveDowntime RECORD;
+    start_time TIMESTAMP;
+    end_time TIMESTAMP;
+    qry TEXT;
+    machine RECORD;
+    machineDown RECORD;
+    machineUp RECORD;
+	targetShift VARCHAR;
+	recordFound BOOLEAN := FALSE;
+    totalDowntime DECIMAL(10,3) := 0;
+BEGIN
+    -- Create temporary table with specified columns
+    CREATE TEMP TABLE IF NOT EXISTS temp_livedowntime_table (
+        site_id VARCHAR(255),
+        shift_id VARCHAR(255),
+        workcenter_id VARCHAR(255),
+        resource_id VARCHAR(255),
+        item_id VARCHAR(255),
+        operation_id VARCHAR(255),
+        totalDowntime DECIMAL(10,3)
+    );
+
+    -- Set start and end times based on input or default values
+    IF in_start_time IS NULL AND in_end_time IS NULL THEN
+        start_time := current_timestamp::date + TIME '00:00:00';
+        end_time := current_timestamp::date + TIME '23:59:59';
+    ELSIF in_start_time IS NULL AND in_end_time IS NOT NULL THEN
+        start_time := in_end_time::date + TIME '00:00:00';
+        end_time := in_end_time::date + TIME '23:59:59';
+    ELSE
+        start_time := in_start_time;
+        IF in_end_time IS NULL THEN
+            end_time := current_timestamp;
+        ELSE
+            end_time := in_end_time;
+        END IF;
+    END IF;
+
+    -- Retrieve downtime from retrieve_shift_downtime function
+    FOR retrieveDowntime IN
+        SELECT * FROM retrieve_shift_downtime(in_site, in_resource, in_workcenter, in_shift, start_time, end_time)
+    LOOP
+		recordFound := TRUE;
+        -- Update start_time to the last created datetime for the next iteration
+        start_time := retrieveDowntime.latest_created_datetime;
+		raise notice 'start_time %', start_time;
+
+        -- Prepare the query to get machine log information for the downtime period
+        qry := 'SELECT Site_ID, Shift_ID, Workcenter_ID, Resource_ID, Item_ID, Operation_ID, created_date_time AS mc_downdatetime FROM R_MACHINELOG '
+               || 'WHERE created_date_time BETWEEN ''' || start_time || ''' AND ''' || end_time || ''' '
+               || 'AND Log_Event = ''MC_DOWN'' ';
+
+        -- Add filtering conditions based on retrieveDowntime
+        IF retrieveDowntime.shift_id IS NOT NULL THEN
+			targetShift := SPLIT_PART(retrieveDowntime.shift_id, ',', 3);
+            qry := qry || 'AND Shift_ID = ''' || targetShift || ''' ';
+        END IF;
+        IF retrieveDowntime.resource_id IS NOT NULL THEN
+            qry := qry || 'AND Resource_ID = ''' || retrieveDowntime.resource_id || ''' ';
+        END IF;
+        IF retrieveDowntime.site_id IS NOT NULL THEN
+            qry := qry || 'AND Site_ID = ''' || retrieveDowntime.site_id || ''' ';
+        END IF;
+
+		IF retrieveDowntime.workcenter_id IS NOT NULL THEN
+            qry := qry || 'AND Workcenter_ID = ''' || retrieveDowntime.workcenter_id || ''' ';
+        END IF;
+		qry := qry || 'ORDER BY created_date_time LIMIT 1';
+
+        -- Execute query and calculate additional downtime if any
+        EXECUTE qry INTO machine;
+        IF machine.mc_downdatetime IS NOT NULL THEN
+            -- Add downtime calculation here (assuming you have a downtime calculation function)
+            retrieveDowntime.totalDowntime := retrieveDowntime.totalDowntime + downtimeCalculation(machine.site_id, -1, machine.resource_id, end_time, TRUE, machine.mc_downdatetime);
+        END IF;
+
+        -- Insert the current downtime record with calculated totalDowntime into the temp table
+        INSERT INTO temp_livedowntime_table
+        SELECT
+            retrieveDowntime.site_id,
+            retrieveDowntime.shift_id,
+            retrieveDowntime.workcenter_id,
+            retrieveDowntime.resource_id,
+            retrieveDowntime.item_id,
+            retrieveDowntime.operation_id,
+            retrieveDowntime.totalDowntime;
+    END LOOP;
+
+	IF NOT recordFound THEN
+	    -- Query for the last MC_DOWN event
+	    qry := 'SELECT *, (SELECT created_date_time FROM R_MACHINELOG WHERE log_event = ''MC_DOWN'' ORDER BY created_date_time DESC LIMIT 1) AS mc_downdatetime '
+	           || 'FROM R_MACHINELOG WHERE created_date_time <= ' || quote_literal(start_time);
+
+	    IF in_shift IS NOT NULL THEN
+	        qry := qry || ' AND shift_id = ' || quote_literal(in_shift);
+	    END IF;
+
+	    IF in_resource IS NOT NULL THEN
+	        qry := qry || ' AND resource_id = ' || quote_literal(in_resource);
+	    END IF;
+
+	    IF in_site IS NOT NULL THEN
+	        qry := qry || ' AND site_id = ' || quote_literal(in_site);
+	    END IF;
+
+	    IF in_workcenter IS NOT NULL THEN
+	        qry := qry || ' AND workcenter_id = ' || quote_literal(in_workcenter);
+	    END IF;
+
+		qry := qry || ' LIMIT 1';
+	    EXECUTE qry INTO machineDown;
+
+	    IF machineDown.mc_downdatetime IS NOT NULL THEN
+	        -- Query for the first MC_UP event after the end time
+	        qry := 'SELECT *, (SELECT created_date_time FROM R_MACHINELOG WHERE log_event = ''MC_UP'' ORDER BY created_date_time ASC LIMIT 1) AS mc_updatetime '
+	               || 'FROM R_MACHINELOG WHERE created_date_time >= ' || quote_literal(end_time);
+
+	        IF in_shift IS NOT NULL THEN
+	            qry := qry || ' AND shift_id = ' || quote_literal(in_shift);
+	        END IF;
+
+	        IF in_resource IS NOT NULL THEN
+	            qry := qry || ' AND resource_id = ' || quote_literal(in_resource);
+	        END IF;
+
+	        IF in_site IS NOT NULL THEN
+	            qry := qry || ' AND site_id = ' || quote_literal(in_site);
+	        END IF;
+
+	        IF in_workcenter IS NOT NULL THEN
+	            qry := qry || ' AND workcenter_id = ' || quote_literal(in_workcenter);
+	        END IF;
+			qry := qry || ' LIMIT 1';
+
+	        EXECUTE qry INTO machineUp;
+
+	        IF machineUp.mc_updatetime >= end_time OR machineUp.mc_updatetime IS NULL THEN
+	            totalDowntime := totalDowntime + downtimeCalculation(machineUp.site_id, -1, machineUp.resource_id, end_time, TRUE, start_time);
+
+	            -- Insert the current downtime record with calculated totalDowntime into the temp table
+	            INSERT INTO temp_livedowntime_table
+	            SELECT
+	                machineDown.Site_ID,
+	                machineDown.Shift_ID,
+	                machineDown.Workcenter_ID,
+	                machineDown.Resource_ID,
+	                NULL AS item_id, -- Assuming item_id is not applicable here
+	                NULL AS operation_id, -- Assuming operation_id is not applicable here
+	                totalDowntime;
+	        END IF;
+	    END IF;
+	END IF;
+
+    -- Return the result from the temporary table
+    RETURN QUERY SELECT * FROM temp_livedowntime_table;
+
+	 DROP TABLE IF EXISTS temp_livedowntime_table;
+
+END;
+$$ LANGUAGE plpgsql;

@@ -1,0 +1,17 @@
+package com.rits.datatypeservice.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class DataFieldResponse {
+
+    private String sequence;
+    private String dataField;
+    private boolean required;
+}

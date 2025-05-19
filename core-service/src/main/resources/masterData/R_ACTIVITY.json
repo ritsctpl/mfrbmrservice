@@ -1,0 +1,1446 @@
+[
+  {
+    "_id": {
+      "$oid": "67bdb4ff89798c5b05a38395"
+    },
+    "activityId": "R_ACTIVITY_APP",
+    "description": "Activity Maintanence",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/activity_app",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "activityRules": [
+      {
+        "ruleName": "",
+        "setting": ""
+      }
+    ],
+    "activityHookList": [],
+    "active": 1,
+    "createdDateTime":"2023-08-03T10:23:10.502Z",
+    "modifiedDateTime":"2024-11-04T08:57:26.834Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": {
+      "$oid": "67bdb4ff89798c5b05a38396"
+    },
+    "activityId": "R_ACTIVITY_GRP_APP",
+    "description": "Actvity Group Maintanence",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/activityGroup_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "activityHookList": [],
+    "active": 1,
+    "createdDateTime":"2023-08-04T05:37:49.192Z",
+    "modifiedDateTime":"2024-09-28T02:59:52.454Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": {
+      "$oid": "67bdb4ff89798c5b05a38397"
+    },
+    "handle": "64cc8ee148c4fb5062665a2f",
+    "currentSite": null,
+    "activityId": "R_USR_APP",
+    "description": "User Maintanence ",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/user_maintenance_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "listOfMethods": null,
+    "activityRules": null,
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": null,
+    "createdDateTime": "2023-08-04T11:08:41.46",
+    "modifiedDateTime": "2023-08-16T18:29:44.698",
+    "imageUrl": null
+  },
+  {
+    "_id": {
+      "$oid": "67bdb4ff89798c5b05a38398"
+    },
+    "handle": "64cc8f4348c4fb5062665a30",
+    "currentSite": null,
+    "activityId": "R_USR_GRP_APP",
+    "description": "User Group Maintanence",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/userGroup_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "listOfMethods": null,
+    "activityRules": null,
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": null,
+    "createdDateTime": "2023-08-04T11:10:19.188",
+    "modifiedDateTime": "2023-08-16T18:29:44.643",
+    "imageUrl": null
+  },
+  {
+    "_id": {
+      "$oid": "67bdb4ff89798c5b05a38399"
+    },
+    "activityId": "R_SITE_APP",
+    "description": "Site Maintanence",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/plant_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdDateTime":"2023-08-04T05:41:52.392Z",
+    "modifiedDateTime":"2023-08-16T12:59:44.814Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": {
+      "$oid": "67bdb4ff89798c5b05a3839a"
+    },
+    "activityId": "R_ITEM_APP",
+    "description": "Item Maintenance",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/item_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdDateTime":"2023-08-04T05:45:12.206Z",
+    "modifiedDateTime":"2023-08-16T12:59:44.878Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": {
+      "$oid": "67bdb4ff89798c5b05a3839b"
+    },
+    "activityId": "R_ITM_GRP_APP",
+    "description": "Item Group Maintenance",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/itemGroup_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdDateTime":"2023-08-04T05:46:08.957Z",
+    "modifiedDateTime":"2024-12-02T07:43:24.992Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": {
+      "$oid": "67bdb4ff89798c5b05a3839c"
+    },
+    "handle": "64cc90cd48c4fb5062665a34",
+    "currentSite": null,
+    "activityId": "R_OPR_APP",
+    "description": "Operation Maintenance",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/operation_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "listOfMethods": null,
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": null,
+    "createdDateTime": "2023-08-04T11:16:53.429",
+    "modifiedDateTime": "2023-08-16T16:17:44.36",
+    "imageUrl": null
+  },
+  {
+    "_id": {
+      "$oid": "67bdb4ff89798c5b05a3839d"
+    },
+    "handle": "64cc944348c4fb5062665a35",
+    "currentSite": null,
+    "activityId": "R_RESC_APP",
+    "description": "Resource Maintenance",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/resources_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "listOfMethods": null,
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": null,
+    "createdDateTime": "2023-08-04T11:31:39.52",
+    "modifiedDateTime": "2023-08-16T16:23:15.154",
+    "imageUrl": null
+  },
+  {
+    "_id": {
+      "$oid": "67bdb4ff89798c5b05a3839e"
+    },
+    "handle": "64cc94a248c4fb5062665a36",
+    "currentSite": null,
+    "activityId": "R_RESC_TYP_APP",
+    "description": "Resource Type Maintanence ",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/resourceType_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "listOfMethods": null,
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": null,
+    "createdDateTime": "2023-08-04T11:33:13.996",
+    "modifiedDateTime": "2023-08-16T18:09:34.296",
+    "imageUrl": null
+  },
+  {
+    "_id": {
+      "$oid": "67bdb4ff89798c5b05a383a1"
+    },
+    "handle": "64cca97f48c4fb5062665a39",
+    "currentSite": null,
+    "activityId": "R_CSTM_DATA_APP",
+    "description": "Custom Data Maintenance",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/customDataMaintenance_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "listOfMethods": null,
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": null,
+    "createdDateTime": "2023-08-04T13:02:15.715",
+    "modifiedDateTime": "2023-08-16T18:11:24.895",
+    "imageUrl": null
+  },
+  {
+    "_id": {
+      "$oid": "67bdb4ff89798c5b05a383a4"
+    },
+    "handle": "64ccab0248c4fb5062665a3d",
+    "currentSite": null,
+    "activityId": "R_DTFLD_APP",
+    "description": "Data Field Definition Maintenance",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/dataField_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "listOfMethods": null,
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": null,
+    "createdDateTime": "2023-08-04T13:08:42.727",
+    "modifiedDateTime": "2024-12-02T13:13:42.014",
+    "imageUrl": null
+  },
+  {
+    "_id": {
+      "$oid": "67bdb4ff89798c5b05a383a5"
+    },
+    "handle": "64ccab3248c4fb5062665a3e",
+    "currentSite": null,
+    "activityId": "R_DTAFLD_ASSN_APP",
+    "description": "Data Filed Assignment Maintenance",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/dataType_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "listOfMethods": null,
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": null,
+    "createdDateTime": "2023-08-04T13:09:30.337",
+    "modifiedDateTime": "2024-12-02T13:11:37.854",
+    "imageUrl": null
+  },
+  {
+    "_id": {
+      "$oid": "67bdb50089798c5b05a383a7"
+    },
+    "site": "*",
+    "activityId": "R_LIST_APP",
+    "description": "List Maintenance Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/list_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "modifiedBy": "senthil",
+    "createdDateTime":"2023-08-04T07:40:54.038Z",
+    "modifiedDateTime":"2025-02-26T10:19:59.763Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_JOLT_SPEC_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_JOLT_SPEC_APP",
+    "description": "Jolt Spec Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      },
+      {
+        "activityGroupName": "SCHEDULER_WORKFLOW_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/joltSpec_app",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:09:49.055Z",
+    "modifiedDateTime":"2025-02-26T10:42:07.509Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_MSG_ENQ_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_MSG_ENQ_APP",
+    "description": "Message Enqueuer Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      },
+      {
+        "activityGroupName": "SCHEDULER_WORKFLOW_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/nqMessage_app",
+    "enabled": true,
+    "visibleInActivityManager": false,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:10:18.775Z",
+    "modifiedDateTime":"2025-02-26T10:42:07.505Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_OPC_PLUGIN",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_OPC_PLUGIN",
+    "description": "OPC Plugin",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/opc_plugin",
+    "enabled": true,
+    "visibleInActivityManager": false,
+    "type": "Hooks",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:10:45.154Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_MUL_PRC_ORD_REL_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_MUL_PRC_ORD_REL_APP",
+    "description": "Multi Process Order Release Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/multiProcessOrderMaintenance_app",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:11:19.444Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_LIVE_OEE_DASHBOARD",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_LIVE_OEE_DASHBOARD",
+    "description": "OEE Live Dashboard",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/oee_report_dashboard",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:11:53.587Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_JOLT_MAINTANENCE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_JOLT_MAINTANENCE_APP",
+    "description": "Jolt Maintenance Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      },
+      {
+        "activityGroupName": "SCHEDULER_WORKFLOW_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/joltSpec_app",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:12:26.653Z",
+    "modifiedDateTime":"2025-02-26T10:42:07.513Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_BATCH_UNHOLD_PLUGIN",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_BATCH_UNHOLD_PLUGIN",
+    "description": "Batch Unhold Plugin",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "http://localhost:8080/app/v1/batchnohold-service/unhold",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "Service",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:13:08.399Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_BATCH_HOLD_PLUGIN",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_BATCH_HOLD_PLUGIN",
+    "description": "Batch Hold Plugin",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "http://localhost:8080/app/v1/batchnohold-service/hold",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "Service",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:14:10.784Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_SCRAP_PLUGIN",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_SCRAP_PLUGIN",
+    "description": "Scrap Plugin ",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/scrap_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:16:43.311Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_OPERATION_SETTING_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_OPERATION_SETTING_APP",
+    "description": "Operational Setting (UOM , Cycle Time ..) Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/uom_app",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:17:57.107Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_WORK_LIST_PLUGIN",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_WORK_LIST_PLUGIN",
+    "description": "Work List Plugin Panel",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/workListPanel",
+    "enabled": true,
+    "visibleInActivityManager": false,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:20:07.488Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_LINE_CLEARANCE_PLUGIN",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_LINE_CLEARANCE_PLUGIN",
+    "description": "Line Clearance Plugin ",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/lineclearance",
+    "enabled": true,
+    "visibleInActivityManager": false,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:22:14.588Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_LINE_CLEARANCE_MAINTANENCE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_LINE_CLEARANCE_MAINTANENCE_APP",
+    "description": "Line Clearance Maintenance  Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/lineclearance_app",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:25:37.268Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_GETINQUEUE_BATCH_SERVICE",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_GETINQUEUE_BATCH_SERVICE",
+    "description": "Get Inqueue Batch List Service Method",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "http://localhost:8080/app/v1/batchnoinqueue-service/getInQueueForBatchRecipeByFilters",
+    "enabled": true,
+    "visibleInActivityManager": false,
+    "type": "Service",
+    "activityRules": [
+      {
+        "ruleName": "",
+        "setting": ""
+      }
+    ],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:27:53.713Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_WORKLIST_SERVICE",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_WORKLIST_SERVICE",
+    "description": "Getting worklist Service",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "http://localhost:8080/app/v1/worklist-service/getWorkList",
+    "enabled": true,
+    "visibleInActivityManager": false,
+    "type": "Service",
+    "activityRules": [
+      {
+        "ruleName": "",
+        "setting": ""
+      }
+    ],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:29:11.072Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_BUYOFF_MAINTENANCE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_BUYOFF_MAINTENANCE_APP",
+    "description": "Buyoff Maintenance Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/buyOff_app",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:31:19.949Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_BUYOFF_LOG_PLUGIN",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_BUYOFF_LOG_PLUGIN",
+    "description": "Buyoff Log Plugin Screen",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/logBuyOff",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:32:06.337Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_BATCH_START_SERVICE",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_BATCH_START_SERVICE",
+    "description": "Batch Start Service Method",
+    "activityGroupList": [],
+    "url": "http://localhost:8080/app/v1/processorderstate-service/start",
+    "enabled": true,
+    "visibleInActivityManager": false,
+    "type": "Services",
+    "activityRules": [
+      {
+        "ruleName": "",
+        "setting": ""
+      }
+    ],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:32:58.005Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_YIELD_PLUGIN",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_YIELD_PLUGIN",
+    "description": "Yield Or Complete Plugin",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/yieldConfirmation_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:33:48.586Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_OPERATION_LIST_SERVICE",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_OPERATION_LIST_SERVICE",
+    "description": "Operation List Service Method",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "http://localhost:8080/app/v1/recipebatchprocess-service/getBatchRecipePhaseOps",
+    "enabled": true,
+    "visibleInActivityManager": false,
+    "type": "Service",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:34:44.776Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_WORK_FLOW_INTEGRATION_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_WORK_FLOW_INTEGRATION_APP",
+    "description": "WorkFlow Integration Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/workflowIntegration_app",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:35:23.694Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_PROCESS_ORDERRELEASE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_PROCESS_ORDERRELEASE_APP",
+    "description": "Process Order Release Screen",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/processOrderRelease_app",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:36:08.089Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_MANAGEMENT_DASHBOARD",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_MANAGEMENT_DASHBOARD",
+    "description": "Management Dashboard Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/management_dashboard",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "Service",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:36:57.740Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_SCHEDULER_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_SCHEDULER_APP",
+    "description": "Scheduler Configuration App",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/scheduler_app",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:37:22.466Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_PROCESS_ORDER_MAINTENANCE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_PROCESS_ORDER_MAINTENANCE_APP",
+    "description": "Process Order Maintenance Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/processOrderMaintenance_app",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:37:47.711Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_PHASE_LIST_SERVICE",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_PHASE_LIST_SERVICE",
+    "description": "Phase list from receipe service method",
+    "activityGroupList": [],
+    "url": "http://localhost:8080/app/v1/recipebatchprocess-service/getRecipesPhaseByFilters",
+    "enabled": true,
+    "visibleInActivityManager": false,
+    "type": "Service",
+    "activityRules": [
+      {
+        "ruleName": "",
+        "setting": ""
+      }
+    ],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:46:33.240Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_WORK_FLOW_RESPONSE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_WORK_FLOW_RESPONSE_APP",
+    "description": "Work Flow Response Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/workflowResponse",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:55:52.900Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_MACHIENE_STATUS_CHANGE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_MACHIENE_STATUS_CHANGE_APP",
+    "description": "Machine status change application ",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/changeEquipmentStatus_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:57:36.708Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_RECEIPE_MAINTENANCE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_RECEIPE_MAINTENANCE_APP",
+    "description": "Receipe Maintenance Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/recipe_app/",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:58:28.159Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_REASON_CODE_MAINTENANCE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_REASON_CODE_MAINTENANCE_APP",
+    "description": "Reason Code Maintenance Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/reasonCode_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "Service",
+    "activityRules": [
+      {
+        "ruleName": "",
+        "setting": ""
+      }
+    ],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T07:59:13.208Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_CYCLE_TIME_MAINTENANCE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_CYCLE_TIME_MAINTENANCE_APP",
+    "description": "Cycle Time Maintenance Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/cycleTime_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "activityRules": [
+      {
+        "ruleName": "",
+        "setting": ""
+      }
+    ],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T08:01:27.385Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_OEE_HISTORICAL_DASHBOARD",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_OEE_HISTORICAL_DASHBOARD",
+    "description": "OEE Historical Dashboard",
+    "activityGroupList": [],
+    "url": "/rits/oee_discrete",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "activityRules": [
+      {
+        "ruleName": "",
+        "setting": ""
+      }
+    ],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T08:02:23.261Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_SHIFT_MAINTENANCE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_SHIFT_MAINTENANCE_APP",
+    "description": "Shift Maintenance APplication",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/production_shift_maintenance/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "Service",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T08:04:43.019Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_PRODUCTION_LOG_REPORT_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_PRODUCTION_LOG_REPORT_APP",
+    "description": "Production Log Report Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/productionLogReport_app",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "activityRules": [
+      {
+        "ruleName": "TYPE",
+        "setting": "DISCRESTE"
+      }
+    ],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T08:05:35.575Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_UOM_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_UOM_APP",
+    "description": "Unit of Measure Maintenance Screen",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/uom_app",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T09:37:04.676Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_BATCH_SIGN_OFF_SERVICE",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_BATCH_SIGN_OFF_SERVICE",
+    "description": "Batch Sign off service",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "http://localhost:8080/app/v1/processorderstate-service/signoff",
+    "enabled": true,
+    "visibleInActivityManager": false,
+    "type": "Service",
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T09:37:29.303Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_AUDIT_LOG_REPORT_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_AUDIT_LOG_REPORT_APP",
+    "description": "Audit Log Report Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/auditLogReport_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T09:38:23.781Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_NXT_NUM_MAINTENANCE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_NXT_NUM_MAINTENANCE_APP",
+    "description": "Next Number Maintenance Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/nextNumber_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T09:41:14.592Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_WRKCENT_MAINTENANCE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_WRKCENT_MAINTENANCE_APP",
+    "description": "Workcenter Maintenance Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/workCenter_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T09:42:35.760Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_POD_MAINTENANCE_APP",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_POD_MAINTENANCE_APP",
+    "description": "Pod Maintenance Application",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/pod_maintenance_app/index.html",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI5",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T09:43:05.883Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_BATCH_BROWSE_SERVICE",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_BATCH_BROWSE_SERVICE",
+    "description": "Batch number Browse Service",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "http://localhost:8080/app/v1/batchnoinqueue-service/getInQueueForBatchRecipeByFilters",
+    "enabled": true,
+    "visibleInActivityManager": false,
+    "type": "Service",
+    "activityRules": [
+      {
+        "ruleName": "",
+        "setting": ""
+      }
+    ],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T10:16:44.873Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_DISPENSING_01_QA",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_DISPENSING_01_QA",
+    "description": "Dispensing QA",
+    "activityGroupList": [
+      {
+        "activityGroupName": "QA_POD_GROUP"
+      },
+      {
+        "activityGroupName": "OPERATIONS_PROCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/pod_app?WorkStation=DISPENSINGQA_POD",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "rits_admin",
+    "createdDateTime":"2025-02-26T10:22:45.811Z",
+    "modifiedDateTime":"2025-02-26T11:27:45.377Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_DISPENSING_01_OPR",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_DISPENSING_01_OPR",
+    "description": "Dispensing OPR Pod",
+    "activityGroupList": [
+      {
+        "activityGroupName": "POD_GROUP_HIMALAYA"
+      },
+      {
+        "activityGroupName": "OPERATIONS_PROCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/pod_app?WorkStation=DISPENSING_OPR_POD_HIM",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "rits_admin",
+    "createdDateTime":"2025-02-26T10:30:18.407Z",
+    "modifiedDateTime":"2025-02-26T11:27:45.433Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_BLENDING_11_QA",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_BLENDING_11_QA",
+    "description": "Blending QA",
+    "activityGroupList": [
+      {
+        "activityGroupName": "QA_POD_GROUP"
+      },
+      {
+        "activityGroupName": "OPERATIONS_PROCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/pod_app?WorkStation=BLENDINGQA_OPR_POD_HIM",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "rits_admin",
+    "createdDateTime":"2025-02-26T10:35:06.357Z",
+    "modifiedDateTime":"2025-02-26T11:27:45.406Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_SIGNOFF_SERVICE",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_SIGNOFF_SERVICE",
+    "description": "Sign Off Service",
+    "activityGroupList": [
+      {
+        "activityGroupName": "USER_ACCESS_MANAGEMENT"
+      }
+    ],
+    "url": "http://localhost:8080/app/v1/processorderstate-service/signoff",
+    "enabled": true,
+    "visibleInActivityManager": false,
+    "type": "Service",
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "senthil",
+    "createdDateTime":"2025-02-26T10:36:58.205Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_BLENDING_11_OPR",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_BLENDING_11_OPR",
+    "description": "Blending OPR Pod",
+    "activityGroupList": [
+      {
+        "activityGroupName": "POD_GROUP_HIMALAYA"
+      },
+      {
+        "activityGroupName": "OPERATIONS_PROCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/pod_app?WorkStation=BLENDING_OPR_POD_HIM",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "rits_admin",
+    "modifiedBy": "rits_admin",
+    "createdDateTime":"2025-02-26T10:37:20.009Z",
+    "modifiedDateTime":"2025-02-26T11:27:45.443Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  },
+  {
+    "_id": "ActivityBO:*,R_TABCOM01_21_QA",
+    "site": "*",
+    "currentSite": "*",
+    "activityId": "R_TABCOM01_21_QA",
+    "description": "Tablet Compression",
+    "activityGroupList": [
+      {
+        "activityGroupName": "QA_POD_GROUP"
+      },
+      {
+        "activityGroupName": "OPERATIONS_PROCESS_MANAGEMENT"
+      }
+    ],
+    "url": "/rits/pod_app?WorkStation=TABLET_COMPRESSIONQA_OPR_HIM",
+    "enabled": true,
+    "visibleInActivityManager": true,
+    "type": "UI",
+    "activityRules": [],
+    "activityHookList": [],
+    "active": 1,
+    "createdBy": "rits_admin",
+    "modifiedBy": "rits_admin",
+    "createdDateTime":"2025-02-26T10:42:56.354Z",
+    "modifiedDateTime":"2025-02-26T11:27:45.420Z",
+    "_class": "com.rits.activityservice.model.Activity"
+  }
+]

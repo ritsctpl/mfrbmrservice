@@ -1,0 +1,19 @@
+package com.rits.shoporderrelease.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
+public class ActivityListResponse {
+    private String activityId;
+    private String description;
+    private List<ActivityRule> activityRules;
+}

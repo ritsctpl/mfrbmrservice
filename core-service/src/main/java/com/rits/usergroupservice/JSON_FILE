@@ -1,0 +1,157 @@
+1) Create
+
+        Request:     {
+                         "site": "rits",
+                         "userGroup": "userGroup3",
+                         "pod": "Pod1",
+                         "users": [{
+                             "user":"user1"
+                         }],
+                         "permissionForActivity": [
+                             {
+                                 "activity":"activity1"
+                             }
+                         ],
+                         "permissionForActivityGroup": [
+                             {
+                                 "activityGroup":"GROUP1"
+                             }
+                         ],
+                         "customDataList": null
+                     }
+
+2) Update
+
+        request:     {
+                         "site": "rits",
+                         "userGroup": "userGroup3",
+                         "pod": "Pod1",
+                         "users": [{
+                             "user":"user1"
+                         }],
+                         "permissionForActivity": [
+                             {
+                                 "activity":"activity1"
+                             }
+                         ],
+                         "permissionForActivityGroup": [
+                             {
+                                 "activityGroup":"GROUP1"
+                             }
+                         ],
+                         "customDataList": null
+                     }
+3) Delete
+
+        request:     {
+                         "site": "rits",
+                         "userGroup": "userGroup"
+                     }
+4) Retrieve
+
+        Request:     {
+                         "site": "rits",
+                         "userGroup": "userGroup1"
+                     }
+5) GetUserGroupList
+
+        Request:     {
+                         "site": "rits",
+                         "userGroup": "user"
+                     }
+6) getUserGroupListByCreationDate
+
+        Request:     {
+                         "site": "rits"
+                     }
+7) getAvailableUser
+
+        Request:     {
+                         "site": "rits",
+                         "userGroup": "userGroup1"
+                     }
+8) getAvailableActivity
+
+        Request:     {
+                         "site": "rits",
+                         "userGroup": "userGroup1"
+                     }
+9) getAvailableActivityGroup
+
+        Request:     {
+                         "site": "rits",
+                         "userGroup": "userGroup1"
+                     }
+10) assignUser
+
+        Request:     {
+                         "site": "rits",
+                         "userGroup": "userGroup3",
+                         "users": [{
+                             "user":"user13"
+                         },
+                         {
+                             "user":"user2"
+                         }]
+
+                     }
+11) removeUser
+
+        Request:     {
+                         "site": "rits",
+                         "userGroup": "userGroup3",
+                         "users": [{
+                             "user":"user13"
+                         },
+                         {
+                             "user":"user2"
+                         }]
+
+                     }
+12) assignActivity
+
+        Request:     {
+                         "site": "rits",
+                         "userGroup": "userGroup3",
+                         "permissionForActivity": [
+                             {
+                                 "activityId":"Activity12"
+                             }
+                         ]
+                     }
+13) removeActivity
+
+        request:     {
+                         "site": "rits",
+                         "userGroup": "userGroup3",
+                         "permissionForActivity": [
+                             {
+                                 "activityId":"Activity12"
+                             }
+                         ]
+                     }
+14) assignActivityGroup
+
+        request:     {
+                         "site": "rits",
+                         "userGroup": "userGroup3",
+                          "permissionForActivityGroup": [
+                             {
+                                 "activityGroupName":"GROUP12"
+                             },
+                             {
+                                 "activityGroupName":"GROUP1"
+                             }
+                         ]
+                     }
+15) removeActivityGroup
+
+        Request:     {
+                         "site": "rits",
+                         "userGroup": "userGroup3",
+                         "permissionForActivityGroup": [
+                             {
+                                 "activityGroupName": "GROUP12"
+                             }
+                         ]
+                     }

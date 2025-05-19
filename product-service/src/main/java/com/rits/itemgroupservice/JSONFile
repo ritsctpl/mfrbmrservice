@@ -1,0 +1,132 @@
+create
+
+    {
+        "site": "RITS",
+            "groupName":"GROUP2",
+            "groupDescription":"Group2",
+             "unitPrice": 12
+            "groupMemberList":[
+        { "item":"item3"
+        },
+        { "item":"item4"
+        }
+		]
+    }
+
+
+
+
+
+
+
+
+
+
+
+====================================
+update
+
+        {
+        "site": "RITS",
+            "groupName":"GROUP2",
+            "groupDescription":"Group2",
+             "unitPrice": 12
+            "groupMemberList":[
+        { "item":"item3"
+        },
+        { "item":"item4"
+        }
+		]
+    }
+======================================
+delete:
+    {
+        "site":"RITS",
+            "groupName":"GROUP2"
+    }
+===========================================
+retrieve:
+
+    {
+        "site":"RITS",
+            "groupName":"GROUP1"
+    }
+
+========================================
+retrieveAll
+    {
+        "site":"RITS",
+            "groupName":"G"
+    }
+================================================
+add
+    {
+        "site":"RITS",
+            "groupName":"GROUP1",
+            "item": ["Item10","Item3"]
+    }
+
+
+
+===============================================
+remove
+
+        {
+        "site":"RITS",
+            "groupName":"GROUP1",
+            "item": ["Item10","Item3"]
+    }
+===================================================
+isExist
+
+
+
+    {
+        "site":"RITS",
+            "groupName":"GROUP2"
+    }
+
+
+===================================================
+retrieveAvailableItems:
+
+   to get avalaible items
+    {
+        "site":"RITS",
+            "groupName":"GROUP2"
+    }
+
+     to get all items present
+        {
+        "site":"RITS",
+            "groupName":"GROUP2"
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================
+retrieveBySite:
+{  "site":"RITS  }
+
+
+==========================================
+retrieveTop50:
+
+    {
+        "site":"RITS"
+
+    }
+
+
+
+
+

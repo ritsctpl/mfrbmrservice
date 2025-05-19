@@ -1,0 +1,84 @@
+CREATE OR REPLACE FUNCTION retrieve_shift_downtime(
+    in_site VARCHAR(255) DEFAULT NULL,
+    in_resource VARCHAR(255) DEFAULT NULL,
+    in_workcenter VARCHAR(255) DEFAULT NULL,
+    in_shift VARCHAR(255) DEFAULT NULL,
+    in_start_time TIMESTAMP DEFAULT NULL,
+    in_end_time TIMESTAMP DEFAULT NULL
+)
+RETURNS TABLE (
+    site_id VARCHAR(255),
+    shift_id VARCHAR(255),
+    workcenter_id VARCHAR(255),
+    resource_id VARCHAR(255),
+    item_id VARCHAR(255),
+    operation_id VARCHAR(255),
+    totalDowntime DECIMAL(10,3),
+    latest_created_datetime TIMESTAMP
+) AS
+$$
+DECLARE
+    query_text TEXT;
+	shiftVar VARCHAR;
+BEGIN
+    -- Create temporary table with specified columns
+    CREATE TEMP TABLE IF NOT EXISTS temp_downtime_table (
+        site_id VARCHAR(255),
+        shift_id VARCHAR(255),
+        workcenter_id VARCHAR(255),
+        resource_id VARCHAR(255),
+        item_id VARCHAR(255),
+        operation_id VARCHAR(255),
+        totalDowntime DECIMAL(10,3),
+        latest_created_datetime TIMESTAMP
+    );
+
+    -- Initialize the dynamic query
+    query_text := 'INSERT INTO temp_downtime_table
+               SELECT Site_ID, Shift_ID, Workcenter_ID, Resource_ID, Item_ID, Operation_ID,
+                      SUM(CAST(Downtime AS DECIMAL(10,3))) AS totalDowntime,
+                      MAX(CreatedDateTime) AS latest_created_datetime
+               FROM R_DOWNTIME
+               WHERE 1=1 ';
+
+    -- Append conditions based on the provided input parameters
+    IF in_shift IS NOT NULL THEN
+		IF in_resource IS NULL THEN
+			shiftVar := 'ShiftBO:' || in_site || ',General,' || in_shift || '';
+		ELSE
+			shiftVar := 'ShiftBO:' || in_site || ',Resource,' || in_shift || ',' || in_resource || '';
+		END IF;
+		query_text := query_text || ' AND Shift_ID = ''' || shiftVar || '''';
+	END IF;
+
+    IF in_resource IS NOT NULL THEN
+        query_text := query_text || ' AND Resource_ID = ''' || in_resource || '''';
+    END IF;
+
+    IF in_site IS NOT NULL THEN
+        query_text := query_text || ' AND Site_ID = ''' || in_site || '''';
+    END IF;
+
+    IF in_workcenter IS NOT NULL THEN
+        query_text := query_text || ' AND Workcenter_ID = ''' || in_workcenter || '''';
+    END IF;
+
+    -- Filter by downtime start and end time
+    IF in_start_time IS NOT NULL AND in_end_time IS NOT NULL THEN
+        query_text := query_text || ' AND CreatedDateTime BETWEEN ''' || in_start_time || ''' AND ''' || in_end_time || '''';
+    END IF;
+
+    -- Grouping by relevant columns
+    query_text := query_text || ' GROUP BY Site_ID, Shift_ID, Workcenter_ID, Resource_ID, Item_ID, Operation_ID ';
+
+    -- Execute the constructed query
+    EXECUTE query_text;
+
+    -- Return the result from the temporary table
+    RETURN QUERY
+    SELECT * FROM temp_downtime_table;
+
+	 DROP TABLE IF EXISTS temp_downtime_table;
+
+END;
+$$ LANGUAGE plpgsql;

@@ -1,0 +1,854 @@
+// add endpoint request , response,
+
+
+create:
+
+
+request:
+    //input1
+	{
+		"site": "rits",
+			"item": "item1",
+			"revision": "A",
+			"status": "Active",
+			"procurementType": "MANUFACTURED",
+			"itemType": "MANUFACTURED",
+			"lotSize": "100"
+	}
+
+	====================================================================
+
+	//	input2
+	{
+	    "site": "rits",
+	    "item": "item1",
+	    "revision": "B",
+	    "status": "Active",
+	    "procurementType": "MANUFACTURED",
+	    "itemType": "MANUFACTURED",
+	    "lotSize": "100",
+	    "description": "Test material",
+	    "itemGroup": "Group A",
+	    "currentVersion": true,
+	    "routing": "001",
+	    "routingVersion": "1",
+	    "bom": "BOM12",
+	    "bomVersion": "e",
+	    "assemblyDataType": "",
+	    "removalDataType": "",
+	    "receiptDataType": "",
+	    "printDocument": "",
+	    "customDataList": [
+	        {
+	            "customData": "Data 1",
+	            "value": "Value 1"
+	        },
+	        {
+	            "customData": "Data 2",
+	            "value": "Value 2"
+	        }
+	    ],
+	    "alternateComponentList": [
+	        {
+	            "sequence": 1,
+	            "alternateComponent": "Item2",
+	            "alternateComponentVersion": "B",
+	            "parentMaterial": "MAT123",
+	            "parentMaterialVersion": "A",
+	            "validFromDateTime": "2022-01-01T00:00:00",
+	            "validToDateTime": "2022-12-31T23:59:59"
+	        },
+	        {
+	            "sequence": 2,
+	            "alternateComponent": "MAT123",
+	            "alternateComponentVersion": "A",
+	            "parentMaterial": "",
+	            "parentMaterialVersion": "A",
+	            "validFromDateTime": "2022-01-01T00:00:00",
+	            "validToDateTime": "2022-12-31T23:59:59"
+	        }
+	    ]
+	}
+
+==========================================================================
+
+	Response:
+{
+    "response": {
+        "handle": "ItemBo:RITS,KG,A",
+        "site": "RITS",
+        "item": "KG",
+        "revision": "A",
+        "description": "KG",
+        "itemGroup": "",
+        "status": "Releasable",
+        "procurementType": "Manufactured",
+        "currentVersion": true,
+        "itemType": "Manufactured",
+        "lotSize": "10",
+        "routing": "",
+        "routingVersion": "",
+        "bom": "",
+        "bomVersion": "",
+        "assemblyDataType": "",
+        "removalDataType": "",
+        "receiptDataType": "",
+        "printDocuments": [],
+        "customDataList": [],
+        "alternateComponentList": [],
+        "inUse": false,
+        "active": 1,
+        "createdDateTime": "2023-12-20T22:47:38.114",
+        "modifiedDateTime": "2023-12-21T01:28:17.280645845"
+    },
+    "message_details": {
+        "msg": "Item KG with revision A Created Successfully",
+        "msg_type": "S"
+    }
+}
+
+=======
+exception:
+{
+    "timestamp": "2023-12-21T01:37:40.757622878",
+    "message": "UserId should not be empty : KG",
+    "path": "uri=/app/v1/item-service/update",
+    "errorCode": "108"
+}
+
+
+----------------------------------------------------------------------------------------
+update:
+
+
+
+request:
+
+//input1
+	{
+		"site": "rits",
+			"item": "item1",
+			"revision": "A",
+			"status": "Active",
+			"procurementType": "MANUFACTURED",
+			"itemType": "MANUFACTURED",
+			"lotSize": "100"
+	}
+========================================================
+
+
+//  input2
+      {
+          "site": "rits",
+          "item": "item1",
+          "revision": "B",
+          "status": "Active",
+          "procurementType": "MANUFACTURED",
+          "itemType": "MANUFACTURED",
+          "lotSize": "100",
+          "description": "Test material",
+          "itemGroup": "Group A",
+          "currentVersion": true,
+          "routing": "001",
+          "routingVersion": "1",
+          "bom": "BOM12",
+          "bomVersion": "e",
+          "assemblyDataType": "",
+          "removalDataType": "",
+          "receiptDataType": "",
+          "printDocument": "",
+          "customDataList": [
+              {
+                  "customData": "Data 1",
+                  "value": "Value 1"
+              },
+              {
+                  "customData": "Data 2",
+                  "value": "Value 2"
+              }
+          ],
+          "alternateComponentList": [
+              {
+                  "sequence": 1,
+                  "alternateComponent": "Item2",
+                  "alternateComponentVersion": "B",
+                  "parentMaterial": "MAT123",
+                  "parentMaterialVersion": "A",
+                  "validFromDateTime": "2022-01-01T00:00:00",
+                  "validToDateTime": "2022-12-31T23:59:59"
+              },
+              {
+                  "sequence": 2,
+                  "alternateComponent": "MAT123",
+                  "alternateComponentVersion": "A",
+                  "parentMaterial": "",
+                  "parentMaterialVersion": "A",
+                  "validFromDateTime": "2022-01-01T00:00:00",
+                  "validToDateTime": "2022-12-31T23:59:59"
+              }
+          ]
+      }
+      ======================================================================
+      response
+
+      {
+          "response": {
+              "handle": "ItemBo:RITS,KG,A",
+              "site": "RITS",
+              "item": "KG",
+              "revision": "A",
+              "description": "KG",
+              "itemGroup": "",
+              "status": "Releasable",
+              "procurementType": "Manufactured",
+              "currentVersion": true,
+              "itemType": "Manufactured",
+              "lotSize": "10",
+              "routing": "",
+              "routingVersion": "",
+              "bom": "",
+              "bomVersion": "A",
+              "bomBO": "BomBO:RITS,,A",
+              "routingBO": "RoutingBO:RITS,,",
+              "assemblyDataType": "INV",
+              "removalDataType": "INV",
+              "receiptDataType": "INV",
+              "printDocuments": [],
+              "customDataList": [],
+              "alternateComponentList": [
+                  {
+                      "sequence": "10",
+                      "alternateComponent": "VALVE",
+                      "alternateComponentVersion": "A",
+                      "parentMaterial": "",
+                      "parentMaterialVersion": "",
+                      "validFromDateTime": "2023-12-17T01:30:36Z",
+                      "validToDateTime": "2023-12-21T01:30:41Z"
+                  }
+              ],
+              "inUse": false,
+              "active": 1,
+              "createdBy": null,
+              "modifiedBy": "senthil",
+              "createdDateTime": "2023-12-20T22:47:38.114",
+              "modifiedDateTime": "2023-12-21T02:50:33.110217273"
+          },
+          "message_details": {
+              "msg": "Item KG with revision A Updated Successfully",
+              "msg_type": "S"
+          }
+      }
+
+
+
+------------------------------------------------------------------------------------
+delete:
+
+request:
+    {
+    "site":"rits",
+    "item":"Item2",
+    "revision":"A"
+}
+===============================================================================
+response:
+
+
+{
+    "response": null,
+    "message_details": {
+        "msg": "Item KG with revision A Deleted Successfully",
+        "msg_type": "S"
+    }
+}
+
+-------------------------------------------------------------------------------------------
+
+retrieve:
+
+Request:
+
+
+//input1:
+{
+    "site": "rits",
+    "item":"item1",
+    "revision":"B"
+
+}
+===============================================================================
+
+
+//input2:
+    	{
+    "site": "rits",
+    "item":"item1",
+
+
+}
+
+======================================
+Response:
+{
+    "handle": "ItemBo:RITS,KG,A",
+    "site": "RITS",
+    "item": "KG",
+    "revision": "A",
+    "description": "KG",
+    "itemGroup": "",
+    "status": "Releasable",
+    "procurementType": "Manufactured",
+    "currentVersion": true,
+    "itemType": "Manufactured",
+    "lotSize": "10",
+    "routing": "",
+    "routingVersion": "",
+    "bom": "",
+    "bomVersion": "A",
+    "bomBO": "BomBO:RITS,,A",
+    "routingBO": "RoutingBO:RITS,,",
+    "assemblyDataType": "INV",
+    "removalDataType": "INV",
+    "receiptDataType": "INV",
+    "printDocuments": [],
+    "customDataList": [],
+    "alternateComponentList": [
+        {
+            "sequence": "10",
+            "alternateComponent": "VALVE",
+            "alternateComponentVersion": "A",
+            "parentMaterial": "",
+            "parentMaterialVersion": "",
+            "validFromDateTime": "2023-12-17T01:30:36Z",
+            "validToDateTime": "2023-12-21T01:30:41Z"
+        }
+    ],
+    "inUse": false,
+    "active": 1,
+    "createdBy": "senthil",
+    "modifiedBy": null,
+    "createdDateTime": "2023-12-21T03:32:49.461",
+    "modifiedDateTime": null
+}
+
+
+
+---------------------------------------------------------------------------------------
+
+retrieveTop50:
+
+request:
+    	{
+		"site": "rits"
+	    }
+
+
+=======================================================================================
+response:
+
+{
+    "itemList": [
+        {
+            "item": "KG",
+            "revision": "A",
+            "description": "KG",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "ITEM12",
+            "revision": "A",
+            "description": "ITEM12",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "10102023_SUB_ORDER",
+            "revision": "A",
+            "description": "10102023_SUB_ORDER",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "SUB_ORDER_DEMO_ITEM",
+            "revision": "A",
+            "description": "SUB_ORDER_DEMO_ITEM",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "LED_LIGHT",
+            "revision": "A",
+            "description": "LED_LIGHT",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "REGISTER",
+            "revision": "A",
+            "description": "REGISTER",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "SOLUTION",
+            "revision": "A",
+            "description": "Solution",
+            "status": "Releasable",
+            "procurementType": "Purchased"
+        },
+        {
+            "item": "MIXER",
+            "revision": "A",
+            "description": "MIXER",
+            "status": "Releasable",
+            "procurementType": "Purchased"
+        },
+        {
+            "item": "MOLD",
+            "revision": "A",
+            "description": "MOLD",
+            "status": "Releasable",
+            "procurementType": "Purchased"
+        },
+        {
+            "item": "HYDROPANEL",
+            "revision": "A",
+            "description": "HYDROPANEL",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "SENSORS",
+            "revision": "A",
+            "description": "Sensors",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "CONTROLLERS",
+            "revision": "A",
+            "description": "Controllers",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "BLADES",
+            "revision": "A",
+            "description": "Blades",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "FAN_MTR",
+            "revision": "A",
+            "description": "Fan Motors",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "FANS",
+            "revision": "A",
+            "description": "Fans",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "CPR_BLD",
+            "revision": "A",
+            "description": "Copper Bladding",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "CPR_TBE",
+            "revision": "A",
+            "description": "Copper Tubing",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "CONDENCER_COIL",
+            "revision": "A",
+            "description": "Condencer Coil",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "EVAPORATOR_COIL",
+            "revision": "A",
+            "description": "EVAPORATOR_COIL",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "VALVE",
+            "revision": "A",
+            "description": "VALVE",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "MOTOR",
+            "revision": "A",
+            "description": "MOTOR",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        },
+        {
+            "item": "AC",
+            "revision": "A",
+            "description": "AC",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        }
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------
+retrieveAll:
+
+request:
+
+//input1:
+
+    {
+        "site": "rits",
+        "item": "K"
+
+    }
+
+======================================================================================
+    ///input2:
+
+    {
+        "site": "rits"
+
+    }
+======================================================================================
+
+response:
+
+{
+    "itemList": [
+        {
+            "item": "KG",
+            "revision": "A",
+            "description": "KG",
+            "status": "Releasable",
+            "procurementType": "Manufactured"
+        }
+    ]
+}
+-------------------------------------------------------------------------------------
+
+
+isExist:
+
+
+request:
+    {
+        "site":"rits",
+        "item":"item1",
+        "revision":"B"
+
+    }
+    =================================================================================
+    response:
+
+true
+
+
+
+
+
+
+--------------------------------------------------------------------------------------
+
+retrieveBySite:
+
+request:
+   {
+        "site":"rits"
+   }
+
+=========================================================================================
+response:
+
+[
+    {
+        "item": "AC",
+        "revision": "A",
+        "description": "AC",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "MOTOR",
+        "revision": "A",
+        "description": "MOTOR",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "VALVE",
+        "revision": "A",
+        "description": "VALVE",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "EVAPORATOR_COIL",
+        "revision": "A",
+        "description": "EVAPORATOR_COIL",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "CONDENCER_COIL",
+        "revision": "A",
+        "description": "Condencer Coil",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "CPR_TBE",
+        "revision": "A",
+        "description": "Copper Tubing",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "CPR_BLD",
+        "revision": "A",
+        "description": "Copper Bladding",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "FANS",
+        "revision": "A",
+        "description": "Fans",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "FAN_MTR",
+        "revision": "A",
+        "description": "Fan Motors",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "BLADES",
+        "revision": "A",
+        "description": "Blades",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "CONTROLLERS",
+        "revision": "A",
+        "description": "Controllers",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "SENSORS",
+        "revision": "A",
+        "description": "Sensors",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "HYDROPANEL",
+        "revision": "A",
+        "description": "HYDROPANEL",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "MOLD",
+        "revision": "A",
+        "description": "MOLD",
+        "status": "Releasable",
+        "procurementType": "Purchased"
+    },
+    {
+        "item": "MIXER",
+        "revision": "A",
+        "description": "MIXER",
+        "status": "Releasable",
+        "procurementType": "Purchased"
+    },
+    {
+        "item": "SOLUTION",
+        "revision": "A",
+        "description": "Solution",
+        "status": "Releasable",
+        "procurementType": "Purchased"
+    },
+    {
+        "item": "REGISTER",
+        "revision": "A",
+        "description": "REGISTER",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "LED_LIGHT",
+        "revision": "A",
+        "description": "LED_LIGHT",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "SUB_ORDER_DEMO_ITEM",
+        "revision": "A",
+        "description": "SUB_ORDER_DEMO_ITEM",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "10102023_SUB_ORDER",
+        "revision": "A",
+        "description": "10102023_SUB_ORDER",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "ITEM12",
+        "revision": "A",
+        "description": "ITEM12",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    },
+    {
+        "item": "KG",
+        "revision": "A",
+        "description": "KG",
+        "status": "Releasable",
+        "procurementType": "Manufactured"
+    }
+]
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------
+getAvailableDocuments:
+
+
+request:
+
+    {
+        "site":"rits"
+    }
+=============================================================================================
+
+    {
+        "site":"rits",
+        "item": "item3",
+        "revision": "C"
+    }
+
+
+
+ ================================================================================================
+
+ response:
+
+
+
+
+
+
+
+
+
+
+
+ -----------------------------------------------------------------------------------------------
+
+ add:
+
+ request:
+     {
+         "site": "rits",
+         "item": "item3",
+         "revision": "C",
+         "printDocuments":[{
+             "document":"document1"
+         },
+         {
+             "document":"document2"
+         }
+         ]
+     }
+
+
+
+
+ ===============================================================================================
+ response:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ----------------------------------------------------------------------------------------------------
+ remove:
+
+ request:
+
+
+    {
+        "site": "rits",
+        "item": "item3",
+        "revision": "C",
+        "printDocuments": [
+            {
+                "document": "document1"
+            }
+        ]
+    }
+
+
+    ==================================================================================================
+    response:
+
+
+
+
+
+
+
+
+
+    -----------------------------------------------------------------------------------------

@@ -1,0 +1,255 @@
+[{
+  "_id": {
+    "$oid": "67befa45cc2014bcea17f875"
+  },
+  "site": "*",
+  "handle": "UserGroupBO:*,ADMINISTRATOR",
+  "userGroup": "ADMINISTRATOR",
+  "description": "Administrator",
+  "pod": "",
+  "users": [],
+  "permissionForActivityGroup": [
+    {
+      "activityGroupName": "USER_ACCESS_MANAGEMENT",
+      "activityGroupDescription": "User & Access Management",
+      "permissionForActivity": [
+        {
+          "activityId": "R_ACTIVITY_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_ACTIVITY_GRP_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_USR_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_USR_GRP_APP",
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "activityGroupMemberList": null
+    },
+    {
+      "activityGroupName": "SITE_RESOURCE_MANAGEMENT",
+      "activityGroupDescription": "Site & Resource Management",
+      "permissionForActivity": [
+        {
+          "activityId": "R_MACHIENE_STATUS_CHANGE_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_WRKCENT_MAINTENANCE_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_RESC_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_RESC_TYP_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_SITE_APP",
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "activityGroupMemberList": null
+    },
+    {
+      "activityGroupName": "ITEM_MATERIAL_MANAGEMENT",
+      "activityGroupDescription": "Item & Material Management",
+      "permissionForActivity": [
+        {
+          "activityId": "R_REASON_CODE_MAINTENANCE_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_UOM_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_ITM_GRP_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_ITEM_APP",
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "activityGroupMemberList": null
+    },
+    {
+      "activityGroupName": "OPERATIONS_PROCESS_MANAGEMENT",
+      "activityGroupDescription": "Operations & Process Management",
+      "permissionForActivity": [
+        {
+          "activityId": "R_MUL_PRC_ORD_REL_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_PROCESS_ORDERRELEASE_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_OPERATION_SETTING_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_OPR_APP",
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "activityGroupMemberList": null
+    },
+    {
+      "activityGroupName": "PRODUCTION_WORK_MANAGEMENT",
+      "activityGroupDescription": "Production & Work Management",
+      "permissionForActivity": [
+        {
+          "activityId": "R_WORK_FLOW_INTEGRATION_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_WORK_FLOW_RESPONSE_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_BUYOFF_MAINTENANCE_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_POD_MAINTENANCE_APP",
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "activityGroupMemberList": null
+    },
+    {
+      "activityGroupName": "REPORTING_LOGS",
+      "activityGroupDescription": "Reporting & Logs",
+      "permissionForActivity": [
+        {
+          "activityId": "R_LIVE_OEE_DASHBOARD",
+          "enabled": true
+        },
+        {
+          "activityId": "R_MANAGEMENT_DASHBOARD",
+          "enabled": true
+        },
+        {
+          "activityId": "R_OEE_HISTORICAL_DASHBOARD",
+          "enabled": true
+        },
+        {
+          "activityId": "R_PRODUCTION_LOG_REPORT_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_AUDIT_LOG_REPORT_APP",
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "activityGroupMemberList": null
+    },
+    {
+      "activityGroupName": "SCHEDULER_WORKFLOW_MANAGEMENT",
+      "activityGroupDescription": "Scheduler & Workflow Management",
+      "permissionForActivity": [
+        {
+          "activityId": "R_MSG_ENQ_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_JOLT_SPEC_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_JOLT_MAINTANENCE_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_CYCLE_TIME_MAINTENANCE_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_WORK_FLOW_INTEGRATION_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_WORK_FLOW_RESPONSE_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_SCHEDULER_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_SHIFT_MAINTENANCE_APP",
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "activityGroupMemberList": null
+    },
+    {
+      "activityGroupName": "DATA_CONFIGURATION_MANAGEMENT",
+      "activityGroupDescription": "Data & Configuration Management",
+      "permissionForActivity": [
+        {
+          "activityId": "R_NXT_NUM_MAINTENANCE_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_RECEIPE_MAINTENANCE_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_LIST_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_DTFLD_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_DTAFLD_ASSN_APP",
+          "enabled": true
+        },
+        {
+          "activityId": "R_CSTM_DATA_APP",
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "activityGroupMemberList": null
+    },
+    {
+      "activityGroupName": "INTEGRATION_PLUGINS",
+      "activityGroupDescription": "Integration & Plugins",
+      "permissionForActivity": [
+        {
+          "activityId": "R_OPC_PLUGIN",
+          "enabled": true
+        }
+      ],
+      "enabled": true,
+      "activityGroupMemberList": null
+    }
+  ],
+  "customDataList": [],
+  "createdBy": "rits_admin",
+  "modifiedBy": null,
+  "active": 1,
+  "createdDateTime":  "2025-02-26T10:41:40.621Z",
+  "modifiedDateTime":  "2025-02-26T11:41:40.621Z"
+}]

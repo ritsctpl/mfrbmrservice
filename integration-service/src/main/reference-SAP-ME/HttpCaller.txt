@@ -1,0 +1,306 @@
+package com.ritsdev.serviceext;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.sap.tc.logging.Category;
+import com.sap.tc.logging.Location;
+import com.sap.tc.logging.Severity;
+import com.sap.tc.logging.SimpleLogger;
+
+import java.io.OutputStream;
+import java.lang.reflect.Field;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+public class HttpCaller {
+
+    private static final Location LOGGER = Location.getLocation(HttpCaller.class.getName());
+    
+    // Create a custom-configured ObjectMapper for serialization
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final Gson gson = new Gson();
+    
+    static {
+        configureObjectMapper(objectMapper);
+    }
+
+    // Method to configure ObjectMapper to handle recursive references by setting them to null
+    private static void configureObjectMapper(ObjectMapper objectMapper) {
+        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    }
+
+    public static void callExternalSystemAsync(String apiUrl, Object payload,String identifier) {
+        ExecutorService executor = Executors.newFixedThreadPool(10);  // Custom thread pool with 10 threads
+
+        // Capture payload value in a final variable to ensure it remains consistent in the async call
+        final Object capturedPayload = payload;
+        final String capturedApiUrl = apiUrl;	
+        final String capturedIdentifier = identifier;
+        CompletableFuture.runAsync(() -> {
+            try {
+                // Log that the async execution has started
+                SimpleLogger.log(Severity.INFO, Category.SYS_SERVER, LOGGER, HttpCaller.class.getName(), "Starting async call to Fenta API");
+
+                // Convert the captured request object to JSON string representation
+                String jsonPayload = convertObjectToString(capturedPayload);
+                String jsonPayloadToSend="";
+                // Convert the captured request object to JSON string representation
+                // Parse the JSON string into a JsonObject to add additional properties
+             // Parse the JSON string into a JsonElement (can be object or array)
+                JsonElement jsonElement = new JsonParser().parse(jsonPayload);
+
+                if (jsonElement.isJsonObject()) {
+                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+                    jsonObject.addProperty("identifier", capturedIdentifier);
+                    jsonPayloadToSend = gson.toJson(jsonObject);
+                } else if (jsonElement.isJsonArray()) {
+                    JsonArray jsonArray = jsonElement.getAsJsonArray();
+                    JsonObject identifierObject = new JsonObject();
+                    identifierObject.addProperty("identifier", capturedIdentifier);
+                    jsonArray.add(identifierObject);
+                    jsonPayloadToSend = gson.toJson(jsonArray);
+                }
+
+                SimpleLogger.log(Severity.INFO, Category.SYS_SERVER, LOGGER, HttpCaller.class.getName(), "JSON Payload Converted: " + jsonPayload);
+
+                
+                SimpleLogger.log(Severity.INFO, Category.SYS_SERVER, LOGGER, HttpCaller.class.getName(), "JSON Payload Sent: " + jsonPayloadToSend);
+
+                // Set up the HTTP connection
+                URL url = new URL(capturedApiUrl);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
+                connection.setDoOutput(true);
+
+                // Write the JSON payload to the output stream
+                try (OutputStream os = connection.getOutputStream()) {
+                    byte[] input = jsonPayloadToSend.getBytes("utf-8");
+                    os.write(input, 0, input.length);
+                }
+
+                // Get the response code
+                int responseCode = connection.getResponseCode();
+                if (responseCode != HttpURLConnection.HTTP_OK) {
+                    SimpleLogger.log(Severity.INFO, Category.SYS_SERVER, LOGGER, HttpCaller.class.getName(), "Failed to call Fenta API: HTTP error code " + responseCode);
+                }
+            } catch (Exception e) {
+                SimpleLogger.log(Severity.ERROR, Category.SYS_SERVER, LOGGER, HttpCaller.class.getName(), "Asynchronous call to Fenta API failed: " + e.getMessage());
+            }
+        }, executor).exceptionally(ex -> {
+            SimpleLogger.log(Severity.ERROR, Category.SYS_SERVER, LOGGER, HttpCaller.class.getName(), "Error in async execution: " + ex.getMessage());
+            return null;
+        });
+    }
+    private static String convertObjectToString(Object request) {
+        Gson gson = new Gson();
+        try {
+            return gson.toJson(request);
+        } catch (Exception e) {
+            SimpleLogger.log(Severity.ERROR, Category.SYS_SERVER, LOGGER, HttpCaller.class.getName(), "Error converting object to JSON using Gson: " + e.getMessage());
+            return "{}"; // Return empty JSON if serialization fails
+        }
+    	 
+    }
+    // Method to convert the request object to a JSON string representation
+   /* private static String convertObjectToString(Object request) {
+        try {
+            // Create a simplified representation to avoid complex and recursive structures
+            Map<String, Object> simpleRepresentation = new HashMap<>();
+            Set<Object> visitedObjects = new HashSet<>();
+            processFields(request, simpleRepresentation, visitedObjects);
+            return objectMapper.writeValueAsString(simpleRepresentation);
+        } catch (Exception e) {
+            SimpleLogger.log(Severity.ERROR, Category.SYS_SERVER, LOGGER, HttpCaller.class.getName(), "Error converting object to JSON: " + e.getMessage());
+            return "{}"; // Return empty JSON if serialization fails
+        }
+    }*/
+
+    // Helper method to process fields of an object and avoid recursion
+ // Helper method to process fields of an object and avoid recursion
+    private static void processFields(Object request, Map<String, Object> simpleRepresentation, Set<Object> visitedObjects) {
+        if (request == null || visitedObjects.contains(request)) {
+            return;
+        }
+        visitedObjects.add(request);
+
+//        Class<?> current = request.getClass();
+  //      while (current != null) {
+            Field[] declaredFields = request.getClass().getDeclaredFields(); // Fetch private fields from the current class
+            Field[] publicFields = request.getClass().getFields();           // Fetch public fields, including inherited ones
+
+            Set<Field> allFields = new HashSet<>();
+            allFields.addAll(Arrays.asList(declaredFields));
+            allFields.addAll(Arrays.asList(publicFields));
+
+            for (Field field : allFields) {
+                field.setAccessible(true);
+                try {
+                    Object value = field.get(request);
+                    if (value != null && !visitedObjects.contains(value)) {
+                        simpleRepresentation.put(field.getName(), value);
+                    } else {
+                        simpleRepresentation.put(field.getName(), null);
+                    }
+                } catch (IllegalAccessException e) {
+                    simpleRepresentation.put(field.getName(), null);
+                }
+            }
+       //     current = current.getSuperclass();
+    //    }
+    }
+
+}
+
+
+
+
+
+/*package com.ritsdev.serviceext;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.OutputStream;
+import java.util.concurrent.CompletableFuture;
+import java.util.logging.Logger;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sap.tc.logging.Category;
+import com.sap.tc.logging.Location;
+import com.sap.tc.logging.Severity;
+import com.sap.tc.logging.SimpleLogger;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import java.lang.reflect.Field;
+
+public class HttpCaller {
+
+    private static final Location LOGGER = Location.getLocation(HttpCaller.class.getName());
+    // Create an ObjectMapper instance configured to handle cyclic references
+    private static final ObjectMapper objectMapper = new ObjectMapper().enableDefaultTyping()
+            .addMixIn(Object.class, JsonIdentityMixIn.class);
+
+    // Mixin class to add @JsonIdentityInfo for all classes being serialized
+    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
+    public static class JsonIdentityMixIn {}
+
+    public static void callExternalSystemAsync(String apiUrl, Object payload) {
+        CompletableFuture.runAsync(() -> {
+            try {
+                // Convert the request object to JSON string representation
+                String jsonPayload = convertObjectToString(payload);
+
+                SimpleLogger.log(Severity.ERROR, Category.SYS_SERVER, LOGGER, HttpCaller.class.getName(), "JSON Message " +jsonPayload);
+                // Set up the HTTP connection
+                URL url = new URL(apiUrl);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setRequestProperty("Content-Type", "application/json");
+                connection.setDoOutput(true);
+
+                // Write the JSON payload to the output stream
+                try (OutputStream os = connection.getOutputStream()) {
+                    byte[] input = jsonPayload.getBytes("utf-8");
+                    os.write(input, 0, input.length);
+                }
+
+                // Get the response code
+                int responseCode = connection.getResponseCode();
+                if (responseCode != HttpURLConnection.HTTP_OK) {
+                    SimpleLogger.log(Severity.INFO, Category.SYS_SERVER, LOGGER, HttpCaller.class.getName(), "Failed to call Fenta API: HTTP error code " +responseCode);
+                }
+            } catch (Exception e) {
+                SimpleLogger.log(Severity.ERROR, Category.SYS_SERVER, LOGGER, HttpCaller.class.getName(), "Asynchronous call to Fenta API failed:" +e.getMessage());
+            }
+        });
+    }
+
+    // Method to convert the request object to a JSON string representation
+    private static String convertObjectToString(Object request) {
+        try {
+            return objectMapper.writeValueAsString(request);  // Converts the object to JSON string representation
+        } catch (Exception e) {
+            SimpleLogger.log(Severity.ERROR, Category.SYS_SERVER, LOGGER, HttpCaller.class.getName(), "Error converting object to JSON: " +e.getMessage());
+            return "{}"; // Return empty JSON if serialization fails
+        }
+    }
+    private static String convertObjectToStringold(Object request) {
+	    if (request == null) {
+	        return "";
+	    }
+
+	    StringBuilder result = new StringBuilder();
+	    result.append(request.getClass().getName()).append(" { ");
+
+	    Field[] fields = request.getClass().getDeclaredFields();
+	    for (Field field : fields) {
+	        field.setAccessible(true); // Allow access to private fields
+	        try {
+	            result.append(field.getName()).append(": ").append(field.get(request)).append(", ");
+	        } catch (IllegalAccessException e) {
+	            result.append(field.getName()).append(": [access denied], ");
+	        }
+	    }
+
+	    result.append("}");
+	    return result.toString();
+	}
+}
+*/
+
+/*package com.ritsdev.serviceext;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.OutputStream;
+import java.util.concurrent.CompletableFuture;
+import java.util.logging.Logger;
+
+public class HttpCaller {
+
+    private static final Logger logger = Logger.getLogger(HttpCaller.class.getName());
+
+    public static void callExternalSystemAsync(String apiUrl, String payload) {
+        CompletableFuture.runAsync(() -> {
+            try {
+                // Set up the HTTP connection
+                URL url = new URL(apiUrl);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setRequestProperty("Content-Type", "text/plain"); // Content-Type is text/plain for a generic string payload
+                connection.setDoOutput(true);
+
+                // Write the string payload to the output stream
+                try (OutputStream os = connection.getOutputStream()) {
+                    byte[] input = payload.getBytes("utf-8");
+                    os.write(input, 0, input.length);
+                }
+
+                // Get the response code
+                int responseCode = connection.getResponseCode();
+                if (responseCode != HttpURLConnection.HTTP_OK) {
+                    logger.warning("Failed to call Fenta API: HTTP error code " + responseCode);
+                }
+
+                
+            } catch (Exception e) {
+                logger.warning("Asynchronous call to Fenta API failed: " + e.getMessage());
+            }
+        });
+    }
+}
+*/

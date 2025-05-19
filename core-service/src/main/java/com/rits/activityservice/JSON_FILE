@@ -1,0 +1,142 @@
+1) Create:
+
+        Request:             {
+                                 "site" : "RITS",
+                             "activityId" : "Activity9",
+                             "description" : "item Management1",
+                             "activityGroup":"GROUP3",
+                             "url" : "http://localhost:8989/imes/ritsdev/apps/item_app/index.html",
+                             "enabled":"true",
+                              "visibleInActivityManager":true,
+                              "type":"",
+                             "activityRules" : [
+                         {
+                         "ruleName":"",
+                         "setting":""
+                         },
+                         {
+                         "ruleName":"",
+                         "setting":""
+                         }
+                            ],
+                          "activityHookList": [
+                            {
+                                 "sequence":1,
+                               "hookPoint": "hookpoint1",
+                               "activity": "activity1",
+                               "hookableMethod":"hm1",
+
+                           "enable":true,
+                           "userArgument":""
+                             },
+                             {
+                         "sequence":"2",
+                               "hookPoint": "hookpoint2",
+                               "activity": "activity2",
+                               "hookableMethod":"hm2",
+                           "enable":false,
+                           "userArgument":""
+                             }
+                           ],
+                         "createdBy" : "",
+                         "imageUrl":""
+                         }
+
+2) Update:
+
+        Request:                 {
+                                  "site" : "RITS",
+                                 "activityId" : "ActivityId5555",
+                                 "description" : "HEllooooo",
+                                 "activityGroup":"Group1",
+                                 "url" : "http://localhost:8989/imes/ritsdev/apps/item_app/index.html",
+                                 "enabled":true,
+                                  "visibleInActivityManager":true,
+                                  "type":"",
+                                  "listOfMethods":[
+                             {
+                             "methodName":"m1"
+                             },
+                             {
+                             "methodName":"m2"
+                             }
+                             ],
+                                 "activityRules" : [
+                             {
+                             "ruleName":"",
+                             "setting":""
+                             },
+                             {
+                             "ruleName":"",
+                             "setting":""
+                             }
+                                ],
+                              "activityHookList": [
+                                {
+                                     "sequence":"1",
+                                   "hookPoint": "hookpoint1",
+                                   "activity": "ac1",
+                                   "hookableMethod":"hm1",
+                               "enable":true,
+                               "userArgument":""
+                                 },
+                                 {
+                             "sequence":"2",
+                                   "hookPoint": "hookpoint2",
+                                   "activity": "ac2",
+                                   "hookableMethod":"hm2",
+                               "enable":true,
+                               "userArgument":""
+                                 }
+                               ],
+                             "createdBy" : "",
+                             "imageUrl":""
+                             }
+3) getActivityListByCreationDate:
+
+        Request:     {
+                         "site":"RITS"
+                     }
+4) getActivityList:
+
+        Request:     {
+                         "activityId":"Ac",
+                             "site":"RITS"
+                     }
+5) getActivityHookList:
+
+        Request:     {
+                         "site":"RITS",
+                         "activityId":"Activity6"
+
+                     }
+6) retrieveActivity:
+
+        Request:     {
+                         "site":"",
+                             "activityId":"Activity6"
+                     }
+7) getAllActivities:
+
+        Request:         {
+
+                         "site":"RITS"
+                     }
+8) getListOfActivityByActivityGroup:
+
+        Request:    {
+                        "activityGroup":["Group1","Group2"],
+                        "site":"RITS"
+                    }
+9) deleteActivity:
+
+        Request:     {
+                         "activityId":"Activity2",
+                             "site":"RITS"
+                     }
+10) isActivityExist:
+
+        Request:     {
+                         "site":"RITS",
+                             "activityId":"Activity6"
+                     }

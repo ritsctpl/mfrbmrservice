@@ -1,0 +1,26 @@
+{
+  "orderNumber": TABLES.HEADER.item.ORDER_NUMBER,
+  "site": "RITS",
+  "status": "Releasable",
+  "material": TABLES.HEADER.item.MATERIAL,
+  "materialVersion": "A",
+  "recipe": "RECIPE_" & TABLES.HEADER.item.BATCH,
+  "recipeVersion": "A-1",
+  "orderType": "Production",
+  "startDate": TABLES.HEADER.item.START_DATE & "T00:00:00",
+  "finishDate": TABLES.HEADER.item.FINISH_DATE & "T00:00:00",
+  "targetQuantity": $number(TABLES.HEADER.item.TARGET_QUANTITY),
+  "uom": TABLES.HEADER.item.UNIT,
+  "priority": TABLES.HEADER.item.PRIORITY,
+  "schedFinTime":
+    $replace(TABLES.HEADER.item.FINISH_DATE & "T" & TABLES.HEADER.item.SCHED_FIN_TIME, "24:00:00", "23:59:59"),
+  "schedStartTime":
+    $replace(TABLES.HEADER.item.START_DATE & "T" & TABLES.HEADER.item.SCHED_START_TIME, "24:00:00", "23:59:59"),
+  "deliveryComplete": TABLES.POSITION.item.DELIVERY_COMPL,
+  "batchNumber": [{
+      "batchNumber": TABLES.HEADER.item.BATCH,
+      "batchNumberQuantity": TABLES.POSITION.item.QUANTITY,
+      "state": "NEW",
+      "enabled": true
+    }]
+}

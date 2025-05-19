@@ -1,0 +1,55 @@
+{
+  "site": "RITS",
+  "status": "Releasable",
+  "recipeId": "RECIPE_" & TABLES.HEADER.item.BATCH,
+  "version": "A",
+  "currentVersion": true,
+  "batchSize": TABLES.HEADER.item.TARGET_QUANTITY,
+  "batchUom": TABLES.HEADER.item.UNIT,
+  "user": "senthil",
+  "ingredients": {
+    "active": TABLES.COMPONENT.item[ITEM_CATEGORY = "L"].{
+      "ingredientId": MATERIAL,
+      "ingreDescription": MATERIAL_DESCRIPTION,
+      "materialDescription": MATERIAL_DESCRIPTION,
+      "sequence": SEQUENCE,
+      "quantity": REQ_QUAN,
+      "uom": BASE_UOM,
+      "storageLocation": STORAGE_LOCATION
+    },
+    "inactive": TABLES.COMPONENT.item[ITEM_CATEGORY != "L"].{
+      "ingredientId": MATERIAL,
+      "sequence": SEQUENCE,
+      "quantity": REQ_QUAN,
+      "uom": BASE_UOM,
+      "storageLocation": STORAGE_LOCATION
+    }
+  },
+  "phases": $map(TABLES.PHASE.item[$substring(CONTROL_KEY, 0, 2) = "PI" and SUPERIOR_OPERATION = ""], function($phase, $phaseIndex) {
+    [{
+      "phaseId": $phase.TASK_LIST_GROUP & "-" & $phase.GROUP_COUNTER & "-" & $phase.OPERATION_NUMBER,
+      "phaseDescription": $phase.DESCRIPTION,
+      "sequence": $phase.COUNTER,
+      "entryPhase": $number($phase.COUNTER) = $min($map(TABLES.PHASE.item[$substring(CONTROL_KEY, 0, 2) = "PI" and SUPERIOR_OPERATION = ""], function($p) { $number($p.COUNTER) })) ? true : false,
+      "exitPhase": $number($phase.COUNTER) = $max($map(TABLES.PHASE.item[$substring(CONTROL_KEY, 0, 2) = "PI" and SUPERIOR_OPERATION = ""], function($p) { $number($p.COUNTER) })) ? true : false,
+      "nextPhase": $map(TABLES.PHASE.item[$substring(CONTROL_KEY, 0, 2) = "PI" and SUPERIOR_OPERATION = ""], function($p) { $number($p.COUNTER) })[$phaseIndex + 1] ? $map(TABLES.PHASE.item[$substring(CONTROL_KEY, 0, 2) = "PI" and SUPERIOR_OPERATION = ""], function($p) { $p.COUNTER })[$phaseIndex + 1] : "00",
+      "operations": $map(TABLES.PHASE.item[$substring(CONTROL_KEY, 0, 2) = "PI" and SUPERIOR_OPERATION = $phase.OPERATION_NUMBER], function($op, $opIndex, $ops) {
+        [{
+          "operationId": $op.TASK_LIST_GROUP & "-" & $op.GROUP_COUNTER & "-" & $op.OPERATION_NUMBER,
+          "operationDescription": $op.DESCRIPTION,
+          "sequence": $op.COUNTER & "-" & $op.OPERATION_NUMBER,
+          "entryOperation": $opIndex = 0 ? true : false,
+          "lastOperationAtPhase": $opIndex = $count($ops) - 1 ? true : false,
+          "nextOperations": $ops[$opIndex + 1]? $ops[$opIndex + 1].COUNTER & "-" & $ops[$opIndex + 1].OPERATION_NUMBER : "00",
+          "type": "sequential",
+          "resources": [
+            {
+              "resourceId": $op.RESOURCE,
+              "description": $op.RESOURCE_TEXT
+            }
+          ]
+        }]
+      })
+    }]
+  })
+}

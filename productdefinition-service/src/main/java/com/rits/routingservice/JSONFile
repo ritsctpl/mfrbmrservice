@@ -1,0 +1,186 @@
+create:
+    {
+        "site": "rits",
+            "routing": "routing3",
+            "version": "C",
+            "status": "Active",
+            "routingType":"MANUFACTURED"
+
+    }
+
+        {
+        "site": "rits",
+        "routing": "routing3",
+        "version": "D",
+        "description": "This is a sample routing",
+        "routingType": "Manufacturing",
+        "status": "Active",
+        "subType": "Assembly",
+        "currentVersion": true,
+        "relaxedRoutingFlow": false,
+        "document": "D-001",
+        "bom":"BOM1",
+        "bomVersion":"A",
+        "dispositionGroup": "DG-001",
+        "replicationToErp": "No",
+        "parentRouting": "R-000",
+        "routingStepList": [
+            {
+                "stepId": "Step-001",
+                "stepType": "Production",
+                "operation": "Op-001",
+                "operationVersion":"",
+                "routing": "R-001",
+                "routingVersion": "V-001",
+                "stepDescription": "This is step 1",
+                "maximumLoopCount": "3",
+                "erpControlKey": "CK-001",
+                "erpOperation": "EO-001",
+                "workCenter": "WC-001",
+                "erpWorkCenter": "EWC-001",
+                "requiredTimeInProcess": "2 hours",
+                "specialInstruction": "Handle with care",
+                "queueDecision": "Reject",
+                "erpSequence": "10",
+                "isLastReportingStep*": "true",
+                "reworkStep": "false",
+                "blockPcusUntilInspectionFinished": true,
+                "nextStepId": "Step-002",
+                "previousStepId": null
+            }
+        ],
+        "customDataList": [
+            {
+                "customData": "CustomField1",
+                "value": "Value1"
+            },
+            {
+                "customData": "CustomField2",
+                "value": "Value2"
+            }
+        ]
+    }
+
+
+
+
+    ==============================================================================
+
+update:
+    {
+        "site": "rits",
+        "routing": "routing3",
+        "version": "A",
+        "description": "This is a sample routing",
+        "routingType": "Manufacturing",
+        "status": "Active",
+        "subType": "Assembly",
+        "currentVersion": true,
+        "relaxedRoutingFlow": false,
+        "document": "D-001",
+        "bom":"BOM1",
+        "bomVersion":"A",
+        "dispositionGroup": "DG-001",
+        "replicationToErp": "No",
+        "parentRouting": "R-000",
+        "routingStepList": [
+            {
+                "stepId": "Step-001",
+                "stepType": "Production",
+                "operation": "Op-001",
+                "operationVersion":"",
+                "routing": "R-001",
+                "routingVersion": "V-001",
+                "stepDescription": "This is step 1",
+                "maximumLoopCount": "3",
+                "erpControlKey": "CK-001",
+                "erpOperation": "EO-001",
+                "workCenter": "WC-001",
+                "erpWorkCenter": "EWC-001",
+                "requiredTimeInProcess": "2 hours",
+                "specialInstruction": "Handle with care",
+                "queueDecision": "Reject",
+                "erpSequence": "10",
+                "isLastReportingStep*": "true",
+                "reworkStep": "false",
+                "blockPcusUntilInspectionFinished": true,
+                "nextStepId": "Step-002",
+                "previousStepId": null
+            }
+        ],
+        "customDataList": [
+            {
+                "customData": "CustomField1",
+                "value": "Value1"
+            },
+            {
+                "customData": "CustomField2",
+                "value": "Value2"
+            }
+        ]
+    }
+
+===================================================================================================================
+delete:
+
+  {
+        "site":"rits",
+        "routing":"routing3",
+        "version":"A"
+    }
+
+=====================================================================================================================
+
+retrieve:
+ {
+        "site": "rits",
+        "routing": "routing3",
+    }
+
+
+    {
+        "site": "rits",
+        "routing": "routing3",
+        "version":"A"
+    }
+
+======================================================================================================================
+retrieveAll:
+    {
+        "site":"rits",
+        "routing":"rout"
+    }
+
+    {
+        "site":"rits"
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

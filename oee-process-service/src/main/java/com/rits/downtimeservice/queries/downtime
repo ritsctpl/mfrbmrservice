@@ -1,0 +1,453 @@
+CREATE OR REPLACE FUNCTION downtimecalculation(
+    p_site VARCHAR,
+    p_up_event_id INTEGER,
+    p_resource_id VARCHAR,
+    p_up_event_datetime TIMESTAMP,
+    liveCalc BOOLEAN,
+    p_down_event_datetime TIMESTAMP
+
+)
+RETURNS INTEGER AS
+$$
+DECLARE
+    v_down_event_datetime TIMESTAMP;
+    v_down_event_id INTEGER;
+    v_shift RECORD;
+    v_break RECORD;
+    v_downtime_start TIMESTAMP;
+    v_downtime_end TIMESTAMP;
+    v_total_downtime_seconds INTEGER;
+    v_shift_start TIMESTAMP;
+    v_shift_end TIMESTAMP;
+    v_break_start TIMESTAMP;
+    v_break_end TIMESTAMP;
+    v_break_duration INTERVAL;
+    v_break_overlap_start TIMESTAMP;
+    v_break_overlap_end TIMESTAMP;
+    v_current_downtime INTERVAL;
+    v_prev_shift_end TIMESTAMP;
+    v_shift_end_time TIMESTAMP;
+    prev_shift_endtime TIMESTAMP;
+    next_shift_starttime TIMESTAMP;
+	shiftcreatedtime TIMESTAMP;
+	shiftbreakcreatedtime TIMESTAMP;
+	totalDowntime INTEGER;
+    temp_downtime RECORD;
+BEGIN
+totalDowntime:=0;
+	IF NOT liveCalc THEN
+
+		RAISE NOTICE 'Retrieve the first active down event';
+		SELECT created_date_time, machine_log_id, shift_created_date_time, shift_break_created_date_time
+		INTO v_down_event_datetime, v_down_event_id, shiftcreatedtime, shiftBreakCreatedTime
+		FROM R_MACHINELOG
+		WHERE site_id = p_site
+		  AND resource_id = p_resource_id
+		  AND log_event = 'MC_DOWN'
+		  AND active = 1
+		ORDER BY created_date_time
+		LIMIT 1;
+
+		-- If no down event found, exit
+		IF v_down_event_datetime IS NULL THEN
+			RAISE NOTICE 'No down event found for resource % at site %', p_resource_id, p_site;
+			RETURN totalDowntime;
+		END IF;
+
+		RAISE NOTICE 'Identify the shift at down event datetime';
+		SELECT s.*, si.startTime, si.endTime, si.validFrom, si.validEnd, si.handle as shiftintervalhandle
+		INTO v_shift
+		FROM R_SHIFT s
+		INNER JOIN R_SHIFTINTERVAL si ON s.handle = si.shift_id
+		WHERE s.site = p_site
+		  AND s.createddatetime = shiftcreatedtime
+		  AND s.resource = p_resource_id
+		  AND si.validFrom <= v_down_event_datetime
+		  AND si.validEnd >= v_down_event_datetime
+		ORDER BY s.createddatetime DESC
+		LIMIT 1;
+    END IF;
+
+	IF liveCalc THEN
+		v_down_event_datetime := p_down_event_datetime;
+
+		SELECT s.*,si.startTime, si.endTime, si.validFrom, si.validEnd
+		INTO v_shift
+		FROM R_SHIFT s
+		INNER JOIN R_SHIFTINTERVAL si ON s.handle = si.shift_id
+		WHERE si.validFrom <= v_down_event_datetime
+		  AND si.validEnd >= v_down_event_datetime And s.resource = p_resource_id
+		  AND (
+			(v_down_event_datetime::TIME BETWEEN si.startTime AND si.endTime)
+			OR
+			(si.startTime > si.endTime
+			 AND ( v_down_event_datetime::TIME >= si.startTime
+				  OR v_down_event_datetime::TIME <= si.endTime)
+			)
+		  )
+		ORDER BY si.startTime;
+	END IF;
+
+
+    -- Initialize previous shift end to down event start (to check for gaps later)
+    v_prev_shift_end := v_down_event_datetime;
+
+    -- Handle this shift as the first shift in the downtime calculation
+    v_shift_start := DATE_TRUNC('day', v_down_event_datetime) + v_shift.startTime::INTERVAL;
+    v_shift_end := DATE_TRUNC('day', v_down_event_datetime) + v_shift.endTime::INTERVAL;
+
+    v_downtime_start := GREATEST(v_down_event_datetime, v_shift_start);
+    v_downtime_end := LEAST(p_up_event_datetime, v_shift_end);
+
+    -- Initialize total downtime for the current shift
+    v_current_downtime := v_downtime_end - v_downtime_start;
+
+    RAISE NOTICE 'Retrieve break intervals and adjust downtime calculation';
+    FOR v_break IN
+        SELECT * FROM R_BREAK
+        WHERE site = p_site
+          AND createddatetime = shiftBreakCreatedTime
+    LOOP
+        -- Convert break times to TIMESTAMP within the shift interval
+        v_break_start := DATE_TRUNC('day', v_shift_start) + v_break.breakTimeStart::INTERVAL;
+        v_break_end := DATE_TRUNC('day', v_shift_start) + v_break.breakTimeEnd::INTERVAL;
+
+        -- Adjust for breaks that span across midnight
+        IF v_break_end < v_break_start THEN
+            v_break_end := v_break_end + INTERVAL '1 day';
+        END IF;
+
+        -- Check if the break overlaps with the downtime period
+        IF v_break_end > v_downtime_start AND v_break_start < v_downtime_end THEN
+            v_break_overlap_start := GREATEST(v_break_start, v_downtime_start);
+            v_break_overlap_end := LEAST(v_break_end, v_downtime_end);
+
+            -- Calculate break duration within the downtime period
+            v_break_duration := v_break_overlap_end - v_break_overlap_start;
+
+            -- Adjust total downtime by subtracting the break duration
+            v_current_downtime := v_current_downtime - v_break_duration;
+        END IF;
+    END LOOP;
+
+    -- Convert total downtime to seconds
+    v_total_downtime_seconds := EXTRACT(EPOCH FROM v_current_downtime)::INTEGER;
+	totalDowntime:= totalDowntime+ v_total_downtime_seconds;
+
+	-- Decide whether to insert into R_DOWNTIME or temporary table
+	IF not liveCalc THEN
+
+		-- Insert into R_DOWNTIME if liveCalc is false
+		INSERT INTO R_DOWNTIME (
+            Downtime_ID, Site_ID, Shift_ID, Workcenter_ID, Resource_ID, Item_ID,
+            Operation_ID, Downtime_Start, Downtime_End, Downtime, Reason,
+            CreatedDateTime, ModifiedDateTime, Active
+        ) VALUES (
+            uuid_generate_v4(), -- Use UUID for Downtime_ID
+            p_site,
+            v_shift.handle,
+            (SELECT workcenter_id FROM R_MACHINELOG WHERE machine_log_id = p_up_event_id),
+            p_resource_id,
+            (SELECT item_id FROM R_MACHINELOG WHERE machine_log_id = p_up_event_id),
+            (SELECT operation_id FROM R_MACHINELOG WHERE machine_log_id = p_up_event_id),
+            v_downtime_start,
+            v_downtime_end,
+            v_total_downtime_seconds, -- Downtime in seconds
+            'Downtime calculation during shift',
+            CURRENT_TIMESTAMP,
+            CURRENT_TIMESTAMP,
+            1
+        );
+	END IF;
+    v_prev_shift_end := v_shift_end;
+	prev_shift_endtime := v_shift_end;
+
+    -- Loop to process subsequent shifts
+    LOOP
+	-- Update the down event datetime to the next shift start time
+        v_down_event_datetime := v_prev_shift_end + INTERVAL '1 second';
+        EXIT WHEN v_down_event_datetime >= p_up_event_datetime;-- 15 3/9/24 >= 4:30 4/9/24
+
+
+        -- Check for shifts that start on the same day
+        SELECT s.*, si.startTime, si.endTime, si.validFrom, si.validEnd, si.handle as shiftintervalhandle
+        INTO v_shift
+        FROM R_SHIFT s
+        INNER JOIN R_SHIFTINTERVAL si ON s.handle = si.shift_id
+        WHERE s.site = p_site
+          AND s.resource = p_resource_id
+          AND si.startTime::TIME > (v_prev_shift_end::TIME)-- 14 > 15:59
+          AND si.validFrom <= (v_prev_shift_end + INTERVAL '1 day')
+          AND si.validEnd >= (v_prev_shift_end + INTERVAL '1 day')
+          AND s.active = 1
+        ORDER BY si.startTime
+        LIMIT 1;
+
+		IF v_shift.handle IS NOT NULL THEN
+			next_shift_starttime := DATE_TRUNC('day', v_prev_shift_end) + v_shift.startTime::INTERVAL;
+
+			IF next_shift_starttime > prev_shift_endtime THEN
+				-- Gap detected, call general_shift_calculation
+				PERFORM general_shift_calculation(prev_shift_endtime, next_shift_starttime,p_site,p_up_event_id,p_resource_id,liveCalc,totalDowntime);
+				v_shift_end_time := DATE_TRUNC('day', v_prev_shift_end) + v_shift.endTime::INTERVAL;
+				prev_shift_endtime := v_shift_end_time;
+			END IF;
+		END IF;
+
+		IF v_shift.handle IS NULL THEN
+
+            RAISE NOTICE 'No next shift found on the same day. Fetching the first shift of the next day.';
+
+            SELECT s.*, si.startTime, si.endTime, si.validFrom, si.validEnd, si.handle as shiftintervalhandle
+            INTO v_shift
+            FROM R_SHIFT s
+            INNER JOIN R_SHIFTINTERVAL si ON s.handle = si.shift_id
+            WHERE s.site = p_site
+              AND s.resource = p_resource_id
+              AND si.startTime = (
+                  SELECT MIN(si_inner.startTime)
+                  FROM R_SHIFT s_inner
+                  INNER JOIN R_SHIFTINTERVAL si_inner ON s_inner.handle = si_inner.shift_id
+                  WHERE s_inner.site = p_site
+                    AND s_inner.resource = p_resource_id
+                    AND si_inner.validFrom <= (v_prev_shift_end::timestamp + INTERVAL '1 day')
+                    AND si_inner.validEnd >= (v_prev_shift_end::timestamp + INTERVAL '1 day')
+              )
+            LIMIT 1;
+
+			IF v_shift.handle IS NOT NULL THEN
+				next_shift_starttime := DATE_TRUNC('day', v_prev_shift_end + INTERVAL '1 day') + v_shift.startTime::INTERVAL;
+				IF next_shift_starttime > prev_shift_endtime THEN
+					-- Gap detected, call general_shift_calculation
+					PERFORM general_shift_calculation(prev_shift_endtime, next_shift_starttime,p_site,p_up_event_id,p_resource_id,liveCalc,totalDowntime);
+					v_shift_end_time := DATE_TRUNC('day', v_prev_shift_end + INTERVAL '1 day') + v_shift.endTime::INTERVAL;
+					prev_shift_endtime := v_shift_end_time;
+				END IF;
+			END IF;
+
+			v_shift_end := v_shift_end + INTERVAL '1 day';
+			-- v_prev_shift_end := v_shift_end;
+        END IF;
+
+        -- If no shift found, break the loop
+        IF v_shift.handle IS NULL THEN
+            RAISE NOTICE 'No further shifts found, ending the loop.';
+            EXIT;
+        END IF;
+
+        -- Process the next shift as the current shift
+        v_shift_start := DATE_TRUNC('day', v_shift_end) + v_shift.startTime::INTERVAL;
+        v_shift_end := DATE_TRUNC('day', v_shift_end) + v_shift.endTime::INTERVAL;
+
+
+        -- Adjust for shifts that span across midnight
+        IF v_shift_end < v_shift_start THEN
+            v_shift_end := v_shift_end + INTERVAL '1 day';
+        END IF;
+
+        v_downtime_start := GREATEST(v_prev_shift_end, v_shift_start);
+        v_downtime_end := LEAST(p_up_event_datetime, v_shift_end);
+
+        -- Initialize total downtime for the current shift
+        v_current_downtime := v_downtime_end - v_downtime_start;
+
+        RAISE NOTICE 'Retrieve break intervals and adjust downtime calculation';
+        FOR v_break IN
+            SELECT * FROM R_BREAK
+            WHERE shiftInterval_id = v_shift.shiftintervalhandle
+        LOOP
+            -- Convert break times to TIMESTAMP within the shift interval
+            v_break_start := DATE_TRUNC('day', v_shift_start) + v_break.breakTimeStart::INTERVAL;
+            v_break_end := DATE_TRUNC('day', v_shift_start) + v_break.breakTimeEnd::INTERVAL;
+
+            -- Adjust for breaks that span across midnight
+            IF v_break_end < v_break_start THEN
+                v_break_end := v_break_end + INTERVAL '1 day';
+            END IF;
+
+            -- Check if the break overlaps with the downtime period
+            IF v_break_end > v_downtime_start AND v_break_start < v_downtime_end THEN
+                v_break_overlap_start := GREATEST(v_break_start, v_downtime_start);
+                v_break_overlap_end := LEAST(v_break_end, v_downtime_end);
+
+                -- Calculate break duration within the downtime period
+                v_break_duration := v_break_overlap_end - v_break_overlap_start;
+
+                -- Adjust total downtime by subtracting the break duration
+                v_current_downtime := v_current_downtime - v_break_duration;
+            END IF;
+        END LOOP;
+
+        -- Convert total downtime to seconds
+        v_total_downtime_seconds := EXTRACT(EPOCH FROM v_current_downtime)::INTEGER;
+		totalDowntime:= totalDowntime+ v_total_downtime_seconds;
+
+		-- Decide whether to insert into R_DOWNTIME or temporary table
+		IF not liveCalc THEN
+
+			-- Insert into R_DOWNTIME if liveCalc is false
+			INSERT INTO R_DOWNTIME (
+				Downtime_ID, Site_ID, Shift_ID, Workcenter_ID, Resource_ID, Item_ID,
+				Operation_ID, Downtime_Start, Downtime_End, Downtime, Reason,
+				CreatedDateTime, ModifiedDateTime, Active
+			) VALUES (
+				uuid_generate_v4(), -- Use UUID for Downtime_ID
+				p_site,
+				v_shift.handle,
+				(SELECT workcenter_id FROM R_MACHINELOG WHERE machine_log_id = p_up_event_id),
+				p_resource_id,
+				(SELECT item_id FROM R_MACHINELOG WHERE machine_log_id = p_up_event_id),
+				(SELECT operation_id FROM R_MACHINELOG WHERE machine_log_id = p_up_event_id),
+				v_downtime_start,
+				v_downtime_end,
+				v_total_downtime_seconds, -- Downtime in seconds
+				'Downtime calculation during shift',
+				CURRENT_TIMESTAMP,
+				CURRENT_TIMESTAMP,
+				1
+			);
+		END IF;
+
+        -- Update previous shift end for the next iteration
+        v_prev_shift_end := v_shift_end;
+
+    END LOOP;
+
+    RAISE NOTICE 'Downtime calculation completed successfully.';
+
+	IF NOT liveCalc THEN
+		RAISE NOTICE 'Update active flag for the down event';
+		UPDATE R_MACHINELOG
+		SET active = 0
+		WHERE resource_id = p_resource_id;
+
+	END IF;
+	return totalDowntime;
+END;
+$$
+LANGUAGE plpgsql;
+
+
+
+
+CREATE OR REPLACE FUNCTION general_shift_calculation(
+    prev_shift_endtime TIMESTAMP,
+    next_shift_starttime TIMESTAMP,
+	p_site VARCHAR,
+	p_up_event_id INTEGER,
+	p_resource_id VARCHAR,
+	liveCalc BOOLEAN,
+	totalDowntime INTEGER
+)
+RETURNS VOID AS
+$$
+DECLARE
+    v_general_shift RECORD;
+    v_general_shift_start TIMESTAMP;
+    v_general_shift_end TIMESTAMP;
+    v_current_downtime INTERVAL;
+    v_general_break RECORD;
+    v_break_start TIMESTAMP;
+    v_break_end TIMESTAMP;
+    v_break_overlap_start TIMESTAMP;
+    v_break_overlap_end TIMESTAMP;
+    v_break_duration INTERVAL;
+	temp_downtime RECORD;
+v_total_downtime_seconds INTEGER;
+totalDowntime INTEGER;
+BEGIN
+
+	-- LOOP
+		RAISE NOTICE 'Gap detected. Retrieve General shift record for the gap period.';
+
+		SELECT si.startTime, si.endTime, si.handle AS shiftintervalhandle, s.handle AS shifthandle
+		INTO v_general_shift
+		FROM R_SHIFT s
+		INNER JOIN R_SHIFTINTERVAL si ON s.handle = si.shift_id
+		WHERE s.site = p_site
+		  AND s.shifttype = 'General'
+		   AND si.startTime >= prev_shift_endtime::TIME
+		  AND si.endtime <=  (next_shift_starttime::TIME - INTERVAL '1 minute')
+		  AND si.validFrom <= prev_shift_endtime
+		  AND si.validEnd >= next_shift_starttime
+		LIMIT 1;
+		IF v_general_shift.shifthandle IS NOT NULL THEN
+
+			-- Combine TIME with DATE to calculate shift start and end as TIMESTAMP
+			v_general_shift_start := prev_shift_endtime::DATE + v_general_shift.startTime::INTERVAL;
+			v_general_shift_end := prev_shift_endtime::DATE + v_general_shift.endTime::INTERVAL;
+
+			-- Adjust for shifts spanning across midnight
+			IF v_general_shift_end < v_general_shift_start THEN
+				v_general_shift_end := v_general_shift_end + INTERVAL '1 day';
+			END IF;
+
+			-- Calculate downtime during the general shift
+			v_current_downtime := v_general_shift_end - v_general_shift_start;
+
+			-- Handle break calculation for the general shift
+			FOR v_general_break IN
+				SELECT * FROM R_BREAK
+				WHERE shiftInterval_id = v_general_shift.shiftintervalhandle
+			LOOP
+
+				-- Convert break times to TIMESTAMP within the general shift interval
+				v_break_start := v_general_shift_start::DATE + v_general_break.breakTimeStart::INTERVAL;
+				v_break_end := v_general_shift_start::DATE + v_general_break.breakTimeEnd::INTERVAL;
+
+				-- Adjust for breaks that span across midnight
+				IF v_break_end < v_break_start THEN
+					v_break_end := v_break_end + INTERVAL '1 day';
+				END IF;
+
+				-- Check if the break overlaps with the general shift period
+				IF v_break_end > v_general_shift_start AND v_break_start < v_general_shift_end THEN
+					v_break_overlap_start := GREATEST(v_break_start, v_general_shift_start);
+					v_break_overlap_end := LEAST(v_break_end, v_general_shift_end);
+
+					-- Calculate break duration within the general shift period
+					v_break_duration := v_break_overlap_end - v_break_overlap_start;
+
+					-- Adjust total downtime by subtracting the break duration
+					v_current_downtime := v_current_downtime - v_break_duration;
+				END IF;
+			END LOOP;
+
+			-- Convert total downtime to seconds
+			v_total_downtime_seconds := EXTRACT(EPOCH FROM v_current_downtime)::INTEGER;
+			totalDowntime:= totalDowntime+ v_total_downtime_seconds;
+
+			IF not liveCalc THEN
+				-- Insert downtime record for the general shift
+				RAISE NOTICE 'Insert downtime record for general shift %', v_general_shift.shifthandle;
+				INSERT INTO R_DOWNTIME (
+					Downtime_ID, Site_ID, Shift_ID, Workcenter_ID, Resource_ID, Item_ID,
+					Operation_ID, Downtime_Start, Downtime_End, Downtime, Reason,
+					CreatedDateTime, ModifiedDateTime, Active
+				) VALUES (
+					uuid_generate_v4(), -- Use UUID for Downtime_ID
+					p_site,
+					v_general_shift.shifthandle,
+					(SELECT workcenter_id FROM R_MACHINELOG WHERE machine_log_id = p_up_event_id),
+					p_resource_id,
+					(SELECT item_id FROM R_MACHINELOG WHERE machine_log_id = p_up_event_id),
+					(SELECT operation_id FROM R_MACHINELOG WHERE machine_log_id = p_up_event_id),
+					v_general_shift_start,
+					v_general_shift_end,
+					v_total_downtime_seconds, -- Downtime in seconds
+					'General shift downtime calculation',
+					CURRENT_TIMESTAMP,
+					CURRENT_TIMESTAMP,
+					1
+				);
+
+			END IF;
+			-- prev_shift_endtime := DATE_TRUNC('day', v_general_shift_end) + v_general_shift.endTime::INTERVAL;
+
+		ELSE
+			-- EXIT;
+		END IF;
+	-- END LOOP;
+END;
+$$
+LANGUAGE plpgsql;

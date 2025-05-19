@@ -1,0 +1,1213 @@
+[
+
+
+    {
+      "_id": "ActivityBO:RITS,R_ACTIVITY_GRP_APP",
+      "site": "RITS",
+      "activityId": "R_ACTIVITY_GRP_APP",
+      "description": "Activity Group Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        },
+        {
+          "activityGroupName": "COMMON"
+        }
+      ],
+      "url": "/rits/activitygroup_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityHookList": [],
+      "active": 1,
+      "modifiedBy": "janardhan",
+      "modifiedDateTime": "2024-01-25T07:00:36.086Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_ACTIVITY",
+      "site": "RITS",
+      "activityId": "R_ACTIVITY",
+      "description": "Activity Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        },
+        {
+          "activityGroupName": "COMMON"
+        }
+      ],
+      "url": "/rits/activity_maintenance_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "modifiedDateTime": "2024-01-25T06:56:55.531Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_ITEM",
+      "site": "RITS",
+      "activityId": "R_ITEM",
+      "description": "Item Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/item_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [
+        {
+          "ruleName": "",
+          "setting": ""
+        }
+      ],
+      "activityHookList": [],
+      "active": 1,
+      "modifiedBy": "janardhan",
+      "modifiedDateTime": "2024-01-25T07:00:43.205Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_ITM_GRP_APP",
+      "site": "RITS",
+      "activityId": "R_ITM_GRP_APP",
+      "description": "Item Group Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/material_group_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [
+        {
+          "ruleName": "",
+          "setting": ""
+        }
+      ],
+      "activityHookList": [],
+      "active": 1,
+      "modifiedBy": "janardhan",
+      "modifiedDateTime": "2024-01-25T07:00:47.229Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_OPR_APP",
+      "site": "RITS",
+      "activityId": "R_OPR_APP",
+      "description": "Operation Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/operation_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityHookList": [],
+      "active": 1,
+      "modifiedBy": "janardhan",
+      "modifiedDateTime": "2024-01-25T07:00:50.296Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_USER",
+      "site": "RITS",
+      "activityId": "R_USER",
+      "description": "User Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/user_maintenance_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T06:30:43.654Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_USER_GROUP",
+      "site": "RITS",
+      "activityId": "R_USER_GROUP",
+      "description": "User Group Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/userGroup_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [
+        {
+          "ruleName": "",
+          "setting": ""
+        }
+      ],
+      "activityHookList": [],
+      "active": 1,
+      "modifiedBy": "janardhan",
+      "modifiedDateTime": "2024-01-25T07:00:53.338Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_SIGNOFF_SERVICE",
+      "site": "RITS",
+      "activityId": "R_SIGNOFF_SERVICE",
+      "description": "SignOff Service",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "http://localhost:8080/app/v1/signoff-service/signoff",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "Services",
+      "activityHookList": [],
+      "active": 1,
+      "modifiedBy": "janardhan",
+      "modifiedDateTime": "2024-01-25T07:38:50.992Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_RESOURCE_APP",
+      "site": "RITS",
+      "activityId": "R_RESOURCE_APP",
+      "description": "Resource Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/resources_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:03:02.458Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_RESC_TYP_APP",
+      "site": "RITS",
+      "activityId": "R_RESC_TYP_APP",
+      "description": "Resource Type Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/resourceType_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:04:39.321Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_ROUTING_APP",
+      "site": "RITS",
+      "activityId": "R_ROUTING_APP",
+      "description": "Routing Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/routing_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:06:17.800Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_BOM_APP",
+      "site": "RITS",
+      "activityId": "R_BOM_APP",
+      "description": "BOM Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/bom_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:08:49.838Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_CSTM_DATA_APP",
+      "site": "RITS",
+      "activityId": "R_CSTM_DATA_APP",
+      "description": "Custom Data Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/customDataMaintenance_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:09:38.793Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_CERT_APP",
+      "site": "RITS",
+      "activityId": "R_CERT_APP",
+      "description": "Certification Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/certification_maintenance_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:10:57.601Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+
+
+
+
+    {
+      "_id": "ActivityBO:RITS,R_CERT_TYP_APP",
+      "site": "RITS",
+      "activityId": "R_CERT_TYP_APP",
+      "description": "Certification Type Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/certificateType_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:11:33.482Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_DATACOLLECTION_APP",
+      "site": "RITS",
+      "activityId": "R_DATACOLLECTION_APP",
+      "description": "Data Collection Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/datacollection_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:12:00.435Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_DTFLD_APP",
+      "site": "RITS",
+      "activityId": "R_DTFLD_APP",
+      "description": "Data Field Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/datafield_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:12:22.613Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_DTAFLD_ASSN_APP",
+      "site": "RITS",
+      "activityId": "R_DTAFLD_ASSN_APP",
+      "description": "Data Type Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/dataFieldAssignment_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:12:45.567Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_DOC_APP",
+      "site": "RITS",
+      "activityId": "R_DOC_APP",
+      "description": "Document Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/document_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:15:01.845Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_LIST_APP",
+      "site": "RITS",
+      "activityId": "R_LIST_APP",
+      "description": "List Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/list_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:15:24.244Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_NCCDE_APP",
+      "site": "RITS",
+      "activityId": "R_NCCDE_APP",
+      "description": "NC Code Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/nccode_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:15:41.114Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_NCGRP_APP",
+      "site": "RITS",
+      "activityId": "R_NCGRP_APP",
+      "description": "NC Group Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/ncgroup_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:16:00.852Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_WRKCENT_APP",
+      "site": "RITS",
+      "activityId": "R_WRKCENT_APP",
+      "description": "Work Center Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/work_center_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:16:23.713Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_SHP_ORD_REL_APP",
+      "site": "RITS",
+      "activityId": "R_SHP_ORD_REL_APP",
+      "description": "Shop Order Release Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/shopOrderRelease_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:17:48.027Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_TLNO_APP",
+      "site": "RITS",
+      "activityId": "R_TLNO_APP",
+      "description": "Tool Number Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/toolNumber_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:18:12.187Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_STRG_LOC_APP",
+      "site": "RITS",
+      "activityId": "R_STRG_LOC_APP",
+      "description": "Storage Location Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/storagelocation_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:18:33.776Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,Z_OPR_POD",
+      "site": "RITS",
+      "activityId": "Z_OPR_POD",
+      "description": "Operation Pod",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/pod_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:19:11.968Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_POD_APP",
+      "site": "RITS",
+      "activityId": "R_POD_APP",
+      "description": "Pod Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/pod_maintenance_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:19:46.477Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+
+
+
+    {
+      "_id": "ActivityBO:RITS,R_START_SRV",
+      "site": "RITS",
+      "activityId": "R_START_SRV",
+      "description": "Start service",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "http://localhost:8080/app/v1/start-service/start",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "Services",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:20:33.266Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_COMPLT_SERVICE",
+      "site": "RITS",
+      "activityId": "R_COMPLT_SERVICE",
+      "description": "PCU Complete Service",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "http://localhost:8080/app/v1/pcucomplete-service/complete",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "Services",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:21:04.663Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_POD",
+      "site": "RITS",
+      "activityId": "R_POD",
+      "description": "Operator Pod",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        },
+        {
+          "activityGroupName": "POD_GROUP"
+        }
+      ],
+      "url": "http://localhost:8585/rits/pod_app/index.html?WorkStation=OPR_POD",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "modifiedDateTime": "2024-01-25T07:36:03.812Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_SHOP_ORDER",
+      "site": "RITS",
+      "activityId": "R_SHOP_ORDER",
+      "description": "Shop Order Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/shopOrder_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:22:43.296Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_NXT_NUM",
+      "site": "RITS",
+      "activityId": "R_NXT_NUM",
+      "description": "Next Number Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/nextNumber_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityHookList": [],
+      "active": 1,
+      "modifiedBy": "janardhan",
+      "modifiedDateTime": "2024-01-25T07:38:01.215Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_ASSY",
+      "site": "RITS",
+      "activityId": "R_ASSY",
+      "description": "Assembly ",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        },
+        {
+          "activityGroupName": "POD_GROUP"
+        }
+      ],
+      "url": "/rits/assemblyPlugin_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "modifiedDateTime": "2024-01-25T07:36:03.905Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_DCCOLLECT",
+      "site": "RITS",
+      "activityId": "R_DCCOLLECT",
+      "description": "Data Collection ",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/dccollect_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:24:27.685Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_LIVE_DASH_APP",
+      "site": "RITS",
+      "activityId": "R_LIVE_DASH_APP",
+      "description": "Live DashBoard",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/liveProduction_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:24:54.349Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_IMEINT_APP",
+      "site": "RITS",
+      "activityId": "R_IMEINT_APP",
+      "description": "iMEINT WorkFlow Configuration",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/imeint_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:25:17.927Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_WORKINSTRUCTION_APP",
+      "site": "RITS",
+      "activityId": "R_WORKINSTRUCTION_APP",
+      "description": "Work Instruction Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/workinstruction_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityHookList": [],
+      "active": 1,
+      "modifiedBy": "janardhan",
+      "modifiedDateTime": "2024-01-25T07:38:01.142Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_WORKINSTRUCTION_PLUGIN",
+      "site": "RITS",
+      "activityId": "R_WORKINSTRUCTION_PLUGIN",
+      "description": "Work Instruction",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/workInstructionPlugin_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:26:30.249Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_BARCODE_FORMAT_APP",
+      "site": "RITS",
+      "activityId": "R_BARCODE_FORMAT_APP",
+      "description": "Barcode Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/BarCode_Format_maintenance_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:26:57.972Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_MULTI_ORDER_RELEASE_APP",
+      "site": "RITS",
+      "activityId": "R_MULTI_ORDER_RELEASE_APP",
+      "description": "Multi Order Release Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/multiShopOrderRelease_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:27:24.453Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_PLANT_APP",
+      "site": "RITS",
+      "activityId": "R_PLANT_APP",
+      "description": "Plant Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/plant_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:28:02.158Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+
+
+
+
+    {
+      "_id": "ActivityBO:RITS,R_COMPLETE_UI",
+      "site": "RITS",
+      "activityId": "R_COMPLETE_UI",
+      "description": "Complete UI",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/complete_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:28:26.573Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_AUDIT_POD",
+      "site": "RITS",
+      "activityId": "R_AUDIT_POD",
+      "description": "Audit Pod",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/pod_app/index.html?WorkStation=AUDIT_POD",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:29:04.467Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_APPROVAL_UI",
+      "site": "RITS",
+      "activityId": "R_APPROVAL_UI",
+      "description": "Approval UI",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/complete_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:29:24.873Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_ASSY_REPORT",
+      "site": "RITS",
+      "activityId": "R_ASSY_REPORT",
+      "description": "Assembly Report Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/assemblyReport_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:30:03.551Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_AUDIT_LOG",
+      "site": "RITS",
+      "activityId": "R_AUDIT_LOG",
+      "description": "Audit Log Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/AuditLogReport_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:30:39.959Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_DATA_COLLECTION_REPORT",
+      "site": "RITS",
+      "activityId": "R_DATA_COLLECTION_REPORT",
+      "description": "Data Collection Report Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/data_collection_report_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:31:03.678Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_INVENTORY_APP",
+      "site": "RITS",
+      "activityId": "R_INVENTORY_APP",
+      "description": "Inventory Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/inventory_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:31:30.025Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_LOGNC",
+      "site": "RITS",
+      "activityId": "R_LOGNC",
+      "description": "Log NC",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/nctreeplugin_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:31:53.440Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_NC_REPORT",
+      "site": "RITS",
+      "activityId": "R_NC_REPORT",
+      "description": "Log NC Report",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/ncplugin_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:32:17.358Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_CHANGE_EQUIPMENT_STATUS",
+      "site": "RITS",
+      "activityId": "R_CHANGE_EQUIPMENT_STATUS",
+      "description": "Change Equipment Status",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/changeEquipmentStatus_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:32:40.991Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_REASON_CODE",
+      "site": "RITS",
+      "activityId": "R_REASON_CODE",
+      "description": "Reason Code Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/reasonCode_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:33:03.153Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_CYCLE_TIME",
+      "site": "RITS",
+      "activityId": "R_CYCLE_TIME",
+      "description": "Cycle Time Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/cycleTime_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:33:37.241Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_OEE",
+      "site": "RITS",
+      "activityId": "R_OEE",
+      "description": "OEE",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/oee_app/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:33:57.939Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+    {
+      "_id": "ActivityBO:RITS,R_SHIFT_APP",
+      "site": "RITS",
+      "activityId": "R_SHIFT_APP",
+      "description": "Shift Maintenance",
+      "activityGroupList": [
+        {
+          "activityGroupName": "MAINTENANCE_APP_GRP"
+        }
+      ],
+      "url": "/rits/production_shift_maintenance/index.html",
+      "enabled": true,
+      "visibleInActivityManager": true,
+      "type": "UI5",
+      "activityRules": [],
+      "activityHookList": [],
+      "active": 1,
+      "createdBy": "janardhan",
+      "createdDateTime": "2024-01-25T07:34:21.044Z",
+      "_class": "com.rits.activityservice.model.Activity"
+    },
+
+
+
+]

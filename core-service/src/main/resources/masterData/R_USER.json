@@ -1,0 +1,19 @@
+[
+  {
+    "site": [
+      "*"
+    ],
+    "defaultSite": "*",
+    "currentSite": "*",
+    "user": "rits_admin",
+    "lastName": "RITS",
+    "firstName": "ADMIN",
+    "status": "Active",
+    "password": "Rits@123",
+    "userGroups": [
+      {
+        "userGroup": "ADMINISTRATOR"
+      }
+    ],
+    "active": 1
+  }]

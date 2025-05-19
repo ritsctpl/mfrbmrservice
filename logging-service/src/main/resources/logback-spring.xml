@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Console appender for standard output -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Custom WebSocket log appender -->
+    <appender name="WEB_SOCKET" class="com.rits.loggingservice.appender.WebSocketLogAppender">
+        <!-- The messagingTemplate will be injected via LogbackInjectorConfig -->
+    </appender>
+
+    <!-- Root logger configuration -->
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="WEB_SOCKET" />
+    </root>
+</configuration>

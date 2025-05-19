@@ -1,0 +1,18 @@
+(
+    $phase := TABLES.PHASE.item[$substring(CONTROL_KEY, 0, 2) = "PI" and SUPERIOR_OPERATION != ""];
+    {
+        "resources": [
+            $phase.
+            {
+                "site": "RITS",
+                "resource": RESOURCE,
+                "description":RESOURCE_TEXT,
+                "status": "Enabled",
+                "setUpState":"Productive",
+                "resourceTypeList":[{
+                    "resourceType":"DEFAULT"
+                }]
+            }
+        ]
+    }
+)

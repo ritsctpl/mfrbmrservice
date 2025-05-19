@@ -1,0 +1,37 @@
+1) retrieve:
+
+        Request:     {
+                         "eventType":"PCU_START",
+                             "timestamp":"2023-10-05T01:23"
+                     }
+2) retrieveByPcuItemShopOrder:
+
+        Request: {
+                    "itemBO":"",
+                    "shopOrderBO":"",
+                    "pcuBO":""
+                  }
+3) save:
+
+        request: {
+                   "eventId": "123",
+                   "eventType": "TypeA",
+                   "userId": "user1",
+                   "pcuBO": null,
+                   "shopOrderBO": null,
+                   "operationBO": null,
+                   "workCenterBO": null,
+                   "resourceBO": null,
+                   "eventData": null,
+                   "itemBO": null,
+                   "dcGrp": null,
+                   "dataField": null,
+                   "dataValue": null,
+                   "component": null,
+                   "nc": null,
+                   "metaData": null,
+                   "qty": null,
+                   "workInstructionBO": null,
+                   "active": 0,
+                   "timestamp": "2024-01-09T12:34:56.789"
+                 }

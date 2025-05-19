@@ -1,0 +1,28 @@
+// create quality table
+
+CREATE TABLE R_QUALITY (
+    id SERIAL PRIMARY KEY,
+    site VARCHAR(255) NOT NULL,
+    batchNumber VARCHAR(255),
+    workcenter VARCHAR(255),
+    resource VARCHAR(255),
+    reason VARCHAR(255),
+    shift VARCHAR(255),
+    pcu VARCHAR(255),
+    operation VARCHAR(255),
+    operationVersion VARCHAR(255),
+    item VARCHAR(255),
+    itemVersion VARCHAR(255),
+    shopOrder VARCHAR(255),
+    totalQuantity DOUBLE PRECISION,
+    goodQuantity DOUBLE PRECISION,
+    qualityPercentage DOUBLE PRECISION,
+    calculationTimestamp TIMESTAMP,
+    createdDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedDateTime TIMESTAMP,
+    shiftCreatedDatetime TIMESTAMP,
+    shiftBreakCreatedDatetime TIMESTAMP,
+    active INTEGER default 1,
+	userId VARCHAR(255) NOT NULL
+);
+

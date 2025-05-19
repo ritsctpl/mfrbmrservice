@@ -1,0 +1,132 @@
+1) Method Name:- Create
+
+        Request:    {
+                              "site":"RITS",
+                             "handle":"",
+                             "user":"user3",
+                             "lastName":"",
+                             "firstName":"",
+                             "emailAddress":"",
+                             "status":"true",
+                             "employeeNumber":"",
+                             "hireDate":"",
+                             "erpUser":"",
+                             "erpPersonnelNumber":"",
+                          "userGroups":[
+                             {
+                             "userGroup":"userGroup1"
+                             }
+                         ]
+                         "workCenters":[
+                             {
+                                 "workCenter":"workcenter"
+                             }
+                         ],
+                         "labourTracking":[
+                             {
+                                  "current":"current",
+                                 "validFrom":"",
+                                 "validTo":"",
+                                 "userType":"",
+                                 "primaryShift":"",
+                                 "secondaryShifts":"",
+                                 "costCenter":"",
+                                 "defaultLCC":"",
+                                 "department":"",
+                                 "details":""
+                             }
+                         ],
+                         "supervisor":[
+                             {
+                                 "current":"",
+                                 "validFrom":"",
+                                 "validTo":"",
+                                 "supervisedCcs":""
+                             }
+                         ],
+                         "labourRules":[
+                             {
+                                 "labourRule":"",
+                                 "currentValue":""
+                             }
+                         ],
+                         "customDataList":[
+                             {
+                                 "customData":"customData",
+                                 "value":"value"
+                             }
+                         ]
+                     }
+
+2)  Method Name:- Update
+
+        Request:      {
+                              "site":"RITS",
+                             "handle":"",
+                             "user":"user3",
+                             "lastName":"",
+                             "firstName":"",
+                             "emailAddress":"",
+                             "status":"true",
+                             "employeeNumber":"",
+                             "hireDate":"",
+                             "erpUser":"",
+                             "erpPersonnelNumber":"",
+                          "userGroups":[
+                             {
+                             "userGroup":"userGroup1"
+                             }
+                         ]
+                         "workCenters":[
+                             {
+                                 "workCenter":"workcenter"
+                             }
+                         ],
+                         "labourTracking":[
+                             {
+                                  "current":"current",
+                                 "validFrom":"",
+                                 "validTo":"",
+                                 "userType":"",
+                                 "primaryShift":"",
+                                 "secondaryShifts":"",
+                                 "costCenter":"",
+                                 "defaultLCC":"",
+                                 "department":"",
+                                 "details":""
+                             }
+                         ],
+                         "supervisor":[
+                             {
+                                 "current":"",
+                                 "validFrom":"",
+                                 "validTo":"",
+                                 "supervisedCcs":""
+                             }
+                         ],
+                         "labourRules":[
+                             {
+                                 "labourRule":"",
+                                 "currentValue":""
+                             }
+                         ],
+                         "customDataList":[
+                             {
+                                 "customData":"customData",
+                                 "value":"value"
+                             }
+                         ]
+                     }
+
+3) Method Name:- Delete
+
+        Request:     {
+                             "site":"RITS",
+                             "user":"user1"
+                     }
+4) Method Name:- retrieveByUser
+
+   Request:         {
+                        "site":"RITS",
+                         "user":"user1"
+                    }

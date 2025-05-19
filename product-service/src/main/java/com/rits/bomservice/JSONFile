@@ -1,0 +1,259 @@
+retrieveTop50 :
+
+
+input1:
+    {
+        "site":"rits"
+    }
+
+
+
+
+
+    =======================================================================================================================
+    retrieveAll:
+
+
+    input1
+        {
+            "site":"rits",
+            "bom":"b"
+        }
+
+
+        input2:
+        {
+            "site":"rits"
+        }
+
+
+
+============================================================================================================================
+retrieve:
+
+
+    input1
+    {
+        "site":"rits",
+        "bom":"BOM1",
+        "revision":"A"
+    }
+
+
+    input2
+    {
+        "site":"rits",
+        "bom":"BOM1"
+    }
+    ===========================================================================================================================
+create:
+
+
+input 1:
+    {
+        "site": "rits",
+            "bom": "BOM12",
+            "revision": "D",
+            "status": "releasable",
+            "bomType": "PCU"
+    }
+
+
+    input2:
+{
+    "site": "rits",
+        "bom": "BOM1",
+        "revision": "A",
+        "status": "releasable",
+        "bomType": "PCU",
+        "description": "",
+        "currentVersion": true,
+        "validFrom": null,
+        "bomTemplate": true,
+        "designCost": 959879879,
+        "bomComponentList": [
+    {
+        "assySequence": 1,
+            "component": "item1",
+            "componentVersion": "A",
+            "componentType": "",
+            "componentDescription": "",
+            "assyOperation": "Operation1",
+            "assyQty": 0,
+            "assemblyDataTypeBo": "",
+            "storageLocationBo": "",
+            "maxUsage": 1,
+            "maxNc": 2,
+            "alternateComponentList": [
+        {
+            "alternateComponent": "item1",
+                "alternateComponentVersion": "A",
+                "enabled": true,
+                "validfromDateTime": null,
+                "validToDateTime": null
+        },
+        {
+            "alternateComponent": "item1",
+                "alternateComponentVersion": "A",
+                "enabled": true,
+                "validfromDateTime": null,
+                "validToDateTime": null
+        }
+            ],
+        "componentCustomDataList": [
+        {
+            "customData": "",
+                "value": ""
+        },
+        {
+            "customData": "",
+                "value": ""
+        }
+            ]
+    }
+    ],
+    "bomCustomDataList": [
+    {
+        "customData": "",
+            "value": "A"
+    }
+    ],
+    "used": false
+}
+===============================================================================================================================
+delete:
+
+    input:
+    {
+        "site":"rits",
+        "bom":"BOM1",
+        "revision":"A"
+    }
+================================================================================================================================
+isBomUsed:
+        {
+    "site":"rits",
+    "bom":"BOM12",
+    "revision":"D"
+
+}
+========================================================================================================
+update:
+    input2:
+{
+    "site": "rits",
+        "bom": "BOM1",
+        "revision": "A",
+        "status": "releasable",
+        "bomType": "PCU",
+        "description": "",
+        "currentVersion": true,
+        "validFrom": null,
+        "bomTemplate": true,
+        "designCost": 959879879,
+        "bomComponentList": [
+    {
+        "assySequence": 1,
+            "component": "item1",
+            "componentVersion": "A",
+            "componentType": "",
+            "componentDescription": "",
+            "assyOperation": "Operation1",
+            "assyQty": 0,
+            "assemblyDataTypeBo": "",
+            "storageLocationBo": "",
+            "maxUsage": 1,
+            "maxNc": 2,
+            "alternateComponentList": [
+        {
+            "alternateComponent": "item1",
+                "alternateComponentVersion": "A",
+                "enabled": true,
+                "validfromDateTime": null,
+                "validToDateTime": null
+        },
+        {
+            "alternateComponent": "item1",
+                "alternateComponentVersion": "A",
+                "enabled": true,
+                "validfromDateTime": null,
+                "validToDateTime": null
+        }
+            ],
+        "componentCustomDataList": [
+        {
+            "customData": "",
+                "value": ""
+        },
+        {
+            "customData": "",
+                "value": ""
+        }
+            ]
+    }
+    ],
+    "bomCustomDataList": [
+    {
+        "customData": "",
+            "value": "A"
+    }
+    ],
+    "used": false
+}
+
+
+
+===============================================================================================================
+getCOmponentList:
+
+
+   {
+    "site":"rits",
+    "bom":"BOM1",
+    "revision":"B"
+
+}
+
+
+
+
+
+============================================================================================================
+componentUsage:
+    {
+    "site":"rits",
+    "component": "item1",
+    "componentVersion": "B"
+}
+
+
+======================================================================================================
+isExist:
+    {
+        "site": "rits",
+        "bom": "BOM1",
+        "revision": "B"
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

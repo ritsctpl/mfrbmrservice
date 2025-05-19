@@ -1,0 +1,226 @@
+1)  Method EndPoint:- create
+
+     Request :    {
+                    "site": "rits",
+                    "shopOrder": "SO15",
+                    "status": "active",
+                    "description":"",
+                    "orderType": "Production",
+                    "plannedMaterial": "item3",
+                    "materialVersion": "C",
+                    "bomType": "Single-Level",
+                    "plannedBom": "BOM1",
+                    "bomVersion": "B",
+                    "plannedRouting": "routing16",
+                    "routingVersion": "A",
+                    "lcc": "LCC123",
+                    "plannedWorkCenter": "workCenter1",
+                    "priority": "1",
+                    "orderedQty": "100",
+                    "buildQty": "0",
+                    "erpUom": "Each",
+                    "plannedStart": "2023-06-01T08:00:00",
+                    "plannedCompletion": "2023-06-10T17:00:00",
+                    "scheduledStart": null,
+                    "scheduledEnd": null,
+                    "customerOrder": "CO123",
+                    "customer": "Customer1",
+                    "productionQuantities": [
+                        {
+                            "orderedQty": "100",
+                            "defineDeliveryToleranceIn": "Quantity",
+                            "underDeliveryTolerance": "5",
+                            "overDeliveryTolerance": "10",
+                            "maximumDeliveryQty": "110",
+                            "unlimitedOverDelivery": "false",
+                            "doneQty": "0",
+                            "releasedQty": "0",
+                            "qtyInQueueOrWork": "0",
+                            "scrappedQty": "0",
+                            "unreleasedQty": "100",
+                            "buildQty": "0",
+                            "recommendedBuildQtyToReachOrderedQty": "100",
+                            "recommendedBuildQtyToReachMinimumDeliveryQty": "105"
+                        }
+                    ],
+                    "serialPcu": [],
+                    "customDataList": []
+                }
+
+    Response : {
+                 "_id": "ShopOrderBo:RITS,KG_COPY_COPY",
+                 "site": "RITS",
+                 "shopOrder": "KG_COPY_COPY",
+                 "status": "Releasable",
+                 "orderType": "Production",
+                 "plannedMaterial": "ITEM_ITEM",
+                 "materialVersion": "A",
+                 "bomType": "Master",
+                 "plannedBom": "",
+                 "bomVersion": "",
+                 "plannedRouting": "",
+                 "routingVersion": "",
+                 "lcc": "",
+                 "plannedWorkCenter": "",
+                 "priority": 500,
+                 "orderedQty": 0,
+                 "buildQty": "20",
+                 "customerOrder": "",
+                 "customer": "",
+                 "productionQuantities": [
+                   {
+                     "orderedQty": "0",
+                     "defineDeliveryToleranceIn": "Numeric",
+                     "underDeliveryTolerance": "0",
+                     "overDeliveryTolerance": "0",
+                     "unlimitedOverDelivery": false,
+                     "doneQty": "",
+                     "recommendedBuildQtyToReachOrderedQty": "",
+                     "recommendedBuildQtyToReachMinimumDeliveryQty": "",
+                     "releasedQty": "0",
+                     "qtyInQueueOrWork": "",
+                     "scrappedQty": "",
+                     "unreleasedQty": ""
+                   }
+                 ],
+                 "serialPcu": [],
+                 "customDataList": [],
+                 "availableQtyToRelease": "20",
+                 "inUse": false,
+                 "createdBy": "senthil",
+                 "shopOrderBO": "ShopOrderBO:RITS,KG_COPY_COPY",
+                 "itemBO": "ItemBO:RITS,ITEM_ITEM,A",
+                 "bomBO": "BomBO:RITS,,",
+                 "routingBO": "RoutingBO:RITS,,",
+                 "workCenterBO": "WorkCenterBO:RITS,",
+                 "active": 1,
+                 "createdDateTime": {
+                   "$date": "2023-12-21T07:54:21.210Z"
+                 },
+                 "_class": "com.rits.shoporderservice.model.ShopOrder"
+               }
+
+2) Method EndPoint :- Update
+
+        Request : {
+                      "site": "rits",
+                      "shopOrder": "SO15",
+                      "status": "active",
+                      "description":"",
+                      "orderType": "Production",
+                      "plannedMaterial": "item3",
+                      "materialVersion": "C",
+                      "bomType": "Single-Level",
+                      "plannedBom": "BOM1",
+                      "bomVersion": "B",
+                      "plannedRouting": "routing16",
+                      "routingVersion": "A",
+                      "lcc": "LCC123",
+                      "plannedWorkCenter": "workCenter1",
+                      "priority": "1",
+                      "orderedQty": "100",
+                      "buildQty": "0",
+                      "erpUom": "Each",
+                      "plannedStart": "2023-06-01T08:00:00",
+                      "plannedCompletion": "2023-06-10T17:00:00",
+                      "scheduledStart": null,
+                      "scheduledEnd": null,
+                      "customerOrder": "CO123",
+                      "customer": "Customer1",
+                      "productionQuantities": [
+                          {
+                              "orderedQty": "100",
+                              "defineDeliveryToleranceIn": "Quantity",
+                              "underDeliveryTolerance": "5",
+                              "overDeliveryTolerance": "10",
+                              "maximumDeliveryQty": "110",
+                              "unlimitedOverDelivery": "false",
+                              "doneQty": "0",
+                              "releasedQty": "0",
+                              "qtyInQueueOrWork": "0",
+                              "scrappedQty": "0",
+                              "unreleasedQty": "100",
+                              "buildQty": "0",
+                              "recommendedBuildQtyToReachOrderedQty": "100",
+                              "recommendedBuildQtyToReachMinimumDeliveryQty": "105"
+                          }
+                      ],
+                      "serialPcu": [],
+                      "customDataList": []
+                  }
+      Response : {
+                   "_id": "ShopOrderBo:RITS,KG_COPY_COPY",
+                   "site": "RITS",
+                   "shopOrder": "KG_COPY_COPY",
+                   "status": "Releasable",
+                   "orderType": "Production",
+                   "plannedMaterial": "ITEM_ITEM",
+                   "materialVersion": "A",
+                   "bomType": "Master",
+                   "plannedBom": "",
+                   "bomVersion": "",
+                   "plannedRouting": "",
+                   "routingVersion": "",
+                   "lcc": "",
+                   "plannedWorkCenter": "",
+                   "priority": 500,
+                   "orderedQty": 0,
+                   "buildQty": "20",
+                   "customerOrder": "",
+                   "customer": "",
+                   "productionQuantities": [
+                     {
+                       "orderedQty": "0",
+                       "defineDeliveryToleranceIn": "Numeric",
+                       "underDeliveryTolerance": "0",
+                       "overDeliveryTolerance": "0",
+                       "unlimitedOverDelivery": false,
+                       "doneQty": "",
+                       "recommendedBuildQtyToReachOrderedQty": "",
+                       "recommendedBuildQtyToReachMinimumDeliveryQty": "",
+                       "releasedQty": "0",
+                       "qtyInQueueOrWork": "",
+                       "scrappedQty": "",
+                       "unreleasedQty": ""
+                     }
+                   ],
+                   "serialPcu": [],
+                   "customDataList": [],
+                   "availableQtyToRelease": "20",
+                   "inUse": false,
+                   "createdBy": "senthil",
+                   "shopOrderBO": "ShopOrderBO:RITS,KG_COPY_COPY",
+                   "itemBO": "ItemBO:RITS,ITEM_ITEM,A",
+                   "bomBO": "BomBO:RITS,,",
+                   "routingBO": "RoutingBO:RITS,,",
+                   "workCenterBO": "WorkCenterBO:RITS,",
+                   "active": 1,
+                   "createdDateTime": {
+                     "$date": "2023-12-21T07:54:21.210Z"
+                   },
+                   "_class": "com.rits.shoporderservice.model.ShopOrder"
+                 }
+3) Method EndPoint:- delete
+
+        Request:  {
+                         "site":"rits",
+                         "shopOrder":"shopOrder"
+                     }
+4) Method EndPoint:- retrieve
+
+        Request:   {
+                         "site":"rits",
+                         "shopOrder":"SO123"
+                     }
+5) Method EndPoint :- retrieveAll
+
+        Request :  {
+                          "site": "rits",
+                          "shopOrder":"s"
+                      }
+6) Method EndPoint:- retrieveTop50
+
+        Request: {
+                         "site": "rits"
+                     }
+7) Method EndPoint:-

@@ -1,0 +1,239 @@
+[{
+  "_id": "ActivityGroupBO:*,USER_ACCESS_MANAGEMENT",
+  "activityGroupName": "USER_ACCESS_MANAGEMENT",
+  "activityGroupDescription": "User & Access Management",
+  "activityGroupMemberList": [
+    {
+      "activityId": "R_ACTIVITY_APP"
+    },
+    {
+      "activityId": "R_ACTIVITY_GRP_APP"
+    },
+    {
+      "activityId": "R_USR_APP"
+    },
+    {
+      "activityId": "R_USR_GRP_APP"
+    }
+  ],
+  "active": 1,
+  "createdBy": "rits_admin",
+  "createdDateTime": "2025-02-26T10:31:21.082Z",
+  "_class": "com.rits.activitygroupservice.model.ActivityGroup"
+},
+  {
+    "_id": "ActivityGroupBO:*,SITE_RESOURCE_MANAGEMENT",
+    "activityGroupName": "SITE_RESOURCE_MANAGEMENT",
+    "activityGroupDescription": "Site & Resource Management",
+    "activityGroupMemberList": [
+      {
+        "activityId": "R_MACHIENE_STATUS_CHANGE_APP"
+      },
+      {
+        "activityId": "R_WRKCENT_MAINTENANCE_APP"
+      },
+      {
+        "activityId": "R_RESC_APP"
+      },
+      {
+        "activityId": "R_RESC_TYP_APP"
+      },
+      {
+        "activityId": "R_SITE_APP"
+      }
+    ],
+    "active": 1,
+    "createdBy": "rits_admin",
+    "createdDateTime": "2025-02-26T10:32:10.783Z",
+    "_class": "com.rits.activitygroupservice.model.ActivityGroup"
+  },
+  {
+    "_id": "ActivityGroupBO:*,ITEM_MATERIAL_MANAGEMENT",
+    "activityGroupName": "ITEM_MATERIAL_MANAGEMENT",
+    "activityGroupDescription": "Item & Material Management",
+    "activityGroupMemberList": [
+      {
+        "activityId": "R_REASON_CODE_MAINTENANCE_APP"
+      },
+      {
+        "activityId": "R_UOM_APP"
+      },
+      {
+        "activityId": "R_ITM_GRP_APP"
+      },
+      {
+        "activityId": "R_ITEM_APP"
+      }
+    ],
+    "active": 1,
+    "createdBy": "rits_admin",
+    "createdDateTime": "2025-02-26T10:32:53.507Z",
+    "_class": "com.rits.activitygroupservice.model.ActivityGroup"
+  },
+  {
+    "_id": "ActivityGroupBO:*,OPERATIONS_PROCESS_MANAGEMENT",
+    "activityGroupName": "OPERATIONS_PROCESS_MANAGEMENT",
+    "activityGroupDescription": "Operations & Process Management",
+    "activityGroupMemberList": [
+      {
+        "activityId": "R_DISPENSING_01_QA"
+      },
+      {
+        "activityId": "R_BLENDING_11_QA"
+      },
+      {
+        "activityId": "R_TABCOM01_21_QA"
+      },
+      {
+        "activityId": "R_DISPENSING_01_OPR"
+      },
+      {
+        "activityId": "R_BLENDING_11_OPR"
+      },
+      {
+        "activityId": "R_MUL_PRC_ORD_REL_APP"
+      },
+      {
+        "activityId": "R_PROCESS_ORDERRELEASE_APP"
+      },
+      {
+        "activityId": "R_OPERATION_SETTING_APP"
+      },
+      {
+        "activityId": "R_OPR_APP"
+      }
+    ],
+    "active": 1,
+    "modifiedBy": "rits_admin",
+    "createdDateTime": "2025-02-26T10:34:14.843Z",
+    "modifiedDateTime": "2025-02-26T11:27:45.450Z",
+    "_class": "com.rits.activitygroupservice.model.ActivityGroup"
+  },
+  {
+    "_id": "ActivityGroupBO:*,PRODUCTION_WORK_MANAGEMENT",
+    "activityGroupName": "PRODUCTION_WORK_MANAGEMENT",
+    "activityGroupDescription": " Production & Work Management",
+    "activityGroupMemberList": [
+      {
+        "activityId": "R_WORK_FLOW_INTEGRATION_APP"
+      },
+      {
+        "activityId": "R_WORK_FLOW_RESPONSE_APP"
+      },
+      {
+        "activityId": "R_BUYOFF_MAINTENANCE_APP"
+      },
+      {
+        "activityId": "R_POD_MAINTENANCE_APP"
+      }
+    ],
+    "active": 1,
+    "createdBy": "rits_admin",
+    "createdDateTime": "2025-02-26T10:37:27.481Z",
+    "_class": "com.rits.activitygroupservice.model.ActivityGroup"
+  },
+  {
+    "_id": "ActivityGroupBO:*,REPORTING_LOGS",
+    "activityGroupName": "REPORTING_LOGS",
+    "activityGroupDescription": "Reporting & Logs",
+    "activityGroupMemberList": [
+      {
+        "activityId": "R_LIVE_OEE_DASHBOARD"
+      },
+      {
+        "activityId": "R_MANAGEMENT_DASHBOARD"
+      },
+      {
+        "activityId": "R_OEE_HISTORICAL_DASHBOARD"
+      },
+      {
+        "activityId": "R_PRODUCTION_LOG_REPORT_APP"
+      },
+      {
+        "activityId": "R_AUDIT_LOG_REPORT_APP"
+      }
+    ],
+    "active": 1,
+    "createdBy": "rits_admin",
+    "createdDateTime": "2025-02-26T10:38:13.597Z",
+    "_class": "com.rits.activitygroupservice.model.ActivityGroup"
+  },
+  {
+    "_id": "ActivityGroupBO:*,SCHEDULER_WORKFLOW_MANAGEMENT",
+    "activityGroupName": "SCHEDULER_WORKFLOW_MANAGEMENT",
+    "activityGroupDescription": " Scheduler & Workflow Management",
+    "activityGroupMemberList": [
+      {
+        "activityId": "R_MSG_ENQ_APP"
+      },
+      {
+        "activityId": "R_JOLT_SPEC_APP"
+      },
+      {
+        "activityId": "R_JOLT_MAINTANENCE_APP"
+      },
+      {
+        "activityId": "R_CYCLE_TIME_MAINTENANCE_APP"
+      },
+      {
+        "activityId": "R_WORK_FLOW_INTEGRATION_APP"
+      },
+      {
+        "activityId": "R_WORK_FLOW_RESPONSE_APP"
+      },
+      {
+        "activityId": "R_SCHEDULER_APP"
+      },
+      {
+        "activityId": "R_SHIFT_MAINTENANCE_APP"
+      }
+    ],
+    "active": 1,
+    "modifiedBy": "rits_admin",
+    "createdDateTime": "2025-02-26T10:39:05.428Z",
+    "modifiedDateTime": "2025-02-26T10:42:07.514Z",
+    "_class": "com.rits.activitygroupservice.model.ActivityGroup"
+  },
+  {
+    "_id": "ActivityGroupBO:*,DATA_CONFIGURATION_MANAGEMENT",
+    "activityGroupName": "DATA_CONFIGURATION_MANAGEMENT",
+    "activityGroupDescription": "Data & Configuration Management",
+    "activityGroupMemberList": [
+      {
+        "activityId": "R_NXT_NUM_MAINTENANCE_APP"
+      },
+      {
+        "activityId": "R_RECEIPE_MAINTENANCE_APP"
+      },
+      {
+        "activityId": "R_LIST_APP"
+      },
+      {
+        "activityId": "R_DTFLD_APP"
+      },
+      {
+        "activityId": "R_DTAFLD_ASSN_APP"
+      },
+      {
+        "activityId": "R_CSTM_DATA_APP"
+      }
+    ],
+    "active": 1,
+    "createdBy": "rits_admin",
+    "createdDateTime": "2025-02-26T10:40:28.529Z",
+    "_class": "com.rits.activitygroupservice.model.ActivityGroup"
+  },
+  {
+    "_id": "ActivityGroupBO:*,INTEGRATION_PLUGINS",
+    "activityGroupName": "INTEGRATION_PLUGINS",
+    "activityGroupDescription": "Integration & Plugins",
+    "activityGroupMemberList": [
+      {
+        "activityId": "R_OPC_PLUGIN"
+      }
+    ],
+    "active": 1,
+    "createdBy": "rits_admin",
+    "createdDateTime": "2025-02-26T10:41:40.622Z",
+    "_class": "com.rits.activitygroupservice.model.ActivityGroup"
+  }]

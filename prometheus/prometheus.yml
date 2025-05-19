@@ -1,0 +1,53 @@
+global:
+  scrape_interval:     10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: 'core_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['core-service:8080']
+        labels:
+          application: 'core Service Application'
+  - job_name: 'integration_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['integration-service:8080']
+        labels:
+          application: 'Integration Service Application'
+  - job_name: 'inventory_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['inventory-service:8080']
+        labels:
+          application: 'Inventory Service Application'
+  - job_name: 'oee_process_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['oee-process-service:8080']
+        labels:
+          application: 'Oee process Service Application'
+  - job_name: 'oee_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'oee-service:8080' ]
+        labels:
+          application: 'Oee Service Application'
+  - job_name: 'product_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'product-service:8080' ]
+        labels:
+          application: 'Product Service Application'
+  - job_name: 'productdefinition_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'productdefinition-service:8080' ]
+        labels:
+          application: 'Product Defintion Service Application'
+  - job_name: 'production_service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'production-service:8080' ]
+        labels:
+          application: 'Production Service Application'

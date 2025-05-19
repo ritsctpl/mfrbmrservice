@@ -1,0 +1,112 @@
+[
+  {
+    "handle": "item,shopOrder",
+    "tag": "item,shopOrder",
+    "priority": 1
+  },
+  {
+    "handle": "item,workCenter,resource,routing,operation",
+    "tag": "item,workCenter,resource,routing,operation",
+    "priority": 2
+  },
+  {
+    "handle": "item,resource,routing,operation",
+    "tag": "item,resource,routing,operation",
+    "priority": 3
+  },
+  {
+    "handle": "item,workCenter,routing,operation",
+    "tag": "item,workCenter,routing,operation",
+    "priority": 4
+  },
+  {
+    "handle": "item,workCenter,resource,operation",
+    "tag": "item,workCenter,resource,operation",
+    "priority": 5
+  },
+  {
+    "handle": "item,workCenter,resource,routing",
+    "tag": "item,workCenter,resource,routing",
+    "priority": 6
+  },
+  {
+    "handle": "item,resource,routing",
+    "tag": "item,resource,routing",
+    "priority": 7
+  },
+  {
+    "handle": "item,resource,operation",
+    "tag": "item,resource,operation",
+    "priority": 8
+  },
+  {
+    "handle": "item,routing,operation",
+    "tag": "item,routing,operation",
+    "priority": 9
+  },
+  {
+    "handle": "item,workCenter,routing",
+    "tag": "item,workCenter,routing",
+    "priority": 10
+  },
+  {
+    "handle": "item,workCenter,operation",
+    "tag": "item,workCenter,operation",
+    "priority": 11
+  },
+  {
+    "handle": "item,workCenter,resource",
+    "tag": "item,workCenter,resource",
+    "priority": 12
+  },
+  {
+    "handle": "item,routing",
+    "tag": "item,routing",
+    "priority": 13
+  },
+  {
+    "handle": "item,resource",
+    "tag": "item,resource",
+    "priority": 14
+  },
+  {
+    "handle": "item,workCenter",
+    "tag": "item,workCenter",
+    "priority": 15
+  },
+  {
+    "handle": "item,operation",
+    "tag": "item,operation",
+    "priority": 16
+  },
+  {
+    "handle": "shopOrder",
+    "tag": "shopOrder",
+    "priority": 17
+  },
+  {
+    "handle": "item",
+    "tag": "item",
+    "priority": 18
+  },
+  {
+    "handle": "resource",
+    "tag": "resource",
+    "priority": 19
+  },
+  {
+    "handle": "workCenter",
+    "tag": "workCenter",
+    "priority": 20
+  },
+  {
+    "handle": "operation",
+    "tag": "operation",
+    "priority": 21
+  },
+  {
+    "handle": "routing",
+    "tag": "routing",
+    "priority": 22
+  }
+]

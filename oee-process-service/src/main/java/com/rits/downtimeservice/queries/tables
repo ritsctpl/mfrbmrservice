@@ -1,0 +1,258 @@
+--shift
+CREATE TABLE R_SHIFT (
+    id SERIAL PRIMARY KEY,
+	handle VARCHAR(255),
+    site VARCHAR(255),
+    shiftName VARCHAR(255),
+    description VARCHAR(255),
+    shiftType VARCHAR(50),
+    workCenter VARCHAR(255),
+    resource VARCHAR(255),
+    createdBy VARCHAR(255),
+    createdDateTime TIMESTAMP,
+	modifiedDateTime TIMESTAMP,
+	active INTEGER NOT NULL
+);
+
+CREATE TABLE R_SHIFTINTERVAL (
+    id  SERIAL PRIMARY KEY,
+	handle VARCHAR(255),
+    shift_id  VARCHAR(255),
+	site VARCHAR(255),
+    startTime TIME,
+    endTime TIME,
+    shiftMeanTime INT,
+    actualTime INT,
+    validFrom TIMESTAMP,
+    validEnd TIMESTAMP,
+	createdDateTime TIMESTAMP,
+	modifiedDateTime TIMESTAMP,
+	active INTEGER NOT NULL
+);
+
+CREATE TABLE R_BREAK (
+    id  SERIAL PRIMARY KEY,
+	handle VARCHAR(255),
+	site VARCHAR(255),
+    shiftInterval_id  VARCHAR(255),
+    breakTimeStart TIME,
+    breakTimeEnd TIME,
+    meanTime INT,
+    reason VARCHAR(255),
+	createdDateTime TIMESTAMP,
+	modifiedDateTime TIMESTAMP,
+	active INTEGER NOT NULL
+);
+
+CREATE TABLE R_CALENDER (
+    id  SERIAL PRIMARY KEY,
+	handle VARCHAR(255),
+	site VARCHAR(255),
+    shift_id VARCHAR(255),
+    day VARCHAR(50),
+    prodDay VARCHAR(50),
+	createdDateTime TIMESTAMP,
+	modifiedDateTime TIMESTAMP,
+	active INTEGER NOT NULL
+);
+
+CREATE TABLE R_CUSTOMDATA (
+    id  SERIAL PRIMARY KEY,
+	handle VARCHAR(255),
+    shift_id VARCHAR(255),
+	site VARCHAR(255),
+    customData JSONB,
+	createdDateTime TIMESTAMP,
+	modifiedDateTime TIMESTAMP,
+	active INTEGER NOT NULL
+);
+
+
+
+
+
+--downtime table
+CREATE TABLE R_DOWNTIME (
+    Downtime_ID VARCHAR(255) PRIMARY KEY,
+    Site_ID VARCHAR(255) ,
+    Shift_ID VARCHAR(255) ,
+    Workcenter_ID VARCHAR(255) ,
+    Resource_ID VARCHAR(255) ,
+    Item_ID VARCHAR(255) ,
+    Operation_ID VARCHAR(255) ,
+    Downtime_Start TIMESTAMP,
+    Downtime_End TIMESTAMP,
+	Downtime DECIMAL(10,3),
+    Reason TEXT,
+    CreatedDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ModifiedDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Active INTEGER NOT NULL
+);
+
+
+
+--MachineLog status
+CREATE TABLE R_MACHINELOG (
+    Machine_Log_ID SERIAL PRIMARY KEY,
+    Site_ID VARCHAR(255) NOT NULL,
+    Shift_ID VARCHAR(255) NOT NULL,
+	shift_created_date_time TIMESTAMP NOT NULL,
+	shift_break_created_date_time TIMESTAMP NOT NULL,
+    Workcenter_ID VARCHAR(255),
+    Resource_ID VARCHAR(255) NOT NULL,
+    Item_ID VARCHAR(255),
+    Operation_ID VARCHAR(255),
+    Log_Message TEXT,
+    Log_Event VARCHAR(50) NOT NULL,
+    created_date_time TIMESTAMP NOT NULL,
+    modified_date_time TIMESTAMP,
+    Active INTEGER NOT NULL
+);
+
+
+CREATE OR REPLACE FUNCTION handle_machine_up_event()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Call the stored procedure with relevant parameters
+    PERFORM downtimecalculation(
+		NEW.Site_ID,
+        NEW.machine_log_id,
+        NEW.resource_id,
+        NEW.created_date_time,
+		FALSE,
+		'1970-01-01 00:00:00'
+    );
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+CREATE TRIGGER machine_log_insert_trigger
+AFTER INSERT ON R_MACHINELOG
+FOR EACH ROW
+WHEN (NEW.Log_Event = 'MC_UP')
+EXECUTE FUNCTION handle_machine_up_event();
+
+
+CREATE TABLE Availability (
+    Availability_ID SERIAL PRIMARY KEY,
+    Site_ID VARCHAR,
+    Shift_ID VARCHAR,
+    Workcenter_ID VARCHAR,
+    Resource_ID VARCHAR,
+    Item_ID VARCHAR,
+    Operation_ID VARCHAR,
+    Availability_Value NUMERIC(5, 2), -- percentage
+    Total_Time INTERVAL, -- planed production time
+    Available_Time INTERVAL, -- availability without percentage
+    CreatedDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ModifiedDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Active BOOLEAN DEFAULT TRUE
+);
+
+-- availability indexing
+CREATE INDEX idx_resource_id ON Availability(Resource_ID);
+CREATE INDEX idx_shift_id ON Availability(Shift_ID);
+CREATE INDEX idx_createddatetime ON Availability(CreatedDateTime);
+
+
+CREATE TABLE production_log (
+    id SERIAL PRIMARY KEY,
+	site VARCHAR(50) NOT NULL,
+    event_id BIGINT NOT NULL,
+    event_type VARCHAR(50) NOT NULL,
+    user_id VARCHAR(100) NOT NULL,
+    pcu_bo VARCHAR(100) NOT NULL,
+    operation_bo VARCHAR(100) NOT NULL,
+    shoporder_bo VARCHAR(100) NOT NULL,
+    workcenter_bo VARCHAR(100),
+    resource_bo VARCHAR(100) NOT NULL,
+    item_bo VARCHAR(100) NOT NULL,
+    qty INTEGER NOT NULL,
+    shift_BO VARCHAR(10),
+    actual_cycletime TIMESTAMP,
+	active INTEGER NOT NULL,
+    createdDateTime TIMESTAMP NOT NULL
+);
+
+CREATE TABLE QUANTITY (
+    id SERIAL PRIMARY KEY,
+	site VARCHAR(50) NOT NULL,
+    CALCULATED_QTY DECIMAL(5,2) NOT NULL,
+    user_id VARCHAR(100) NOT NULL,
+    pcu_bo VARCHAR(100) NOT NULL,
+    operation_bo VARCHAR(100) NOT NULL,
+    shoporder_bo VARCHAR(100) NOT NULL,
+    workcenter_bo VARCHAR(100),
+    resource_bo VARCHAR(100) NOT NULL,
+    item_bo VARCHAR(100) NOT NULL,
+    shift_name VARCHAR(100) NOT NULL,
+	active INTEGER NOT NULL,
+	createdDateTime TIMESTAMP NOT NULL
+);bad qty, good qty, total qty
+
+CREATE TABLE Oee (
+    handle SERIAL PRIMARY KEY,
+    site VARCHAR(50),
+    resourceId VARCHAR(100),
+    shift VARCHAR(50),
+    totalDowntime INT,
+	workcenter VARCHAR(255),
+	shoporder VARCHAR(255),
+    itemBO VARCHAR(255),
+    routingBO VARCHAR(255),
+    operationBO VARCHAR(255),
+    quality DECIMAL(5, 2),
+	availability DECIMAL(5, 2),
+    performance DECIMAL(5, 2),
+    oee DECIMAL(5, 3),
+	createdDateTime TIMESTAMP,
+	active INTEGER
+);
+
+
+
+CREATE TABLE R_PERFORMANCE (
+    _id VARCHAR(255) PRIMARY KEY,
+    site VARCHAR(255),
+	item_bo VARCHAR(255),
+	operation_bo VARCHAR(100),
+    shoporder_bo VARCHAR(100),
+    workcenter_bo VARCHAR(100),
+    resource_bo VARCHAR(100),
+    shift VARCHAR(50),
+    performance INTEGER,
+    quality INTEGER,
+    calculated_cycle_time INTEGER,
+    speed_loss INTEGER,
+    ideal_time INTEGER,
+    processed BOOLEAN,
+    created_datetime TIMESTAMP,
+	active INTEGER
+);
+
+
+CREATE TABLE R_CYCLETIME (
+    handle VARCHAR(255) PRIMARY KEY,
+    site VARCHAR(255),
+    shop_order VARCHAR(255),
+    routing VARCHAR(255),
+    routing_version VARCHAR(255),
+    operation VARCHAR(255),
+    operation_version VARCHAR(255),
+    resource VARCHAR(255),
+    item VARCHAR(255),
+    item_version VARCHAR(255),
+    work_center VARCHAR(255),
+    cycle_time DOUBLE PRECISION,
+    manufactured_time DOUBLE PRECISION,
+    active INTEGER,
+    created_by VARCHAR(255),
+    modified_by VARCHAR(255),
+    priority INTEGER,
+    created_datetime TIMESTAMP,
+    modified_datetime TIMESTAMP
+);
+
+

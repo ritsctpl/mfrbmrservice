@@ -1,0 +1,175 @@
+
+//	======================For Create=============
+
+//	"required": [
+//    "site",
+//    "resource",
+//    "status"
+//  ]
+
+//	{
+//		"site":"RITS",
+//			"resource": "resource1",
+//			"description": "RES1 des",
+//			"status": "enabled",
+//			"defaultOperation": "OP1",
+//			"processResource": "false",
+//			"erpEquipmentNumber": "",
+//			"erpPlantMaintenanceOrder": "",
+//			"validFrom": "",
+//			"validTo": "",
+//			"utilizationPricePerHr": "",
+//			"resourceTypeList": [
+//		{
+//			"resourceType": "resourceType1"
+//		},
+//		{
+//			"resourceType": "resourceType2"
+//		}
+//    ],
+//		"certificationList": [
+//		{
+//			"certificationBo": "certification",
+//				"certificationDescription": "certificationDescription1"
+//		},
+//		{
+//			"certificationBo": "certification",
+//				"certificationDescription": "certificationDescription2"
+//		}
+//    ],
+//		"opcTagList": [
+//		{
+//			"tagName": "tagName1",
+//				"tagUrl": "tagUrl1",
+//				"identity": "identity1"
+//		},
+//		{
+//			"tagName": "tagName2",
+//				"tagUrl": "tagUrl2",
+//				"identity": "identity2"
+//		}
+//    ],
+//		"resourceCustomDataList": [
+//		{
+//			"customData": "customData1",
+//				"value": ""
+//		},
+//		{
+//			"customData": "customData2",
+//				"value": ""
+//		}
+//    ]
+//	}
+
+===================================================
+//	=====For retrieveTop50=======
+//	{
+//		"site":"RITS"
+//	}
+====================================================
+//	======For RestrieveByResource=======
+//		{
+//			"site":"RITS",
+//				"resource":"resource11"
+//		}
+===================================================
+//	======For IsExist=====
+//		{
+//			"site":"RITS",
+//				"resource":"resource11"
+//		}
+
+===================================================
+//	======For Delete=====//
+//  	{
+//			"site":"RITS",
+//				"resource":"resource11"
+//		}
+====================================================
+//	=========For Update========
+//{
+//	"site": "RITS",
+//		"resource": "RES1",
+//		"description": "RES1 des",
+//		"status": "enabled",
+//		"defaultOperation": "OP1",
+//		"processResource": "false",
+//		"erpEquipmentNumber": "",
+//		"erpPlantMaintenanceOrder": "",
+//		"validFrom": "",
+//		"validTo": "",
+//		"utilizationPricePerHr": "",
+//		"resourceTypeList": [
+//	{
+//		"resourceType": "resourceType1"
+//	},
+//	{
+//		"resourceType": "resourceType2"
+//	}
+//    ],
+//	"certificationList": [
+//	{
+//		"certificationBo": "certification",
+//			"certificationDescription": "certificationDescription1"
+//	},
+//	{
+//		"certificationBo": "certification",
+//			"certificationDescription": "certificationDescription2"
+//	}
+//    ],
+//	"opcTagList": [
+//	{
+//		"tagName": "tagName1",
+//			"tagUrl": "tagUrl1",
+//			"identity": "identity1"
+//	},
+//	{
+//		"tagName": "tagName2",
+//			"tagUrl": "tagUrl2",
+//			"identity": "identity2"
+//	}
+//    ],
+//	"resourceCustomDataList": [
+//	{
+//		"customData": "customData1",
+//			"value": ""
+//	},
+//	{
+//		"customData": "customData2",
+//			"value": ""
+//	}
+//    ]
+//}
+========================================================================
+
+//	====For RestrieveResourceList========
+//		{
+//			"site":"RITS"
+//		}
+
+=======================================================================
+//	=======For Add======
+//	{
+//		"site":"RITS",
+//			"resource":"resource11",
+//			"resourceType":[
+//		"resourceType11","resourceType12"
+//		]
+//	}
+
+=========================================================================
+//	=======For Remove======
+//	{
+//		"site":"RITS",
+//			"resource":"resource11",
+//			"resourceType":[
+//		"resourceType11","resourceType12"
+//		]
+//	}
+===========================================================================
+//	=====For AvailableResourceType======
+//	{
+//		"site":"RITS",
+//			"resource":"resource11"
+//	}
+=========================================================================

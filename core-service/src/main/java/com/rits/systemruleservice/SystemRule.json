@@ -1,0 +1,80 @@
+[
+  {
+      "handle": "1",
+      "moduleId": "com.sap.me.appconfig",
+      "serviceName": "SystemRuleService",
+      "methodName": "createSystemRule",
+      "request": {
+        "systemRule": "Z_VMS_MAT_RLSssssss",
+        "valueObjectType": "BOOLEAN",
+        "longDescription": "Allow Auto Release for Material on Order download",
+        "description": "I18N[Z_VMS_MAT_RLS.systemRule.DESC]",
+        "sequence": 10,
+        "ruleType": "STANDARD",
+        "systemRuleGroupRef": {
+          "reference": {
+            "type": "SYSTEM_RULE_GROUP",
+            "ruleGroup": "COMP_TRACE"
+          }
+        },
+        "systemRuleSetting": {
+          "systemRuleSetting": false,
+          "systemRuleOverridable": true,
+          "site": "*"
+        },
+        "systemRuleOverride": {
+          "systemRuleSetting": true,
+          "overridingGbo": {
+            "itemRef": {
+              "reference": {
+                "type": "ITEM",
+                "value": "ItemBO"
+              }
+            }
+          }
+        },
+        "systemRuleContext": {
+          "contextObjectType": "ITEM"
+        }
+      }
+  },
+  {
+      "handle": "2",
+      "moduleId": "com.sap.me.appconfig",
+      "serviceName": "SystemRuleService",
+      "methodName": "createSystemRule",
+      "request": {
+        "systemRule": "Z_VMS_MAT_RLS",
+        "valueObjectType": "BOOLEAN",
+        "longDescription": "Allow Auto Release for Material on Order download",
+        "description": "I18N[Z_VMS_MAT_RLS.systemRule.DESC]",
+        "sequence": 10,
+        "ruleType": "STANDARD",
+        "systemRuleGroupRef": {
+          "reference": {
+            "type": "SYSTEM_RULE_GROUP",
+            "ruleGroup": "COMP_TRACE"
+          }
+        },
+        "systemRuleSetting": {
+          "systemRuleSetting": false,
+          "systemRuleOverridable": true,
+          "site": "*"
+        },
+        "systemRuleOverride": {
+          "systemRuleSetting": true,
+          "overridingGbo": {
+            "itemRef": {
+              "reference": {
+                "type": "ITEM",
+                "value": "ItemBO"
+              }
+            }
+          }
+        },
+        "systemRuleContext": {
+          "contextObjectType": "ITEM"
+        }
+      }
+  }
+]

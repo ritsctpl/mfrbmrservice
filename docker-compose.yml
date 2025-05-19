@@ -1,0 +1,349 @@
+---
+version: '3'
+services:
+  ## MySQL Docker Compose Config
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_DB: production-services
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Rits@123
+      PGDATA: /data/postgres
+    volumes:
+      - ./postgres-order:/data/postgres
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+
+  mongo:
+    container_name: mongo
+    image: mongo:4.4.14-rc0-focal
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    volumes:
+      - ./mongo-data:/data/db
+      - ./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh
+
+  ## Keycloak Config with Mysql database
+  keycloak-mysql:
+    container_name: keycloak-mysql
+    image: mysql:5.7
+    volumes:
+      - ./mysql_keycloak_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: password
+
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:21.0.1
+    command: [ "start-dev", "--import-realm" ]
+    environment:
+      DB_VENDOR: MYSQL
+      DB_ADDR: mysql
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: password
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./realms/:/opt/keycloak/data/import/
+    depends_on:
+      - keycloak-mysql
+
+  ## Zipkin
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.3.2
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  broker:
+    image: confluentinc/cp-kafka:7.3.2
+    container_name: broker
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://broker:29092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29092,PLAINTEXT_HOST://0.0.0.0:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+
+  ## Eureka Server
+  discovery-server:
+    image: ritsctpl/discovery-server:latest
+    container_name: discovery-server
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - zipkin
+
+  ## Api Gateway
+  api-gateway:
+    image: ritsctpl/api-gateway:latest
+    container_name: api-gateway
+    ports:
+      - "8181:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY=TRACE
+      - DOCKER_HOST_IP=192.168.1.64
+      - DOCKER_HOST_PORT=8686
+      - DOCKER_HOST_API_PORT=8080
+    depends_on:
+      - zipkin
+      - discovery-server
+      - keycloak
+
+  ## core-service Docker Compose Config
+  core-service:
+    container_name: core-service
+    image: ritsctpl/core-service:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DOCKER_KAFKA_HOST=broker
+      - DOCKER_KAFKA_PORT=29092
+    depends_on:
+      - mongo
+      - discovery-server
+      - api-gateway
+
+  ## product-service Docker Compose Config
+  product-service:
+    container_name: product-service
+    image: ritsctpl/product-service:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - mongo
+      - discovery-server
+      - api-gateway
+
+  ## productdefinition-service Docker Compose Config
+  productdefinition-service:
+    container_name: productdefinition-service
+    image: ritsctpl/productdefinition-service:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DOCKER_KAFKA_HOST=broker
+      - DOCKER_KAFKA_PORT=29092
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=production-services
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Rits@123
+    depends_on:
+      - mongo
+      - discovery-server
+      - api-gateway
+
+  ## production-service Docker Compose Config
+  production-service:
+    container_name: production-service
+    image: ritsctpl/production-service:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DOCKER_KAFKA_HOST=broker
+      - DOCKER_KAFKA_PORT=29092
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=production-services
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Rits@123
+    depends_on:
+      - mongo
+      - discovery-server
+      - api-gateway
+
+  ## qualitydefinition-service Docker Compose Config
+  qualitydefinition-service:
+    container_name: qualitydefinition-service
+    image: ritsctpl/qualitydefinition-service:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - mongo
+      - discovery-server
+      - api-gateway
+
+  ## inventory-service Docker Compose Config
+  inventory-service:
+    container_name: inventory-service
+    image: ritsctpl/inventory-service:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - mongo
+      - discovery-server
+      - api-gateway
+
+  ## processlot-service Docker Compose Config
+  processlot-service:
+    container_name: processlot-service
+    image: ritsctpl/processlot-service:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - mongo
+      - discovery-server
+      - api-gateway
+
+  ## integration-service Docker Compose Config
+  integration-service:
+    container_name: integration-service
+    image: ritsctpl/integration-service:latest
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DOCKER_KAFKA_HOST=broker
+      - DOCKER_KAFKA_PORT=29092
+      - KAFKA_CONSUMER_GROUP=integration-group
+    depends_on:
+      - mongo
+      - discovery-server
+      - api-gateway
+
+  ## integration-service Docker Compose Config
+  oee-process-service:
+    container_name: oee-process-service
+    image: ritsctpl/oee-process-service:latest
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=production-services
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Rits@123
+    depends_on:
+      - mongo
+      - discovery-server
+      - api-gateway
+
+  ## oee-service Docker Compose Config
+    ##oee-service:
+    ##container_name: oee-service
+    ##image: ritsctpl/oee-service:latest
+      ##environment:
+      ##- SPRING_PROFILES_ACTIVE=docker
+      ##- DOCKER_KAFKA_HOST=broker
+      ##- DOCKER_KAFKA_PORT=29092
+      ##depends_on:
+      ##- mongo
+      ##- discovery-server
+      ##- api-gateway
+
+  ## imes ui5 Docker Compose Config
+  ##ui5:
+  ##  container_name: ui5
+  ##  image: ritsctpl/ui5:latest
+  ##  ports:
+  ##    - "8585:8585"
+  ##  environment:
+  ##    - SPRING_PROFILES_ACTIVE=docker
+  ##    - DOCKER_HOST_IP=192.168.1.64
+  ##    - APP_HOST_PORT=8181
+  ##  depends_on:
+  ##    - mongo
+  ##    - discovery-server
+  ##    - api-gateway
+
+  ## FentaMES Service
+  fentames:
+    container_name: fentames
+    image: ritsctpl/fentames:latest
+    ports:
+      - "8686:80"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - NEXT_PUBLIC_HOST=192.168.1.64
+      - NEXT_PUBLIC_KEYCLOAK_HOST=keycloak
+      - NEXT_PUBLIC_KEYCLOAK_PORT=8181
+      - NEXT_PUBLIC_REDIRECT_PORT=8686
+      - NEXT_PUBLIC_API_PORT=8080
+    depends_on:
+      - mongo
+      - discovery-server
+      - api-gateway
+      - keycloak
+
+  ## n8n Docker Compose Config
+  n8n:
+    container_name: n8n
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=admin
+      - N8N_SECURE_COOKIE=false
+    volumes:
+      - n8n_data:/home/node/.n8n
+    entrypoint: [ "node", "/usr/local/lib/node_modules/n8n/bin/n8n" ]
+    command: [ "start", "--tunnel" ]
+
+  ## Prometheus
+  prometheus:
+    image: prom/prometheus:v2.37.1
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - mongo
+      - discovery-server
+      - api-gateway
+      - core-service
+      - product-service
+      - productdefinition-service
+      - integration-service
+      - oee-process-service
+      - production-service
+
+  grafana:
+    image: grafana/grafana-oss:8.5.2
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    links:
+      - prometheus:prometheus
+    volumes:
+      - ./grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+
+volumes:
+  n8n_data:
+
+networks:
+  default:
+    external:
+      name: rits_bridge

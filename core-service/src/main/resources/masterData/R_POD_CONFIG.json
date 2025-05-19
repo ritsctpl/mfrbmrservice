@@ -1,0 +1,6319 @@
+[{
+  "_id": {
+    "$oid": "6791f5e04e018d318434fbb0"
+  },
+  "site": "*",
+  "handle": "PodBO:*,BLENDING_OPR_POD_HIM",
+  "type": "Operation",
+  "podCategory": "Process",
+  "podName": "BLENDING_OPR_POD_HIM",
+  "panelLayout": "5",
+  "description": "Blending",
+  "status": "Enabled",
+  "kafkaIntegration": false,
+  "kafkaId": "",
+  "sessionTimeout": 20000,
+  "refreshRate": 6000,
+  "defaultOperation": "11",
+  "defaultResource": "BLENDI01",
+  "defaultPhaseId": "10",
+  "soundWithErrorMessage": false,
+  "showHomeIcon": false,
+  "showHelpIcon": false,
+  "showLogoutIcon": false,
+  "autoExpandMessageArea": false,
+  "operationCanBeChanged": false,
+  "resourceCanBeChanged": true,
+  "phaseCanBeChanged": false,
+  "showQuantity": false,
+  "showResource": false,
+  "showOperation": false,
+  "showPhase": false,
+  "documentName": "",
+  "buttonList": [
+    {
+      "sequence": "10",
+      "buttonType": "Normal",
+      "buttonId": "StartId",
+      "buttonLabel": "START",
+      "buttonSize": "",
+      "imageIcon": "start.png",
+      "hotKey": "Ctrl+I",
+      "buttonLocation": "right",
+      "startNewButtonRow": false,
+      "activityList": [
+        {
+          "activitySequence": "10",
+          "activity": "R_START",
+          "type": "Services",
+          "url": "http://localhost:8080/app/v1/processorderstate-service/start",
+          "pluginLocation": "",
+          "clearsPcu": false,
+          "fixed": false
+        }
+      ]
+    },
+    {
+      "sequence": "20",
+      "buttonType": "Normal",
+      "buttonId": "COMPLETE_ID",
+      "buttonLabel": "Complete",
+      "buttonSize": "",
+      "imageIcon": "complete.png",
+      "hotKey": "Ctrl+K",
+      "buttonLocation": "",
+      "startNewButtonRow": false,
+      "activityList": [
+        {
+          "activitySequence": "10",
+          "activity": "R_YIELD_PLUGIN",
+          "type": "UI",
+          "url": "/rits/yieldConfirmation_app/index.html",
+          "pluginLocation": "2",
+          "clearsPcu": false,
+          "fixed": false
+        }
+      ]
+    },
+    {
+      "sequence": "30",
+      "buttonType": "Normal",
+      "buttonId": "CHGRSRSTATUS",
+      "buttonLabel": "MACHINE",
+      "buttonSize": "",
+      "imageIcon": "https://cdn-icons-png.flaticon.com/512/5477/5477308.png",
+      "hotKey": "Ctrl+G",
+      "buttonLocation": "",
+      "startNewButtonRow": false,
+      "activityList": [
+        {
+          "activitySequence": "10",
+          "activity": "R_MACHIENE_CHANGE",
+          "type": "UI",
+          "url": "/rits/changeEquipmentStatus_app/index.html",
+          "pluginLocation": "1",
+          "clearsPcu": false,
+          "fixed": false
+        }
+      ]
+    },
+    {
+      "sequence": "40",
+      "buttonType": "Normal",
+      "buttonId": "LINECLEARANCE",
+      "buttonLabel": "LINECLEARANCE",
+      "buttonSize": "",
+      "imageIcon": "line_clearance.png",
+      "hotKey": "Ctrl+G",
+      "buttonLocation": "",
+      "startNewButtonRow": false,
+      "activityList": [
+        {
+          "activitySequence": "10",
+          "activity": "LINE_CLEARANCE_PLUGIN",
+          "type": "UI",
+          "url": "/rits/lineclearance",
+          "pluginLocation": "1",
+          "clearsPcu": false,
+          "fixed": false
+        }
+      ]
+    },
+    {
+      "sequence": "50",
+      "buttonType": "Normal",
+      "buttonId": "WORK_LIST",
+      "buttonLabel": "WORK LIST",
+      "buttonSize": "",
+      "imageIcon": "https://cdn-icons-png.flaticon.com/512/10872/10872043.png",
+      "hotKey": "Ctrl+G",
+      "buttonLocation": "",
+      "startNewButtonRow": false,
+      "activityList": [
+        {
+          "activitySequence": "10",
+          "activity": "R_WORK_LIST_PLUGIN",
+          "type": "UI",
+          "url": "/rits/workListPanel",
+          "pluginLocation": "2",
+          "clearsPcu": false,
+          "fixed": false
+        }
+      ]
+    },
+    {
+      "sequence": "60",
+      "buttonType": "Normal",
+      "buttonId": "SCRAP",
+      "buttonLabel": "SCRAP",
+      "buttonSize": "",
+      "imageIcon": "https://cdn-icons-png.freepik.com/256/11099/11099649.png?semt=ais_hybrid",
+      "hotKey": "Ctrl+G",
+      "buttonLocation": "",
+      "startNewButtonRow": false,
+      "activityList": [
+        {
+          "activitySequence": "10",
+          "activity": "SCRAP_APP",
+          "type": "UI",
+          "url": "/rits/scrap_app/index.html",
+          "pluginLocation": "1",
+          "clearsPcu": false,
+          "fixed": false
+        }
+      ]
+    }
+  ],
+  "listOptions": [
+    {
+      "browseWorkList": "",
+      "podWorkList": "PROCESS_WORK_LIST",
+      "assembleList": "",
+      "dcCollectList": "",
+      "toolList": "",
+      "workInstructionList": "",
+      "dcEntryList": "",
+      "subStepList": ""
+    }
+  ],
+  "podSelection": [
+    {
+      "mainInput": "",
+      "mainInputHotKey": "Ctrl+G",
+      "defaultOperation": "ELECTRICAL_ASSY",
+      "defaultResource": "DEMO_SRC2",
+      "sfcQueueButtonID": "",
+      "sfcInWorkButtonID": "",
+      "infoLine1": "",
+      "infoLine2": "",
+      "showOperationFirst": true,
+      "showQuantity": true,
+      "operationCanBeChanged": true,
+      "resourceCanBeChanged": true
+    }
+  ],
+  "printers": [
+    {
+      "documentPrinter": "",
+      "labelPrinter": "",
+      "travelerPrinter": ""
+    }
+  ],
+  "customDataList": [
+    {
+      "customData": "QUALITYCHECK",
+      "value": "false"
+    }
+  ],
+  "modifiedBy": "rits_admin",
+  "active": 1,
+  "createdDateTime":"2025-01-23T07:55:12.232Z",
+  "modifiedDateTime":"2025-02-26T11:43:41.101Z",
+  "subPod": "HI_SUB_POD",
+  "tabConfiguration": {},
+  "settings": {
+    "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+    "podWorkListActivity": "R_POD_WORKLIST_SRV",
+    "onTabOutOfOperation": {
+      "reloadWorkList": true,
+      "reloadResource": false
+    },
+    "onTabOutOfWorkCenter": {
+      "reloadWorkList": false,
+      "reloadResource": true
+    },
+    "onTabOutOfResource": {
+      "reloadWorkList": true,
+      "reloadResource": false
+    },
+    "updateFieldsToSession": {
+      "operation": true,
+      "resource": true,
+      "batchNumber": true,
+      "order": false,
+      "recipe": false,
+      "item": false
+    },
+    "buttonActivityInWork": [],
+    "buttonActivityInQueue": []
+  },
+  "layout": [
+    {
+      "panel": "1",
+      "type": "fixed",
+      "defaultPlugin": "R_WORK_LIST_PLUGIN",
+      "defaultUrl": "/rits/workListPanel",
+      "otherPlugin": []
+    },
+    {
+      "panel": "2",
+      "type": "fixed",
+      "defaultPlugin": "",
+      "defaultUrl": "",
+      "otherPlugin": [
+        {
+          "activity": "R_LINE_CLEARANCE_PLUGIN",
+          "activityDescription": "Line Clearance Plugin "
+        },
+        {
+          "activity": "R_WORK_LIST_PLUGIN",
+          "activityDescription": "Work List Plugin Panel"
+        },
+        {
+          "activity": "R_SCRAP_",
+          "activityDescription": "R SCRAP"
+        },
+        {
+          "activity": "R_YIELD_PLUGIN",
+          "activityDescription": "Yield Or Complete Plugin"
+        }
+      ]
+    },
+    {
+      "panel": "3",
+      "type": "fixed",
+      "defaultPlugin": "",
+      "defaultUrl": "",
+      "otherPlugin": [
+        {
+          "activity": "R_MAT_INWARD",
+          "activityDescription": "DG Gate"
+        },
+        {
+          "activity": "R_YIELD_PLUGIN",
+          "activityDescription": "Yield Or Complete Plugin"
+        },
+        {
+          "activity": "R_LINE_CLEARANCE_PLUGIN",
+          "activityDescription": "Line Clearance Plugin "
+        },
+        {
+          "activity": "SCRAP_APP",
+          "activityDescription": "SCRAP"
+        }
+      ]
+    },
+    {
+      "panel": "4",
+      "type": "fixed",
+      "defaultPlugin": "",
+      "defaultUrl": "",
+      "otherPlugin": [
+        {
+          "activity": "R_MAT_OUTWARD",
+          "activityDescription": "Material Exit"
+        },
+        {
+          "activity": "R_MACHIENE_CHANGE",
+          "activityDescription": "Machine Status Change"
+        },
+        {
+          "activity": "R_BUYOFF_LOG_PLUGIN",
+          "activityDescription": "Buyoff Log Plugin Screen"
+        }
+      ]
+    },
+    {
+      "panel": "5",
+      "type": "fixed",
+      "defaultPlugin": "",
+      "defaultUrl": "",
+      "otherPlugin": []
+    },
+    {
+      "panel": "",
+      "type": "popup",
+      "defaultPlugin": "",
+      "defaultUrl": "",
+      "otherPlugin": []
+    }
+  ],
+  "_class": "com.rits.podservice.model.Pod"
+},
+  {
+    "_id": {
+      "$oid": "6791f6bc4e018d318434fbba"
+    },
+    "site": "*",
+    "handle": "PodBO:*,TABLET_COMPRESSION_OPR_HIM",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "TABLET_COMPRESSION_OPR_HIM",
+    "panelLayout": "5",
+    "description": "TABLET COMPRESSION",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "21",
+    "defaultResource": "TABCOM01",
+    "defaultPhaseId": "20",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": false,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": false,
+    "showQuantity": false,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "StartId",
+        "buttonLabel": "START",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+I",
+        "buttonLocation": "right",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_START",
+            "type": "Services",
+            "url": "http://localhost:8080/app/v1/processorderstate-service/start",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "SIGN_OFF",
+        "buttonLabel": "Sign Off",
+        "buttonSize": "",
+        "imageIcon": "sign_off.png",
+        "hotKey": "",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_SIGN_OFF",
+            "type": "Service",
+            "url": "http://localhost:8080/app/v1/processorderstate-service/signoff",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "COMPLETE_ID",
+        "buttonLabel": "Complete",
+        "buttonSize": "",
+        "imageIcon": "complete.png",
+        "hotKey": "Ctrl+K",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_YIELD_PLUGIN",
+            "type": "UI",
+            "url": "/rits/yieldConfirmation_app/index.html",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "40",
+        "buttonType": "Normal",
+        "buttonId": "CHGRSRSTATUS",
+        "buttonLabel": "MACHINE",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/5477/5477308.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_MACHIENE_CHANGE",
+            "type": "UI",
+            "url": "/rits/changeEquipmentStatus_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "50",
+        "buttonType": "Normal",
+        "buttonId": "LINECLEARANCE",
+        "buttonLabel": "LINECLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "60",
+        "buttonType": "Normal",
+        "buttonId": "SCRAP",
+        "buttonLabel": "SCRAP",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/11099/11099649.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "SCRAP_APP",
+            "type": "UI",
+            "url": "/rits/scrap_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "70",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "false"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-01-23T07:58:52.156Z",
+    "modifiedDateTime":"2025-02-26T11:45:22.104Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin "
+          },
+          {
+            "activity": "R_WORK_LIST_PLUGIN",
+            "activityDescription": "Work List Plugin Panel"
+          },
+          {
+            "activity": "R_SCRAP_",
+            "activityDescription": "R SCRAP"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_INWARD",
+            "activityDescription": "DG Gate"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin "
+          },
+          {
+            "activity": "SCRAP_APP",
+            "activityDescription": "SCRAP"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_OUTWARD",
+            "activityDescription": "Material Exit"
+          },
+          {
+            "activity": "R_MACHIENE_CHANGE",
+            "activityDescription": "Machine Status Change"
+          },
+          {
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "activityDescription": "Buyoff Log Plugin Screen"
+          }
+        ]
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "6791f7b34e018d318434fbc8"
+    },
+    "site": "*",
+    "handle": "PodBO:*,SEAL_COATING_OPR_HIM",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "SEAL_COATING_OPR_HIM",
+    "panelLayout": "5",
+    "description": "SEAL COATING",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "31",
+    "defaultResource": "TABCOT01",
+    "defaultPhaseId": "30",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": false,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": false,
+    "showQuantity": false,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "StartId",
+        "buttonLabel": "START",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+I",
+        "buttonLocation": "right",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_START",
+            "type": "Services",
+            "url": "http://localhost:8080/app/v1/processorderstate-service/start",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "SIGN_OFF",
+        "buttonLabel": "Sign Off",
+        "buttonSize": "",
+        "imageIcon": "sign_off.png",
+        "hotKey": "",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_SIGN_OFF",
+            "type": "Service",
+            "url": "http://localhost:8080/app/v1/processorderstate-service/signoff",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "COMPLETE_ID",
+        "buttonLabel": "Complete",
+        "buttonSize": "",
+        "imageIcon": "complete.png",
+        "hotKey": "Ctrl+K",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_YIELD_PLUGIN",
+            "type": "UI",
+            "url": "/rits/yieldConfirmation_app/index.html",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "40",
+        "buttonType": "Normal",
+        "buttonId": "CHGRSRSTATUS",
+        "buttonLabel": "MACHINE",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/5477/5477308.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_MACHIENE_CHANGE",
+            "type": "UI",
+            "url": "/rits/changeEquipmentStatus_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "50",
+        "buttonType": "Normal",
+        "buttonId": "LINECLEARANCE",
+        "buttonLabel": "LINECLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "60",
+        "buttonType": "Normal",
+        "buttonId": "SCRAP",
+        "buttonLabel": "SCRAP",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/11099/11099649.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "SCRAP_APP",
+            "type": "UI",
+            "url": "/rits/scrap_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "70",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "false"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-01-23T08:02:59.670Z",
+    "modifiedDateTime":"2025-02-26T11:47:06.689Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin "
+          },
+          {
+            "activity": "R_WORK_LIST_PLUGIN",
+            "activityDescription": "Work List Plugin Panel"
+          },
+          {
+            "activity": "R_SCRAP_",
+            "activityDescription": "R SCRAP"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_INWARD",
+            "activityDescription": "DG Gate"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin "
+          },
+          {
+            "activity": "SCRAP_APP",
+            "activityDescription": "SCRAP"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_OUTWARD",
+            "activityDescription": "Material Exit"
+          },
+          {
+            "activity": "R_MACHIENE_CHANGE",
+            "activityDescription": "Machine Status Change"
+          },
+          {
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "activityDescription": "Buyoff Log Plugin Screen"
+          }
+        ]
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "6791f7de4e018d318434fbcd"
+    },
+    "site": "*",
+    "handle": "PodBO:*,DISPENSING_OPR_POD_HIM",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "DISPENSING_OPR_POD_HIM",
+    "panelLayout": "5",
+    "description": "Dispensing",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "01",
+    "defaultResource": "DISPENSE_TAB_MFG",
+    "defaultPhaseId": "00",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": false,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": false,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "StartId",
+        "buttonLabel": "START",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+I",
+        "buttonLocation": "right",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_START",
+            "type": "Services",
+            "url": "http://localhost:8080/app/v1/processorderstate-service/start",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "COMPLETE_ID",
+        "buttonLabel": "Complete",
+        "buttonSize": "",
+        "imageIcon": "complete.png",
+        "hotKey": "Ctrl+K",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_YIELD_PLUGIN",
+            "type": "UI",
+            "url": "/rits/yieldConfirmation_app/index.html",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "CHGRSRSTATUS",
+        "buttonLabel": "MACHINE",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/5477/5477308.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_MACHIENE_CHANGE",
+            "type": "UI",
+            "url": "/rits/changeEquipmentStatus_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "40",
+        "buttonType": "Normal",
+        "buttonId": "SCRAP",
+        "buttonLabel": "SCRAP",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/11099/11099649.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_SCRAP_PLUGIN",
+            "type": "UI",
+            "url": "/rits/scrap_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "50",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "60",
+        "buttonType": "Normal",
+        "buttonId": "HOLD",
+        "buttonLabel": "hold",
+        "buttonSize": "",
+        "imageIcon": "hold.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "HOLD",
+            "type": "UI",
+            "url": "/rits/changeHoldStatus",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "70",
+        "buttonType": "Normal",
+        "buttonId": "UNHOLD",
+        "buttonLabel": "unhold",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/17706/17706326.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "UNHOLD",
+            "type": "UI",
+            "url": "/rits/changeUnHoldStatus_app/index.html",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "80",
+        "buttonType": "Normal",
+        "buttonId": "OPC_PLUGIN",
+        "buttonLabel": "Opc Plugin",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "OPC_PLUGIN",
+            "type": "Hooks",
+            "url": "/rits/opc_plugin",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "90",
+        "buttonType": "Normal",
+        "buttonId": "PCO_PLUGIN",
+        "buttonLabel": "Pco Plugin",
+        "buttonSize": "",
+        "imageIcon": "machine_status_change.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "PCO_PLUGIN",
+            "type": "Hooks",
+            "url": "/rits/pco_plugin",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "false"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-01-23T08:03:42.534Z",
+    "modifiedDateTime":"2025-02-26T11:48:18.941Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "OPC_PLUGIN",
+        "defaultUrl": "/rits/opc_plugin",
+        "otherPlugin": [
+          {
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin "
+          },
+          {
+            "activity": "R_WORK_LIST_PLUGIN",
+            "activityDescription": "Work List Plugin Panel"
+          },
+          {
+            "activity": "R_SCRAP_PLUGIN",
+            "activityDescription": "Scrap Plugin "
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "HOLD",
+            "activityDescription": "HOLD"
+          },
+          {
+            "activity": "UNHOLD",
+            "activityDescription": "UNHOLD"
+          },
+          {
+            "activity": "OPC_PLUGIN",
+            "activityDescription": ""
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "PCO_PLUGIN",
+        "defaultUrl": "/rits/pco_plugin",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_INWARD",
+            "activityDescription": "DG Gate"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin "
+          },
+          {
+            "activity": "R_SCRAP_PLUGIN",
+            "activityDescription": "Scrap Plugin "
+          },
+          {
+            "activity": "PCO_PLUGIN",
+            "activityDescription": ""
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "/rits/scrap_app/index.html",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_OUTWARD",
+            "activityDescription": "Material Exit"
+          },
+          {
+            "activity": "R_MACHIENE_CHANGE",
+            "activityDescription": "Machine Status Change"
+          },
+          {
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "activityDescription": "Buyoff Log Plugin Screen"
+          }
+        ]
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "6791f8ce4e018d318434fbdf"
+    },
+    "site": "*",
+    "handle": "PodBO:*,WEIGHING_STAGING_OPR_HIM",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "WEIGHING_STAGING_OPR_HIM",
+    "panelLayout": "5",
+    "description": "WEIGHING STAGING",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "41",
+    "defaultResource": "TABWGH01",
+    "defaultPhaseId": "40",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": false,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": false,
+    "showQuantity": false,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "StartId",
+        "buttonLabel": "START",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+I",
+        "buttonLocation": "right",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_START",
+            "type": "Services",
+            "url": "http://localhost:8080/app/v1/processorderstate-service/start",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "SIGN_OFF",
+        "buttonLabel": "Sign Off",
+        "buttonSize": "",
+        "imageIcon": "sign_off.png",
+        "hotKey": "",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_SIGN_OFF",
+            "type": "Service",
+            "url": "http://localhost:8080/app/v1/processorderstate-service/signoff",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "COMPLETE_ID",
+        "buttonLabel": "Complete",
+        "buttonSize": "",
+        "imageIcon": "complete.png",
+        "hotKey": "Ctrl+K",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_YIELD_PLUGIN",
+            "type": "UI",
+            "url": "/rits/yieldConfirmation_app/index.html",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "40",
+        "buttonType": "Normal",
+        "buttonId": "CHGRSRSTATUS",
+        "buttonLabel": "MACHINE",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/5477/5477308.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_MACHIENE_CHANGE",
+            "type": "UI",
+            "url": "/rits/changeEquipmentStatus_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "50",
+        "buttonType": "Normal",
+        "buttonId": "LINECLEARANCE",
+        "buttonLabel": "LINECLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "60",
+        "buttonType": "Normal",
+        "buttonId": "SCRAP",
+        "buttonLabel": "SCRAP",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/11099/11099649.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "SCRAP_APP",
+            "type": "UI",
+            "url": "/rits/scrap_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "70",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "false"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-01-23T08:07:42.949Z",
+    "modifiedDateTime":"2025-02-26T11:50:51.733Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin "
+          },
+          {
+            "activity": "R_WORK_LIST_PLUGIN",
+            "activityDescription": "Work List Plugin Panel"
+          },
+          {
+            "activity": "R_SCRAP_",
+            "activityDescription": "R SCRAP"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_INWARD",
+            "activityDescription": "DG Gate"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin "
+          },
+          {
+            "activity": "SCRAP_APP",
+            "activityDescription": "SCRAP"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_OUTWARD",
+            "activityDescription": "Material Exit"
+          },
+          {
+            "activity": "R_MACHIENE_CHANGE",
+            "activityDescription": "Machine Status Change"
+          },
+          {
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "activityDescription": "Buyoff Log Plugin Screen"
+          }
+        ]
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "6791fd5b4e018d318434fc0e"
+    },
+    "site": "*",
+    "handle": "PodBO:*,WEIGHING_STAGINGQA_OPR_HIM",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "WEIGHING_STAGINGQA_OPR_HIM",
+    "panelLayout": "5",
+    "description": "WEIGHING STAGING QA",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "41",
+    "defaultResource": "TABWGH01",
+    "defaultPhaseId": "40",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": false,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": false,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "APPROVAL",
+        "buttonLabel": "APPROVAL",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/4157/4157035.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "type": "UI",
+            "url": "/rits/logBuyOff",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "LINECLEARANCE",
+        "buttonLabel": "LINE CLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "true"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-01-23T08:27:07.025Z",
+    "modifiedDateTime":"2025-02-26T11:51:13.354Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "R_LINE_CLEARANCE_PLUGIN",
+        "defaultUrl": "/rits/lineclearance",
+        "otherPlugin": [
+          {
+            "activity": "R_WORK_LIST_PLUGIN",
+            "activityDescription": "Work List Plugin Panel"
+          },
+          {
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin "
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "R_BUYOFF_LOG_PLUGIN",
+        "defaultUrl": "/rits/logBuyOff",
+        "otherPlugin": [
+          {
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "activityDescription": "Buyoff Log Plugin Screen"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "67920ec14e018d318434fc88"
+    },
+    "site": "*",
+    "handle": "PodBO:*,DISPENSINGQA_POD",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "DISPENSINGQA_POD",
+    "panelLayout": "5",
+    "description": "DISPENSING QA",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "01",
+    "defaultResource": "DISPENSE_TAB_MFG",
+    "defaultPhaseId": "00",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": true,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": true,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "R_LOG_BUY_OFF",
+        "buttonLabel": "APPROVAL",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/4157/4157035.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "type": "UI",
+            "url": "/rits/logBuyOff",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/10872/10872043.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "LINECLEARANCE",
+        "buttonLabel": "LINE CLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "true"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-01-23T09:41:21.559Z",
+    "modifiedDateTime":"2025-02-26T11:51:56.856Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "R_LINE_CLEARANCE_PLUGIN",
+        "defaultUrl": "/rits/lineclearance",
+        "otherPlugin": [
+          {
+            "activity": "R_WORK_LIST_PLUGIN",
+            "activityDescription": "Work List Plugin Panel"
+          },
+          {
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin "
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "R_BUYOFF_LOG_PLUGIN",
+        "defaultUrl": "/rits/logBuyOff",
+        "otherPlugin": [
+          {
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "activityDescription": "Buyoff Log Plugin Screen"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "67920fab4e018d318434fc90"
+    },
+    "site": "*",
+    "handle": "PodBO:*,BLENDINGQA_OPR_POD_HIM",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "BLENDINGQA_OPR_POD_HIM",
+    "panelLayout": "5",
+    "description": "BLENDING QA",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "11",
+    "defaultResource": "BLENDI01",
+    "defaultPhaseId": "10",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": true,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": true,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "R_LOG_BUY_OFF",
+        "buttonLabel": "APPROVAL",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/4157/4157035.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "type": "UI",
+            "url": "/rits/logBuyOff",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/10872/10872043.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "LINECLEARANCE",
+        "buttonLabel": "LINE CLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "true"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-01-23T09:45:15.776Z",
+    "modifiedDateTime":"2025-02-26T10:56:12.828Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "R_LINE_CLEARANCE_PLUGIN",
+        "defaultUrl": "/rits/lineclearance",
+        "otherPlugin": [
+          {
+            "activity": "WORK_LIST_PANEL",
+            "activityDescription": "WORK LIST PANEL"
+          },
+          {
+            "activity": "R_SCRAP_",
+            "activityDescription": "R SCRAP"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "LINE CLEARANCE PLUGIN"
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "R_BUYOFF_LOG_PLUGIN",
+        "defaultUrl": "/rits/logBuyOff",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_INWARD",
+            "activityDescription": "DG Gate"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "SCRAP_APP",
+            "activityDescription": "SCRAP"
+          },
+          {
+            "activity": "R_LOG_BUY_OFF",
+            "activityDescription": "Log Buy Off"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_OUTWARD",
+            "activityDescription": "Material Exit"
+          },
+          {
+            "activity": "R_MACHIENE_CHANGE",
+            "activityDescription": "Machine Status Change"
+          }
+        ]
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "679210744e018d318434fca1"
+    },
+    "site": "*",
+    "handle": "PodBO:*,TABLET_COMPRESSIONQA_OPR_HIM",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "TABLET_COMPRESSIONQA_OPR_HIM",
+    "panelLayout": "5",
+    "description": "TABLET_COMPRESSION",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "21",
+    "defaultResource": "TABCOM01",
+    "defaultPhaseId": "20",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": false,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": false,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "R_LOG_BUY_OFF",
+        "buttonLabel": "APPROVAL",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/4157/4157035.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "type": "UI",
+            "url": "/rits/logBuyOff",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/10872/10872043.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "LINECLEARANCE",
+        "buttonLabel": "LINE CLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "true"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-01-23T09:48:36.932Z",
+    "modifiedDateTime":"2025-02-26T10:55:37.288Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "R_LINE_CLEARANCE_PLUGIN",
+        "defaultUrl": "/rits/lineclearance",
+        "otherPlugin": [
+          {
+            "activity": "WORK_LIST_PANEL",
+            "activityDescription": "WORK LIST PANEL"
+          },
+          {
+            "activity": "R_SCRAP_",
+            "activityDescription": "R SCRAP"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "LINE CLEARANCE PLUGIN"
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "R_BUYOFF_LOG_PLUGIN",
+        "defaultUrl": "/rits/logBuyOff",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_INWARD",
+            "activityDescription": "DG Gate"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "R_LOG_BUY_OFF",
+            "activityDescription": "R_LOG_BUY_OFF"
+          },
+          {
+            "activity": "SCRAP_APP",
+            "activityDescription": "SCRAP"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_OUTWARD",
+            "activityDescription": "Material Exit"
+          },
+          {
+            "activity": "R_MACHIENE_CHANGE",
+            "activityDescription": "Machine Status Change"
+          }
+        ]
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "679210bb4e018d318434fca5"
+    },
+    "site": "*",
+    "handle": "PodBO:*,SEAL_COATING_QA_OPR_HIM",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "SEAL_COATING_QA_OPR_HIM",
+    "panelLayout": "5",
+    "description": "SEAL COATING QA",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "31",
+    "defaultResource": "TABCOT01",
+    "defaultPhaseId": "30",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": false,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": false,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "R_LOG_BUY_OFF",
+        "buttonLabel": "APPROVAL",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/4157/4157035.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "type": "UI",
+            "url": "/rits/logBuyOff",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/10872/10872043.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "LINECLEARANCE",
+        "buttonLabel": "LINE CLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "true"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-01-23T09:49:47.876Z",
+    "modifiedDateTime":"2025-02-26T10:54:51.936Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "R_LINE_CLEARANCE_PLUGIN",
+        "defaultUrl": "/rits/lineclearance",
+        "otherPlugin": [
+          {
+            "activity": "WORK_LIST_PANEL",
+            "activityDescription": "WORK LIST PANEL"
+          },
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "LINE CLEARANCE PLUGIN"
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "R_BUYOFF_LOG_PLUGIN",
+        "defaultUrl": "/rits/logBuyOff",
+        "otherPlugin": [
+          {
+            "activity": "R_LOG_BUY_OFF",
+            "activityDescription": "Log Buy Off"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "67a9c4dc48a4f50323d0761c"
+    },
+    "site": "*",
+    "handle": "PodBO:*,DISPENSING_OPR_POD_HIM_COPY",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "DISPENSING_OPR_POD_HIM_COPY",
+    "panelLayout": "5",
+    "description": "Dispensing",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "01",
+    "defaultResource": "DISPENSE01",
+    "defaultPhaseId": "00",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": false,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": false,
+    "showQuantity": false,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "CHGRSRSTATUS",
+        "buttonLabel": "MACHINE",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/5477/5477308.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_MACHIENE_CHANGE",
+            "type": "Hooks",
+            "url": "changeEquipmentStatus/components/ChangeEquipmentStatus",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "OPC_PLUGIN",
+        "buttonLabel": "OPC PLUGIN",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "OPC_PLUGIN",
+            "type": "Hooks",
+            "url": "/rits/opc_plugin",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "false"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-02-10T09:20:28.150Z",
+    "modifiedDateTime":"2025-02-26T10:53:12.590Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "R_MACHIENE_CHANGE",
+        "defaultUrl": "changeEquipmentStatus/components/ChangeEquipmentStatus",
+        "otherPlugin": [
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin"
+          },
+          {
+            "activity": "WORK_LIST_PANEL",
+            "activityDescription": "WORK LIST PANEL"
+          },
+          {
+            "activity": "R_SCRAP_",
+            "activityDescription": "R SCRAP"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "HOLD",
+            "activityDescription": "HOLD"
+          },
+          {
+            "activity": "UNHOLD",
+            "activityDescription": "UNHOLD"
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_INWARD",
+            "activityDescription": "DG Gate"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "LINE CLEARANCE PLUGIN"
+          },
+          {
+            "activity": "SCRAP_APP",
+            "activityDescription": "SCRAP"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_OUTWARD",
+            "activityDescription": "Material Exit"
+          },
+          {
+            "activity": "R_MACHIENE_CHANGE",
+            "activityDescription": "Machine Status Change"
+          },
+          {
+            "activity": "R_LOG_BUY_OFF",
+            "activityDescription": "Log Buy Off"
+          },
+          {
+            "activity": "OPC_PLUGIN",
+            "activityDescription": "OPC_PLUGIN"
+          }
+        ]
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "67ad780055eca934fd7c82c5"
+    },
+    "site": "*",
+    "handle": "PodBO:*,LIQUID_PACKING",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "LIQUID_PACKING",
+    "panelLayout": "5",
+    "description": "PACKING",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "11",
+    "defaultResource": "LIQPKG1",
+    "defaultPhaseId": "10",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": true,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": true,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "StartId",
+        "buttonLabel": "START",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+I",
+        "buttonLocation": "right",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_START",
+            "type": "Services",
+            "url": "http://localhost:8080/app/v1/processorderstate-service/start",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "COMPLETE_ID",
+        "buttonLabel": "Complete",
+        "buttonSize": "",
+        "imageIcon": "complete.png",
+        "hotKey": "Ctrl+K",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_YIELD_PLUGIN",
+            "type": "UI",
+            "url": "/rits/yieldConfirmation_app/index.html",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "CHGRSRSTATUS",
+        "buttonLabel": "MACHINE",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/5477/5477308.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_MACHIENE_CHANGE",
+            "type": "UI",
+            "url": "/rits/changeEquipmentStatus_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "40",
+        "buttonType": "Normal",
+        "buttonId": "SCRAP",
+        "buttonLabel": "SCRAP",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/11099/11099649.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "SCRAP_APP",
+            "type": "UI",
+            "url": "/rits/scrap_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "50",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "60",
+        "buttonType": "Normal",
+        "buttonId": "HOLD",
+        "buttonLabel": "hold",
+        "buttonSize": "",
+        "imageIcon": "hold.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "HOLD",
+            "type": "UI",
+            "url": "/rits/changeHoldStatus",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "70",
+        "buttonType": "Normal",
+        "buttonId": "UNHOLD",
+        "buttonLabel": "unhold",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/17706/17706326.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "UNHOLD",
+            "type": "UI",
+            "url": "/rits/changeUnHoldStatus_app/index.html",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "80",
+        "buttonType": "Normal",
+        "buttonId": "LIVE_TRACKING",
+        "buttonLabel": "Live Tracking",
+        "buttonSize": "",
+        "imageIcon": "https://d38cf3wt06n6q6.cloudfront.net/tyasuitefront/webgpcs/images/single-stage-and-multi-stage-production-process.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "OPC_PLUGIN",
+            "type": "Hooks",
+            "url": "/rits/opc_plugin",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "90",
+        "buttonType": "Normal",
+        "buttonId": "LIVE_GRAPH",
+        "buttonLabel": "Live Graph",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/2936/2936709.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "PCO_PLUGIN",
+            "type": "Hooks",
+            "url": "/rits/pco_plugin",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "false"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-02-13T04:41:36.538Z",
+    "modifiedDateTime":"2025-02-26T10:40:53.768Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "/rits/opc_plugin",
+        "otherPlugin": [
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin"
+          },
+          {
+            "activity": "WORK_LIST_PANEL",
+            "activityDescription": "WORK LIST PANEL"
+          },
+          {
+            "activity": "R_SCRAP_",
+            "activityDescription": "R SCRAP"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "HOLD",
+            "activityDescription": "HOLD"
+          },
+          {
+            "activity": "UNHOLD",
+            "activityDescription": "UNHOLD"
+          },
+          {
+            "activity": "OPC_PLUGIN",
+            "activityDescription": ""
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "/rits/pco_plugin",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_INWARD",
+            "activityDescription": "DG Gate"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "LINE CLEARANCE PLUGIN"
+          },
+          {
+            "activity": "SCRAP_APP",
+            "activityDescription": "SCRAP"
+          },
+          {
+            "activity": "PCO_PLUGIN",
+            "activityDescription": ""
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_OUTWARD",
+            "activityDescription": "Material Exit"
+          },
+          {
+            "activity": "R_MACHIENE_CHANGE",
+            "activityDescription": "Machine Status Change"
+          },
+          {
+            "activity": "R_LOG_BUY_OFF",
+            "activityDescription": "Log Buy Off"
+          }
+        ]
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "67ad790455eca934fd7c82c6"
+    },
+    "site": "*",
+    "handle": "PodBO:*,TABLET_PACKING",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "TABLET_PACKING",
+    "panelLayout": "5",
+    "description": "Tablet Packing",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "11",
+    "defaultResource": "TABCOU01",
+    "defaultPhaseId": "10",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": true,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": true,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "StartId",
+        "buttonLabel": "START",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+I",
+        "buttonLocation": "right",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_START",
+            "type": "Services",
+            "url": "http://localhost:8080/app/v1/processorderstate-service/start",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "COMPLETE_ID",
+        "buttonLabel": "Complete",
+        "buttonSize": "",
+        "imageIcon": "complete.png",
+        "hotKey": "Ctrl+K",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_YIELD_PLUGIN",
+            "type": "UI",
+            "url": "/rits/yieldConfirmation_app/index.html",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "CHGRSRSTATUS",
+        "buttonLabel": "MACHINE",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/5477/5477308.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_MACHIENE_CHANGE",
+            "type": "UI",
+            "url": "/rits/changeEquipmentStatus_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "40",
+        "buttonType": "Normal",
+        "buttonId": "SCRAP",
+        "buttonLabel": "SCRAP",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/11099/11099649.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "SCRAP_APP",
+            "type": "UI",
+            "url": "/rits/scrap_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "50",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "60",
+        "buttonType": "Normal",
+        "buttonId": "HOLD",
+        "buttonLabel": "hold",
+        "buttonSize": "",
+        "imageIcon": "hold.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "HOLD",
+            "type": "UI",
+            "url": "/rits/changeHoldStatus",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "70",
+        "buttonType": "Normal",
+        "buttonId": "UNHOLD",
+        "buttonLabel": "unhold",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/17706/17706326.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "UNHOLD",
+            "type": "UI",
+            "url": "/rits/changeUnHoldStatus_app/index.html",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "false"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-02-13T04:45:56.233Z",
+    "modifiedDateTime":"2025-02-26T10:33:31.500Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "OPC_PLUGIN",
+        "defaultUrl": "/rits/opc_plugin",
+        "otherPlugin": [
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin"
+          },
+          {
+            "activity": "WORK_LIST_PANEL",
+            "activityDescription": "WORK LIST PANEL"
+          },
+          {
+            "activity": "R_SCRAP_",
+            "activityDescription": "R SCRAP"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "HOLD",
+            "activityDescription": "HOLD"
+          },
+          {
+            "activity": "UNHOLD",
+            "activityDescription": "UNHOLD"
+          },
+          {
+            "activity": "OPC_PLUGIN",
+            "activityDescription": ""
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "PCO_PLUGIN",
+        "defaultUrl": "/rits/pco_plugin",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_INWARD",
+            "activityDescription": "DG Gate"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "LINE CLEARANCE PLUGIN"
+          },
+          {
+            "activity": "SCRAP_APP",
+            "activityDescription": "SCRAP"
+          },
+          {
+            "activity": "PCO_PLUGIN",
+            "activityDescription": ""
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_OUTWARD",
+            "activityDescription": "Material Exit"
+          },
+          {
+            "activity": "R_MACHIENE_CHANGE",
+            "activityDescription": "Machine Status Change"
+          },
+          {
+            "activity": "R_LOG_BUY_OFF",
+            "activityDescription": "Log Buy Off"
+          }
+        ]
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "67ad79b355eca934fd7c82c7"
+    },
+    "site": "*",
+    "handle": "PodBO:*,PACKINGQA_POD",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "PACKINGQA_POD",
+    "panelLayout": "5",
+    "description": "PACKING QA",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "11",
+    "defaultResource": "LIQPKG1",
+    "defaultPhaseId": "10",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": true,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": true,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "R_LOG_BUY_OFF",
+        "buttonLabel": "APPROVAL",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/4157/4157035.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "type": "UI",
+            "url": "/rits/logBuyOff",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/10872/10872043.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "LINECLEARANCE",
+        "buttonLabel": "LINE CLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "true"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-02-13T04:48:51.533Z",
+    "modifiedDateTime":"2025-02-26T11:39:40.401Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "R_LINE_CLEARANCE_PLUGIN",
+        "defaultUrl": "/rits/lineclearance",
+        "otherPlugin": [
+          {
+            "activity": "R_WORK_LIST_PLUGIN",
+            "activityDescription": "Work List Plugin Panel"
+          },
+          {
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin "
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "R_BUYOFF_LOG_PLUGIN",
+        "defaultUrl": "/rits/lineclearance",
+        "otherPlugin": [
+          {
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "activityDescription": "Buyoff Log Plugin Screen"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "67ad7aa655eca934fd7c82c8"
+    },
+    "site": "*",
+    "handle": "PodBO:*,LIQUID_MANUFACTURING",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "LIQUID_MANUFACTURING",
+    "panelLayout": "5",
+    "description": "LIQUID MANUFACTURING",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "11",
+    "defaultResource": "LIQMFG01",
+    "defaultPhaseId": "10",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": true,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": true,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "StartId",
+        "buttonLabel": "START",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+I",
+        "buttonLocation": "right",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_START",
+            "type": "Services",
+            "url": "http://localhost:8080/app/v1/processorderstate-service/start",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "COMPLETE_ID",
+        "buttonLabel": "Complete",
+        "buttonSize": "",
+        "imageIcon": "complete.png",
+        "hotKey": "Ctrl+K",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_YIELD_PLUGIN",
+            "type": "UI",
+            "url": "/rits/yieldConfirmation_app/index.html",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "CHGRSRSTATUS",
+        "buttonLabel": "MACHINE",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/5477/5477308.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_MACHIENE_CHANGE",
+            "type": "UI",
+            "url": "/rits/changeEquipmentStatus_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "40",
+        "buttonType": "Normal",
+        "buttonId": "SCRAP",
+        "buttonLabel": "SCRAP",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/11099/11099649.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "SCRAP_APP",
+            "type": "UI",
+            "url": "/rits/scrap_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "50",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "60",
+        "buttonType": "Normal",
+        "buttonId": "HOLD",
+        "buttonLabel": "hold",
+        "buttonSize": "",
+        "imageIcon": "hold.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "HOLD",
+            "type": "UI",
+            "url": "/rits/changeHoldStatus",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "70",
+        "buttonType": "Normal",
+        "buttonId": "UNHOLD",
+        "buttonLabel": "unhold",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/17706/17706326.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "UNHOLD",
+            "type": "UI",
+            "url": "/rits/changeUnHoldStatus_app/index.html",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "80",
+        "buttonType": "Normal",
+        "buttonId": "LIVE_TRACKING",
+        "buttonLabel": "Live Tracking",
+        "buttonSize": "",
+        "imageIcon": "https://d38cf3wt06n6q6.cloudfront.net/tyasuitefront/webgpcs/images/single-stage-and-multi-stage-production-process.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "OPC_PLUGIN",
+            "type": "Hooks",
+            "url": "/rits/opc_plugin",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "90",
+        "buttonType": "Normal",
+        "buttonId": "LIVE_GRAPH",
+        "buttonLabel": "Live Graph",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/2936/2936709.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "PCO_PLUGIN",
+            "type": "Hooks",
+            "url": "/rits/pco_plugin",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "false"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-02-13T04:52:54.202Z",
+    "modifiedDateTime":"2025-02-26T10:26:27.919Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "/rits/opc_plugin",
+        "otherPlugin": [
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin"
+          },
+          {
+            "activity": "WORK_LIST_PANEL",
+            "activityDescription": "WORK LIST PANEL"
+          },
+          {
+            "activity": "R_SCRAP_",
+            "activityDescription": "R SCRAP"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "HOLD",
+            "activityDescription": "HOLD"
+          },
+          {
+            "activity": "UNHOLD",
+            "activityDescription": "UNHOLD"
+          },
+          {
+            "activity": "OPC_PLUGIN",
+            "activityDescription": ""
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "/rits/pco_plugin",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_INWARD",
+            "activityDescription": "DG Gate"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "LINE CLEARANCE PLUGIN"
+          },
+          {
+            "activity": "SCRAP_APP",
+            "activityDescription": "SCRAP"
+          },
+          {
+            "activity": "PCO_PLUGIN",
+            "activityDescription": ""
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_OUTWARD",
+            "activityDescription": "Material Exit"
+          },
+          {
+            "activity": "R_MACHIENE_CHANGE",
+            "activityDescription": "Machine Status Change"
+          },
+          {
+            "activity": "R_LOG_BUY_OFF",
+            "activityDescription": "Log Buy Off"
+          }
+        ]
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "67ad7b5155eca934fd7c82c9"
+    },
+    "site": "*",
+    "handle": "PodBO:*,TABLET_PACKING_QA",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "TABLET_PACKING_QA",
+    "panelLayout": "5",
+    "description": "Tablet Packing QA",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "11",
+    "defaultResource": "TABCOU01",
+    "defaultPhaseId": "10",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": true,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": true,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "R_LOG_BUY_OFF",
+        "buttonLabel": "APPROVAL",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/4157/4157035.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "type": "UI",
+            "url": "/rits/logBuyOff",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/10872/10872043.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "LINECLEARANCE",
+        "buttonLabel": "LINE CLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "true"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-02-13T04:55:45.195Z",
+    "modifiedDateTime":"2025-02-26T10:25:29.014Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "R_LINE_CLEARANCE_PLUGIN",
+        "defaultUrl": "/rits/lineclearance",
+        "otherPlugin": [
+          {
+            "activity": "WORK_LIST_PANEL",
+            "activityDescription": "WORK LIST PANEL"
+          },
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "LINE CLEARANCE PLUGIN"
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "R_BUYOFF_LOG_PLUGIN",
+        "defaultUrl": "/rits/logBuyOff",
+        "otherPlugin": [
+          {
+            "activity": "R_LOG_BUY_OFF",
+            "activityDescription": "Log Buy Off"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "67ad7cdd55eca934fd7c82cc"
+    },
+    "site": "*",
+    "handle": "PodBO:*,LIQUID_MANUFACTURINGQA",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "LIQUID_MANUFACTURINGQA",
+    "panelLayout": "5",
+    "description": "LIQUID MANUFACTURINGQA",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "11",
+    "defaultResource": "LIQMFG01",
+    "defaultPhaseId": "10",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": false,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": false,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "R_LOG_BUY_OFF",
+        "buttonLabel": "APPROVAL",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/4157/4157035.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "type": "UI",
+            "url": "/rits/logBuyOff",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/10872/10872043.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "LINECLEARANCE",
+        "buttonLabel": "LINE CLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "true"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-02-13T05:02:21.336Z",
+    "modifiedDateTime":"2025-02-26T10:25:01.559Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "R_LINE_CLEARANCE_PLUGIN",
+        "defaultUrl": "/rits/lineclearance",
+        "otherPlugin": [
+          {
+            "activity": "WORK_LIST_PANEL",
+            "activityDescription": "WORK LIST PANEL"
+          },
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "LINE CLEARANCE PLUGIN"
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "R_BUYOFF_LOG_PLUGIN",
+        "defaultUrl": "/rits/logBuyOff",
+        "otherPlugin": [
+          {
+            "activity": "R_LOG_BUY_OFF",
+            "activityDescription": "Log Buy Off"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "67b56b25f0274a47384bfb8f"
+    },
+    "site": "*",
+    "handle": "PodBO:*,LIQUID_DISPENSINGQA",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "LIQUID_DISPENSINGQA",
+    "panelLayout": "5",
+    "description": "LIQUID DISPENSINGQA",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "01",
+    "defaultResource": "DISPENCE_L",
+    "defaultPhaseId": "00",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": false,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": false,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "R_LOG_BUY_OFF",
+        "buttonLabel": "APPROVAL",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/4157/4157035.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "type": "UI",
+            "url": "/rits/logBuyOff",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/10872/10872043.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "LINECLEARANCE",
+        "buttonLabel": "LINE CLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "true"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-02-19T05:24:53.719Z",
+    "modifiedDateTime":"2025-02-26T10:23:23.877Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "R_LINE_CLEARANCE_PLUGIN",
+        "defaultUrl": "/rits/lineclearance",
+        "otherPlugin": [
+          {
+            "activity": "WORK_LIST_PANEL",
+            "activityDescription": "WORK LIST PANEL"
+          },
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "LINE CLEARANCE PLUGIN"
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "R_BUYOFF_LOG_PLUGIN",
+        "defaultUrl": "/rits/logBuyOff",
+        "otherPlugin": [
+          {
+            "activity": "R_LOG_BUY_OFF",
+            "activityDescription": "Log Buy Off"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "67b56d01f0274a47384bfb95"
+    },
+    "site": "*",
+    "handle": "PodBO:*,LIQUID_DISPENSING",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "LIQUID_DISPENSING",
+    "panelLayout": "5",
+    "description": "LIQUID DISPENSING",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "01",
+    "defaultResource": "DISPENCE_L",
+    "defaultPhaseId": "00",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": true,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": true,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "StartId",
+        "buttonLabel": "START",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+I",
+        "buttonLocation": "right",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_START",
+            "type": "Services",
+            "url": "http://localhost:8080/app/v1/processorderstate-service/start",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "COMPLETE_ID",
+        "buttonLabel": "Complete",
+        "buttonSize": "",
+        "imageIcon": "complete.png",
+        "hotKey": "Ctrl+K",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_YIELD_PLUGIN",
+            "type": "UI",
+            "url": "/rits/yieldConfirmation_app/index.html",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "CHGRSRSTATUS",
+        "buttonLabel": "MACHINE",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/5477/5477308.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_MACHIENE_CHANGE",
+            "type": "UI",
+            "url": "/rits/changeEquipmentStatus_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "40",
+        "buttonType": "Normal",
+        "buttonId": "SCRAP",
+        "buttonLabel": "SCRAP",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/11099/11099649.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "SCRAP_APP",
+            "type": "UI",
+            "url": "/rits/scrap_app/index.html",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "50",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "start.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "60",
+        "buttonType": "Normal",
+        "buttonId": "HOLD",
+        "buttonLabel": "hold",
+        "buttonSize": "",
+        "imageIcon": "hold.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "HOLD",
+            "type": "UI",
+            "url": "/rits/changeHoldStatus",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "70",
+        "buttonType": "Normal",
+        "buttonId": "UNHOLD",
+        "buttonLabel": "unhold",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/17706/17706326.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "UNHOLD",
+            "type": "UI",
+            "url": "/rits/changeUnHoldStatus_app/index.html",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "80",
+        "buttonType": "Normal",
+        "buttonId": "LIVE_TRACKING",
+        "buttonLabel": "Live Tracking",
+        "buttonSize": "",
+        "imageIcon": "https://d38cf3wt06n6q6.cloudfront.net/tyasuitefront/webgpcs/images/single-stage-and-multi-stage-production-process.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "OPC_PLUGIN",
+            "type": "Hooks",
+            "url": "/rits/opc_plugin",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "90",
+        "buttonType": "Normal",
+        "buttonId": "LIVE_GRAPH",
+        "buttonLabel": "Live Graph",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/2936/2936709.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "PCO_PLUGIN",
+            "type": "Hooks",
+            "url": "/rits/pco_plugin",
+            "pluginLocation": "",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "false"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-02-19T05:32:49.053Z",
+    "modifiedDateTime":"2025-02-26T10:16:55.768Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "/rits/opc_plugin",
+        "otherPlugin": [
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin"
+          },
+          {
+            "activity": "WORK_LIST_PANEL",
+            "activityDescription": "WORK LIST PANEL"
+          },
+          {
+            "activity": "R_SCRAP_",
+            "activityDescription": "R SCRAP"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "HOLD",
+            "activityDescription": "HOLD"
+          },
+          {
+            "activity": "UNHOLD",
+            "activityDescription": "UNHOLD"
+          },
+          {
+            "activity": "OPC_PLUGIN",
+            "activityDescription": ""
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "/rits/pco_plugin",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_INWARD",
+            "activityDescription": "DG Gate"
+          },
+          {
+            "activity": "R_YIELD_PLUGIN",
+            "activityDescription": "Yield Or Complete Plugin"
+          },
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "LINE CLEARANCE PLUGIN"
+          },
+          {
+            "activity": "SCRAP_APP",
+            "activityDescription": "SCRAP"
+          },
+          {
+            "activity": "PCO_PLUGIN",
+            "activityDescription": ""
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": [
+          {
+            "activity": "R_MAT_OUTWARD",
+            "activityDescription": "Material Exit"
+          },
+          {
+            "activity": "R_MACHIENE_CHANGE",
+            "activityDescription": "Machine Status Change"
+          },
+          {
+            "activity": "R_LOG_BUY_OFF",
+            "activityDescription": "Log Buy Off"
+          }
+        ]
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "67b57b7e10eec1409dca3e5d"
+    },
+    "site": "*",
+    "handle": "PodBO:*,LIQUID_PACKINGQA",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "LIQUID_PACKINGQA",
+    "panelLayout": "5",
+    "description": "LIQUID PACKINGQA",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "11",
+    "defaultResource": "LIQPKG1",
+    "defaultPhaseId": "10",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": false,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": false,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "R_LOG_BUY_OFF",
+        "buttonLabel": "APPROVAL",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/4157/4157035.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "type": "UI",
+            "url": "/rits/logBuyOff",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/10872/10872043.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "LINECLEARANCE",
+        "buttonLabel": "LINE CLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "true"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-02-19T06:34:38.294Z",
+    "modifiedDateTime":"2025-02-26T10:21:33.473Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "R_LINE_CLEARANCE_PLUGIN",
+        "defaultUrl": "/rits/lineclearance",
+        "otherPlugin": [
+          {
+            "activity": "WORK_LIST_PANEL",
+            "activityDescription": "WORK LIST PANEL"
+          },
+          {
+            "activity": "LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "LINE CLEARANCE PLUGIN"
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "R_BUYOFF_LOG_PLUGIN",
+        "defaultUrl": "/rits/logBuyOff",
+        "otherPlugin": [
+          {
+            "activity": "R_LOG_BUY_OFF",
+            "activityDescription": "Log Buy Off"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  },
+  {
+    "_id": {
+      "$oid": "67b5c43010eec1409dca3eea"
+    },
+    "site": "*",
+    "handle": "PodBO:*,LIQUID_DISPENSINGQA_PAC",
+    "type": "Operation",
+    "podCategory": "Process",
+    "podName": "LIQUID_DISPENSINGQA_PAC",
+    "panelLayout": "5",
+    "description": "LIQUID DISPENSINGQA PACKING",
+    "status": "Enabled",
+    "kafkaIntegration": false,
+    "kafkaId": "",
+    "sessionTimeout": 20000,
+    "refreshRate": 6000,
+    "defaultOperation": "01",
+    "defaultResource": "DISPENCE_L",
+    "defaultPhaseId": "00",
+    "soundWithErrorMessage": false,
+    "showHomeIcon": false,
+    "showHelpIcon": false,
+    "showLogoutIcon": false,
+    "autoExpandMessageArea": false,
+    "operationCanBeChanged": false,
+    "resourceCanBeChanged": true,
+    "phaseCanBeChanged": false,
+    "showQuantity": true,
+    "showResource": false,
+    "showOperation": false,
+    "showPhase": false,
+    "documentName": "",
+    "buttonList": [
+      {
+        "sequence": "10",
+        "buttonType": "Normal",
+        "buttonId": "R_LOG_BUY_OFF",
+        "buttonLabel": "APPROVAL",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.freepik.com/256/4157/4157035.png?semt=ais_hybrid",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "type": "UI",
+            "url": "/rits/logBuyOff",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "20",
+        "buttonType": "Normal",
+        "buttonId": "R_WORK_LIST",
+        "buttonLabel": "WORK LIST",
+        "buttonSize": "",
+        "imageIcon": "https://cdn-icons-png.flaticon.com/512/10872/10872043.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_WORK_LIST_PLUGIN",
+            "type": "UI",
+            "url": "/rits/workListPanel",
+            "pluginLocation": "2",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      },
+      {
+        "sequence": "30",
+        "buttonType": "Normal",
+        "buttonId": "R_LINECLEARANCE",
+        "buttonLabel": "LINE CLEARANCE",
+        "buttonSize": "",
+        "imageIcon": "line_clearance.png",
+        "hotKey": "Ctrl+G",
+        "buttonLocation": "",
+        "startNewButtonRow": false,
+        "activityList": [
+          {
+            "activitySequence": "10",
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "type": "UI",
+            "url": "/rits/lineclearance",
+            "pluginLocation": "1",
+            "clearsPcu": false,
+            "fixed": false
+          }
+        ]
+      }
+    ],
+    "listOptions": [
+      {
+        "browseWorkList": "",
+        "podWorkList": "PROCESS_WORK_LIST",
+        "assembleList": "",
+        "dcCollectList": "",
+        "toolList": "",
+        "workInstructionList": "",
+        "dcEntryList": "",
+        "subStepList": ""
+      }
+    ],
+    "podSelection": [
+      {
+        "mainInput": "",
+        "mainInputHotKey": "Ctrl+G",
+        "defaultOperation": "ELECTRICAL_ASSY",
+        "defaultResource": "DEMO_SRC2",
+        "sfcQueueButtonID": "",
+        "sfcInWorkButtonID": "",
+        "infoLine1": "",
+        "infoLine2": "",
+        "showOperationFirst": true,
+        "showQuantity": true,
+        "operationCanBeChanged": true,
+        "resourceCanBeChanged": true
+      }
+    ],
+    "printers": [
+      {
+        "documentPrinter": "",
+        "labelPrinter": "",
+        "travelerPrinter": ""
+      }
+    ],
+    "customDataList": [
+      {
+        "customData": "QUALITYCHECK",
+        "value": "true"
+      }
+    ],
+    "modifiedBy": "rits_admin",
+    "active": 1,
+    "createdDateTime":"2025-02-19T11:44:48.391Z",
+    "modifiedDateTime":"2025-02-26T11:40:34.960Z",
+    "subPod": "HI_SUB_POD",
+    "tabConfiguration": {},
+    "settings": {
+      "pcuorBatchNumberBrowseActivity": "R_BATCH_BROWSE_SRV_COPY",
+      "podWorkListActivity": "R_POD_WORKLIST_SRV",
+      "onTabOutOfOperation": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "onTabOutOfWorkCenter": {
+        "reloadWorkList": false,
+        "reloadResource": true
+      },
+      "onTabOutOfResource": {
+        "reloadWorkList": true,
+        "reloadResource": false
+      },
+      "updateFieldsToSession": {
+        "operation": true,
+        "resource": true,
+        "batchNumber": true,
+        "order": false,
+        "recipe": false,
+        "item": false
+      },
+      "buttonActivityInWork": [],
+      "buttonActivityInQueue": []
+    },
+    "layout": [
+      {
+        "panel": "1",
+        "type": "fixed",
+        "defaultPlugin": "R_WORK_LIST_PLUGIN",
+        "defaultUrl": "/rits/workListPanel",
+        "otherPlugin": []
+      },
+      {
+        "panel": "2",
+        "type": "fixed",
+        "defaultPlugin": "R_LINE_CLEARANCE_PLUGIN",
+        "defaultUrl": "/rits/lineclearance",
+        "otherPlugin": [
+          {
+            "activity": "R_WORK_LIST_PLUGIN",
+            "activityDescription": "Work List Plugin Panel"
+          },
+          {
+            "activity": "R_LINE_CLEARANCE_PLUGIN",
+            "activityDescription": "Line Clearance Plugin "
+          }
+        ]
+      },
+      {
+        "panel": "3",
+        "type": "fixed",
+        "defaultPlugin": "R_BUYOFF_LOG_PLUGIN",
+        "defaultUrl": "/rits/logBuyOff",
+        "otherPlugin": [
+          {
+            "activity": "R_BUYOFF_LOG_PLUGIN",
+            "activityDescription": "Buyoff Log Plugin Screen"
+          }
+        ]
+      },
+      {
+        "panel": "4",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "5",
+        "type": "fixed",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      },
+      {
+        "panel": "",
+        "type": "popup",
+        "defaultPlugin": "",
+        "defaultUrl": "",
+        "otherPlugin": []
+      }
+    ],
+    "_class": "com.rits.podservice.model.Pod"
+  }]

@@ -1,0 +1,61 @@
+(
+    $header := TABLES.HEADER.item;
+    $component := TABLES.COMPONENT.item;
+    {
+        "ItemProcess": [
+            $component.
+            {
+                "handle": "ItemBo:" & $.TABLES.HEADER.item.PRODUCTION_PLANT & "," & MATERIAL & ",A",
+                "site": $.TABLES.HEADER.item.PRODUCTION_PLANT,
+                "item": MATERIAL,
+                "revision": "A",
+                "description": MATERIAL_DESCRIPTION,
+                "itemGroup": "",
+                "status": "Releasable",
+                "procurementType": "Purchased",
+                "currentVersion": "true",
+                "itemType": "Purchased",
+                "lotSize": "1",
+                "routing": "",
+                "routingVersion": "",
+                "bom": "",
+                "bomVersion": "",
+                "bomBO": "",
+                "routingBO": "",
+                "assemblyDataType": "",
+                "removalDataType": "",
+                "receiptDataType": "",
+                "inUse": "false",
+                "qtyRestriction": "Any Number",
+                "userId": "senthil",
+                "alternateComponentList": []
+            },
+            {
+                "handle": "ItemBo:" & "RITS" & "," & $header.MATERIAL & ",A",
+                "site": "RITS",
+                "item": $header.MATERIAL,
+                "revision": "A",
+                "description": $header.MATERIAL_TEXT,
+                "itemGroup": "",
+                "status": "Releasable",
+                "procurementType": "Manufactured",
+                "currentVersion": "true",
+                "itemType": "Manufactured",
+                "lotSize": "1",
+                "routing": "",
+                "routingVersion": "",
+                "bom": "",
+                "bomVersion": "",
+                "bomBO": "",
+                "routingBO": "",
+                "assemblyDataType": "",
+                "removalDataType": "",
+                "receiptDataType": "",
+                "inUse": "false",
+                "qtyRestriction": "Any Number",
+                "userId": "senthil",
+                "alternateComponentList": []
+            }
+        ]
+    }
+)

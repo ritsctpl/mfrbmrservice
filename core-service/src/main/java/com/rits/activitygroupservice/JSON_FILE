@@ -1,0 +1,90 @@
+1) Create:
+
+        Request:             {
+
+                                 "site": "RITS",
+                                     "activityGroupName":"GROUP1",
+                                     "activityGroupDescription":"Group1",
+                                     "activityGroupMemberList":[
+                                 { "activityId":"Activity1"
+                                 },
+                                 { "activityId":"Activity1"
+                                 }
+                         ]
+
+                             }
+2) Update:
+
+        Request:    {
+                         "site": "RITS",
+                             "activityGroupName":"GROUP3",
+                             "activityGroupDescription":"Group3xxxxxxxxxxxx",
+                             "activityGroupMemberList":[
+                         { "activityId":"activity1"
+                         },
+                         { "activityId":"activity2"
+                         }
+                 ]
+
+                     }
+
+3) getActivityGroupListByCreationDate;
+
+        Request:     {
+                         "site":"RITS"
+                     }
+4) getActivityGroupList:
+
+        Request:     {
+                         "site":"RITS",
+                             "activityGroupName":"g"
+                     }
+5) retrieveAtivityGroup:
+
+        Request:     {
+                         "site":"RITS",
+                             "activityGroupName":"GROUP3"
+                     }
+6) deleteActivityGroup:
+
+    Request:     {
+                     "site":"RITS",
+                         "activityGroupName":"GROUP4"
+                 }
+7) associateActivityMemberToActivityGroupMemberList:
+
+        Request:     {
+                         "site":"RITS",
+                             "activityGroupName":"GROUP6",
+                             "activityId":["Activity7","Activity8"]
+                     }
+8) removeActivityGroupMemberFromActivityGroupMemberList:
+
+        Request:         {
+                         "site":"RITS",
+                             "activityGroupName":"GROUP6",
+                             "activityId":["Activity7","Activity8"]
+                     }
+9) getActivityGroupMemberList:
+
+        Request:    {
+                        "site":"RITS",
+                            "activityGroupName":"GROUP3"
+                    }
+10) getAvailableActivities:
+
+        Request:     {
+
+                         "activityGroupName" : "GROUP3",
+                             "site":"RITS"
+
+                     }
+11) isActivityGroupExist:
+
+        Request:     {
+                         "activityGroupName":"GROUP3",
+                             "site":"RITS"
+                     }
+12) retrieveBySite:
+
+        Request:      {  "site":"RITS" }

@@ -1,0 +1,26 @@
+[
+  {
+    "handle": "1",
+    "moduleId": "com.sap.me.appconfig",
+    "serviceName": "SystemRuleGroupConfigurationService",
+    "methodName": "createSystemRuleGroup",
+    "request": {
+      "ref": "SystemRuleGroupBO:Z_CUSTOM_RULES",
+      "ruleGroup": "Z_CUSTOM_RULES",
+      "description": "Varian System Rule",
+      "longDescription": "Custom rules defined by Varian"
+    }
+  },
+  {
+    "handle": "2",
+    "moduleId": "com.sap.me.appconfig",
+    "serviceName": "SystemRuleGroupConfigurationService",
+    "methodName": "createSystemRuleGroup",
+    "request": {
+      "ref": "SystemRuleGroupBO:Z_SPECTRUM_RULE_GROUP",
+      "ruleGroup": "Z_SPECTRUM_RULE_GROUP",
+      "description": "Spectrum System Rule",
+      "longDescription": "Spectrum Custom rules defined by Spectrum"
+    }
+  }
+]

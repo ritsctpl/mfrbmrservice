@@ -1,0 +1,193 @@
+1) Create:
+
+        Request:     {
+                         "site":"RITS",
+                             "workInstruction":"workInstruction1",
+                             "version":"version1",
+                             "description":"description1",
+                             "status":"status1",
+                             "required":true,
+                             "currentVersion":true,
+                             "alwaysShowInNewWindow":true,
+                             "logViewing":true,
+                             "changeAlert":true,
+                             "erpWi":true,
+                             "instructionType":"instructionType1",
+                             "erpFilename":"erpFilename1",
+                             "url":"url1",
+                             "attachmentList":[
+                         {
+                             "sequence":"sequence1",
+                                 "itemGroup":"itemGroup1",
+                                 "item":"item1",
+                                 "itemVersion":"itemVersion1",
+                                 "routing":"routing1",
+                                 "routingVersion":"",
+                                 "operation":"",
+                                 "workcenter":"",
+                                 "resource":"",
+                                 "resourceType":"",
+                                 "customerOrder":"",
+                                 "shopOrder":"",
+                                 "pcu":""
+                         }
+                 	],
+                         "customDataList" : [
+                         {
+                             "customData": "",
+                                 "value": ""
+                         },
+                         {
+                             "customData": "",
+                                 "value": ""
+                         }
+                     ]
+                     }
+2) Update:
+
+        Request:
+        {
+        "site":"RITS",
+            "workInstruction":"workInstruction",
+            "version":"version1",
+            "description":"description1",
+            "status":"status1",
+            "required":true,
+            "currentVersion":true,
+            "alwaysShowInNewWindow":true,
+            "logViewing":true,
+            "changeAlert":true,
+            "erpWi":true,
+            "instructionType":"instructionType1",
+            "erpFilename":"erpFilename1",
+            "url":"url1",
+            "attachmentList":[
+        {
+            "sequence":"sequence1",
+                "itemGroup":"itemGroup1",
+                "item":"item1",
+                "itemVersion":"itemVersion1",
+                "routing":"routing1",
+                "routingVersion":"",
+                "operation":"",
+                "workcenter":"",
+                "resource":"",
+                "resourceType":"",
+                "customerOrder":"",
+                "shopOrder":"",
+                "pcu":""
+        }
+//	],
+        "customDataList" : [
+        {
+            "customData": "",
+                "value": ""
+        },
+        {
+            "customData": "",
+                "value": ""
+        }
+    ]
+    }
+
+3) UploadFile:
+
+        Required:      {
+                           "site":"Rits",
+                               "workInstruction":"TestWorkInstruction",
+                               "fileName":"dfe173d9-c30c-456c-b1ef-2470102e8c61.docx",
+                               "file":""
+                       }
+4) RetrieveFile:
+
+        Required:      {
+                           "site": "Rits",
+                               "workInstruction": "xxxxx",
+                               "fileName": ""
+                       }
+5) isWorkInstructionExists:
+
+        Required:     {
+                          "site":"RITS",
+                              "workInstruction":"workInstruction"
+                      }
+6) retrieveTop50:
+
+        Required:     {
+                          "site":"RITS"
+                      }
+7) retrieveAllByWorkInstruction:
+
+        Required:      {
+                           "site":"RITS",
+                               "workInstruction":"w"
+                       }
+8) retrieveByWorkInstruction:
+
+        Required:     {
+                          "site":"RITS",
+                              "workInstruction":"workInstruction"
+                      }
+9) retrieveWorkInstructionByItem:
+
+        Required:     {
+                         "site":"RITS",
+                              "item":"t"
+                      }
+10) retrieveByOperationItem:
+
+        Required:         {
+                          "site":"RITS",
+                              "item":"item",
+                              "operation":"operation"
+
+                      }
+11) retrieveByPcuOperation:
+
+        Required:         {
+                          "site":"RITS",
+                              "pcu":"pcu",
+                              "operation":"operaton"
+                      }
+12) retrieveByOperationItemRouting:
+
+        Required:         {
+                          "site":"RITS",
+                              "item":"item",
+                              "operation":"operation",
+                              "routing":"routing"
+                      }
+13) retrieveByResourcePcu:
+
+        Required:     {
+                          "site":"RITS",
+                              "resource":"resource",
+                              "pcu":"pcu"
+                      }
+14) retrieveByShopOrderOperation:
+
+        Required:     {
+                          "site":"RITS",
+                              "shopOrder":"shopOrder",
+                              "operation":"operation"
+                      }
+15) getWorkInstructionByAttachment:
+
+        Required:
+                       [
+                       {
+                           "item": "AC",
+                               "itemGroup": "",
+                               "itemVersion": "A",
+                               "routing": "r1",
+                               "routingVersion": "A",
+                               "operation": "",
+                               "workCenter": "",
+                               "resource": "",
+                               "resourceType": "",
+                               "customerOrder": "",
+                               "shopOrder": "",
+                               "pcu": ""
+                       }
+                   ]
+

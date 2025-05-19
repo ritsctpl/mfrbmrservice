@@ -1,0 +1,50 @@
+1) CreateOrUpdate
+
+        Request: {
+                 “site”:””,
+                 “shopOrder”:””,
+                 “operation”:””,
+                 “operationVersion”:””,
+                 “resource”:””,
+                 “routing”:””,
+                 “routingVersion”:””,
+                 “material”:””,
+                 “materialVersion”:””,
+                 “cycleTime”:””
+                 }
+
+2) Delete
+
+        Request:  {
+                  “site”:””,
+                  “shopOrder”:””,
+                  “operation”:””,
+                  “operationVersion”:””,
+                  “resource”:””,
+                  “routing”:””,
+                  “routingVersion”:””,
+                  “material”:””,
+                  “materialVersion”:””,
+                  “cycleTime”:””
+                  }
+
+3) Retrieve
+
+        Request:   {
+                   “site”:””,
+                   “shopOrder”:””,
+                   “operation”:””,
+                   “operationVersion”:””,
+                   “resource”:””,
+                   “routing”:””,
+                   “routingVersion”:””,
+                   “material”:””,
+                   “materialVersion”:””,
+                   “cycleTime”:””
+                   }
+
+4) RetrieveAll
+
+        Request: {
+                   "site":""
+                 }

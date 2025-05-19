@@ -1,0 +1,19 @@
+(
+    $phase := TABLES.PHASE.item[SUPERIOR_OPERATION != ""];
+    {
+        "operations": [
+            $phase.
+            {
+                "site": "RITS",
+                "operation": OPERATION_NUMBER,
+                "revision": "A",
+                "description": DESCRIPTION,
+                "status": "Releasable",
+                "resourceType":"DEFAULT",
+                "defaultResource":"DEFAULT",
+                "currentVersion": "true",
+                "userId":"sys-mes"
+            }
+        ]
+    }
+)
