@@ -9,5 +9,6 @@ import lombok.*;
 @Builder
 public class ComponentBuilder {
     private String handle;
-    private String componentLabel;
+    private String label;
+    private String dataType;
 }

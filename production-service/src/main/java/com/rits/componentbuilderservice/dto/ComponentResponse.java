@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class ComponentResponse {
+    private String handle;
     private String componentLabel;
     private String dataType;
     private String defaultValue;
