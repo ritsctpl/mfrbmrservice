@@ -3,12 +3,14 @@ package com.rits.groupbuilderservice.controller;
 
 
 import com.rits.groupbuilderservice.dto.GroupBuilderRequest;
+import com.rits.groupbuilderservice.dto.PreviewGroupRequest;
 import com.rits.groupbuilderservice.exception.GroupBuilderException;
 import com.rits.groupbuilderservice.model.GroupBuilder;
 import com.rits.groupbuilderservice.model.MessageModel;
 import com.rits.groupbuilderservice.service.GroupBuilderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
+import org.bson.Document;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -165,4 +167,25 @@ public class GroupBuilderController {
         }
         throw new GroupBuilderException(2001);
     }
+
+    @PostMapping("/previewGroup")
+
+    public List<Document> previewGroupBuilder(@RequestBody PreviewGroupRequest request) throws Exception {
+
+        try{
+
+            return groupBuilderService.previewGroups(request);
+
+        }catch (GroupBuilderException groupBuilderException) {
+
+            throw groupBuilderException;
+
+        } catch (Exception e) {
+
+            throw new RuntimeException(e);
+
+        }
+
+    }
+
 }

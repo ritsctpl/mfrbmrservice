@@ -1,24 +1,33 @@
 package com.rits.groupbuilderservice.service;
 
 import com.rits.groupbuilderservice.dto.GroupBuilderRequest;
+import com.rits.groupbuilderservice.dto.PreviewGroupRequest;
 import com.rits.groupbuilderservice.exception.GroupBuilderException;
 import com.rits.groupbuilderservice.model.GroupBuilder;
 import com.rits.groupbuilderservice.model.MessageDetails;
 import com.rits.groupbuilderservice.model.MessageModel;
 import com.rits.groupbuilderservice.repository.GroupBuilderRepository;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.context.MessageSource;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.*;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
+
+import org.bson.Document;
 @Service
 @RequiredArgsConstructor
 public class GroupBuilderServiceImpl implements GroupBuilderService {
     private final GroupBuilderRepository groupBuilderRepository;
     private final MessageSource localMessageSource;
+    private final MongoTemplate mongoTemplate;
 
     public String getFormattedMessage(int code, Object... args) {
         return localMessageSource.getMessage(String.valueOf(code), args, Locale.getDefault());
@@ -141,5 +150,55 @@ public class GroupBuilderServiceImpl implements GroupBuilderService {
             throw new GroupBuilderException(2008);
         }
         return true;
+    }
+
+    @Override
+    public List<Document> previewGroups(PreviewGroupRequest request) {
+        MatchOperation matchStage = Aggregation.match(
+                Criteria.where("_id").in(request.getSectionsIds())
+        );
+
+        UnwindOperation unwindStage = Aggregation.unwind("componentIds");
+
+        AddFieldsOperation addComponentId = Aggregation.addFields()
+                .addFieldWithValue("componentId", "$componentIds.handle")
+                .build();
+
+        LookupOperation lookupStage = Aggregation.lookup(
+                "R_COMPONENT", // from collection
+                "componentId",         // localField
+                "_id",                 // foreignField
+                "componentDetails"     // as
+        );
+
+        UnwindOperation unwindComponentDetails = Aggregation.unwind("componentDetails");
+
+        GroupOperation groupStage = Aggregation.group("sectionLabel")
+                .push("componentDetails").as("components");
+
+        AddFieldsOperation addSectionLabelBack = Aggregation.addFields()
+                .addFieldWithValue("sectionLabel", "$_id")
+                .build();
+
+        ProjectionOperation projectStage = Aggregation.project("sectionLabel", "components");
+
+        Aggregation aggregation = Aggregation.newAggregation(
+                matchStage,
+                unwindStage,
+                addComponentId,
+                lookupStage,
+                unwindComponentDetails,
+                groupStage,
+                addSectionLabelBack,
+                projectStage
+        );
+
+        AggregationResults<Document> results = mongoTemplate.aggregate(
+                aggregation,
+                "R_SECTION_BUILDER",
+                Document.class
+        );
+
+        return results.getMappedResults();
     }
 }
