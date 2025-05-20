@@ -1,6 +1,7 @@
 package com.rits.sectionbuilderservice.controller;
 
 
+import com.rits.sectionbuilderservice.dto.PreviewResponse;
 import com.rits.sectionbuilderservice.dto.SectionBuilderRequest;
 import com.rits.sectionbuilderservice.exception.SectionBuilderException;
 import com.rits.sectionbuilderservice.model.MessageModel;
@@ -159,6 +160,20 @@ public class SectionBuilderController {
             try{
                 return sectionBuilderService.isSectionBuilderExist(request.getSite(), request.getSectionLabel());
             }catch (SectionBuilderException sectionBuilderException) {
+                throw sectionBuilderException;
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        throw new SectionBuilderException(2001);
+    }
+
+    @PostMapping("preview")
+    public PreviewResponse preview(@RequestBody SectionBuilderRequest request) throws Exception {
+        if(request.getSite() != null && !request.getSite().isEmpty()) {
+            try {
+                return sectionBuilderService.preview(request);
+            } catch (SectionBuilderException sectionBuilderException) {
                 throw sectionBuilderException;
             } catch (Exception e) {
                 throw new RuntimeException(e);

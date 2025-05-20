@@ -1,5 +1,6 @@
 package com.rits.sectionbuilderservice.service;
 
+import com.rits.sectionbuilderservice.dto.PreviewResponse;
 import com.rits.sectionbuilderservice.dto.SectionBuilderRequest;
 import com.rits.sectionbuilderservice.exception.SectionBuilderException;
 import com.rits.sectionbuilderservice.model.MessageDetails;
@@ -8,6 +9,9 @@ import com.rits.sectionbuilderservice.model.SectionBuilder;
 import com.rits.sectionbuilderservice.repository.SectionBuilderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.*;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -15,11 +19,17 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.project;
+
 @Service
 @RequiredArgsConstructor
 public class SectionBuilderServiceImpl implements SectionBuilderService {
     private final SectionBuilderRepository sectionBuilderRepository;
     private final MessageSource localMessageSource;
+
+    private final MongoTemplate mongoTemplate;
 
     public String getFormattedMessage(int code, Object... args) {
         return localMessageSource.getMessage(String.valueOf(code), args, Locale.getDefault());
@@ -144,5 +154,53 @@ public class SectionBuilderServiceImpl implements SectionBuilderService {
             throw new SectionBuilderException(2005);
         }
         return true;
+    }
+    @Override
+    public PreviewResponse preview(SectionBuilderRequest request) throws Exception {
+        // First match the section
+        MatchOperation match = Aggregation.match(
+                Criteria.where("_id").is("SectionBO:" + request.getSite() + "," + request.getSectionLabel())
+        );
+
+        // Lookup components directly using the componentIds array
+        LookupOperation lookupC = LookupOperation.newLookup()
+                .from("R_COMPONENT")
+                .localField("componentIds.handle")  // Access handle field within componentIds
+                .foreignField("_id")
+                .as("componentList");
+
+        // Project to include all necessary fields
+        ProjectionOperation projectFields = project()
+                .and("_id").as("handle")
+                .and("site").as("site")
+                .and("sectionLabel").as("sectionLabel")
+                .and("instructions").as("instructions")
+                .and("effectiveDateTime").as("effectiveDateTime")
+                .and("componentIds").as("componentIds")
+                .and("componentList").as("componentList")
+                .and("userId").as("userId")
+                .and("active").as("active")
+                .and("createdDateTime").as("createdDateTime")
+                .and("modifiedDateTime").as("modifiedDateTime")
+                .and("createdBy").as("createdBy")
+                .and("modifiedBy").as("modifiedBy");
+
+        Aggregation aggregation = newAggregation(
+                match,
+                lookupC,
+                projectFields
+        );
+
+        AggregationResults<PreviewResponse> results = mongoTemplate.aggregate(
+                aggregation,
+                "R_SECTION_BUILDER",
+                PreviewResponse.class
+        );
+
+        if (results.getMappedResults().isEmpty()) {
+            throw new Exception("Section not found");
+        }
+
+        return results.getMappedResults().get(0);
     }
 }

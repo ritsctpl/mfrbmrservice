@@ -1,5 +1,6 @@
 package com.rits.sectionbuilderservice.service;
 
+import com.rits.sectionbuilderservice.dto.PreviewResponse;
 import com.rits.sectionbuilderservice.dto.SectionBuilderRequest;
 import com.rits.sectionbuilderservice.model.MessageModel;
 import com.rits.sectionbuilderservice.model.SectionBuilder;
@@ -18,4 +19,6 @@ public interface SectionBuilderService {
     List<SectionBuilder> retrieveAll(String site);
     List<SectionBuilder> retrieveTop50(String site);
     boolean isSectionBuilderExist(String site, String sectionLabel);
+
+    PreviewResponse preview(SectionBuilderRequest request) throws Exception;
 }
