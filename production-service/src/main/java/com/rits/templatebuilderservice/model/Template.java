@@ -21,6 +21,7 @@ public class Template {
     private String templateType;
     private String templateVersion;
     private Boolean currentVersion;
+    private String productGroup;
     private List<GroupList> groupIds;
     private String site;
     private int active;

@@ -13,6 +13,7 @@ public class TemplateRequest {
     private String templateLabel;
     private String templateType;
     private String templateVersion;
+    private String productGroup;
     private List<GroupList> groupIds;
     private String site;
     private Boolean currentVersion;

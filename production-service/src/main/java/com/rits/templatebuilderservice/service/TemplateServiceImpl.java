@@ -14,13 +14,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import com.rits.templatebuilderservice.model.MessageModel;
-import java.util.ArrayList;
-import java.util.Arrays;
+
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -36,6 +37,7 @@ public class TemplateServiceImpl implements TemplateService{
             template.setTemplateVersion(template.getTemplateVersion());
             template.setTemplateType(templateRequest.getTemplateType());
             template.setGroupIds(templateRequest.getGroupIds());
+            template.setProductGroup(templateRequest.getProductGroup());
             template.setCurrentVersion(templateRequest.getCurrentVersion());
             template.setCreatedDateTime(template.getCreatedDateTime());
             template.setUserId(templateRequest.getUserId());
@@ -50,6 +52,7 @@ public class TemplateServiceImpl implements TemplateService{
                     .templateVersion(templateRequest.getTemplateVersion())
                     .groupIds(templateRequest.getGroupIds())
                     .site(templateRequest.getSite())
+                    .productGroup(templateRequest.getProductGroup())
                     .userId(templateRequest.getUserId())
                     .currentVersion(templateRequest.getCurrentVersion())
                     .active(1)
@@ -139,85 +142,70 @@ public class TemplateServiceImpl implements TemplateService{
         }
         for (GroupList list : templateRequest.getGroupIds()) {
             if (list.getHandle().contains("GroupBO:")) {
-                MatchOperation matchStage = Aggregation.match(
-                        Criteria.where("_id").in(list.getHandle())
+//                List<String> groupHandle = groupLists.stream()
+//                        .map(GroupList::getHandle)
+//                        .collect(Collectors.toList());
+
+                // First get all groups as Documents
+                List<Document> groups = mongoTemplate.find(
+                        Query.query(Criteria.where("_id").in(groupIds)),
+                        Document.class,
+                        "R_GROUP_BUILDER"
                 );
 
-                AddFieldsOperation addOrderField = Aggregation.addFields()
-                        .addFieldWithValue("__inputOrder",
-                                new Document("$indexOfArray", Arrays.asList(list.getHandle(), "$_id")))
-                        .build();
+                // Get all section handles from groups
+                List<String> sectionHandles = groups.stream()
+                        .flatMap(g -> ((List<Document>)g.get("sectionIds", List.class)).stream())
+                        .map(section -> section.getString("handle"))
+                        .distinct()
+                        .collect(Collectors.toList());
 
-                // 3. First level unwind (sections → components)
-                UnwindOperation unwindComponents = Aggregation.unwind("sectionIds");
+                // Lookup sections with their components
+                LookupOperation lookupComponents = LookupOperation.newLookup()
+                        .from("R_COMPONENT")
+                        .localField("componentIds.handle")
+                        .foreignField("_id")
+                        .as("components");
 
-                // 4. Lookup components
-                LookupOperation lookupComponents = Aggregation.lookup(
-                        "R_SECTION_BUILDER",
-                        "sectionIds.handle",
-                        "_id",
-                        "sectionDetails"
-                );
-
-                // 5. Unwind and lookup items (second level)
-                UnwindOperation unwindComponentDetails = Aggregation.unwind("sectionDetails");
-
-                AddFieldsOperation extractItemIds = Aggregation.addFields()
-                        .addFieldWithValue("extractedComponentIds",
-                                new Document("$map",
-                                        new Document("input", "sectionDetails.componentIds")
-                                                .append("as", "itemObj")
-                                                .append("in", "$$itemObj.id") // Change "id" to your actual ID field
-                                ))
-                        .build();
-
-                LookupOperation lookupItems = Aggregation.lookup(
-                        "R_COMPONENT",
-                        "extractedComponentIds",  // Assuming components have itemIds array
-                        "_id",
-                        "componentDetails"
-                );
-
-                // 6. Reconstruct hierarchy while preserving order
-                GroupOperation groupBySection = Aggregation.group("_id", "__inputOrder", "sectionLabel")
-                        .push(new Document()
-                                .append("component", "$sectionDetails")
-                                .append("items", "$componentDetails")
-                        ).as("components");
-
-                // 7. Final projection and sorting
-                ProjectionOperation projectStage = Aggregation.project()
-                        .and("_id").as("sectionId")
-                        .and("sectionLabel").as("sectionLabel")
-                        .and("components").as("components")
-                        .and("__inputOrder").as("__inputOrder");
-
-                SortOperation sortStage = Aggregation.sort(Sort.Direction.ASC, "__inputOrder");
-
-                ProjectionOperation finalProject = Aggregation.project()
-                        .and("_id").as("sectionId")
-                        .and("sectionLabel").as("sectionLabel")
-                        .and("components").as("components")
-                        .andExclude("__inputOrder");
-
-                Aggregation aggregation = Aggregation.newAggregation(
-                        matchStage,
-                        addOrderField,
-                        unwindComponents,
+                Aggregation sectionAggregation = Aggregation.newAggregation(
+                        Aggregation.match(Criteria.where("_id").in(sectionHandles)),
                         lookupComponents,
-                        unwindComponentDetails,
-                        lookupItems,
-                        groupBySection,
-                        projectStage,
-                        sortStage,
-                        finalProject
+                        Aggregation.addFields()
+                                .addField("componentIds")
+                                .withValueOf(ArrayOperators.arrayOf("$components").elementAt(0))
+                                .build()
                 );
 
-                Document templateDocument =  mongoTemplate.aggregate(
-                        aggregation,
-                        "R_GROUP_BUILDER",
+                List<Document> sections = mongoTemplate.aggregate(
+                        sectionAggregation,
+                        "R_SECTION_BUILDER",
                         Document.class
-                ).getMappedResults().get(0);
+                ).getMappedResults();
+
+                // Build maps for quick lookup
+                Map<String, Document> sectionMap = sections.stream()
+                        .collect(Collectors.toMap(section -> section.getString("_id"), Function.identity()));
+
+                Map<String, Document> groupMap = groups.stream()
+                        .collect(Collectors.toMap(group -> group.getString("_id"), Function.identity()));
+
+                // Attach sections to groups
+                groups.forEach(group -> {
+                    List<Document> sectionRefs = group.get("sectionIds", List.class);
+                    if (sectionRefs != null) {
+                        List<Document> fullSections = sectionRefs.stream()
+                                .map(sectionRef -> sectionMap.get(sectionRef.getString("handle")))
+                                .filter(Objects::nonNull)
+                                .collect(Collectors.toList());
+                        group.put("sectionIds", fullSections);
+                    }
+                });
+
+                // Return in original order
+                Document templateDocument = groupIds.stream()
+                        .map(groupMap::get)
+                        .filter(Objects::nonNull)
+                        .collect(Collectors.toList()).get(0);
                 finalList.add(templateDocument);
             } else if (list.getHandle().contains("SectionBO:")) {
                 MatchOperation matchStage = Aggregation.match(
