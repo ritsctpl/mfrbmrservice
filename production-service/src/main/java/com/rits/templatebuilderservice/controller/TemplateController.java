@@ -24,11 +24,10 @@ public class TemplateController {
     @PostMapping("/createTemplate")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> createTemplate(@RequestBody TemplateRequest templateRequest) throws JsonProcessingException {
-
         MessageModel createTemplate;
         try {
-            createTemplate = templateServiceImpl.createTemplate(templateRequest);
-            return ResponseEntity.ok(createTemplate);
+           createTemplate = templateServiceImpl.createTemplate(templateRequest);
+           return ResponseEntity.ok(createTemplate);
         } catch (TemplateException e) {
             throw e;
         } catch (Exception e) {
@@ -41,7 +40,7 @@ public class TemplateController {
      public ResponseEntity<?> updateTemplate(@RequestBody TemplateRequest templateRequest) throws JsonProcessingException {
          MessageModel updateTemplate;
          try {
-             updateTemplate = templateServiceImpl.updateTemplate(templateRequest);
+             updateTemplate = templateServiceImpl.UpdateTemplate(templateRequest);
              return ResponseEntity.ok(updateTemplate);
          } catch (TemplateException e) {
              throw e;
@@ -83,7 +82,7 @@ public class TemplateController {
     public ResponseEntity<?> retrieveTemplates(@RequestBody TemplateRequest templateRequest) throws JsonProcessingException {
         List<TemplateResponse> retrieveTemplates;
         try {
-            retrieveTemplates = templateServiceImpl.retrieveAllTemplates(templateRequest);
+            retrieveTemplates = templateServiceImpl.retrieveAllTemplate(templateRequest);
             return ResponseEntity.ok(retrieveTemplates);
         } catch (TemplateException e) {
             throw e;
@@ -106,7 +105,18 @@ public class TemplateController {
         }
     }
 
-
-
+    @PostMapping("/preview")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<?> preview(@RequestBody TemplateRequest templateRequest) throws JsonProcessingException {
+        List preview;
+        try {
+            preview = templateServiceImpl.preview(templateRequest);
+            return ResponseEntity.ok(preview);
+        } catch (TemplateException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

@@ -129,7 +129,7 @@ public class SectionBuilderController {
     public List<SectionBuilder> retrieveAll(@RequestBody SectionBuilderRequest request) throws Exception {
         if(request.getSite() != null && !request.getSite().isEmpty()) {
             try {
-                return sectionBuilderService.retrieveAll(request.getSite());
+                return sectionBuilderService.retrieveAll(request.getSite(), request.getSectionLabel());
             } catch (SectionBuilderException sectionBuilderException) {
                 throw sectionBuilderException;
             } catch (Exception e) {
@@ -168,7 +168,7 @@ public class SectionBuilderController {
         throw new SectionBuilderException(2001);
     }
 
-    @PostMapping("preview")
+    @PostMapping("/preview")
     public PreviewResponse preview(@RequestBody SectionBuilderRequest request) throws Exception {
         if(request.getSite() != null && !request.getSite().isEmpty()) {
             try {

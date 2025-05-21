@@ -2,6 +2,7 @@ package com.rits.templatebuilderservice.model;
 
 import com.rits.templatebuilderservice.dto.GroupList;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.util.List;
 @Builder
 @Document(collection = "R_TEMPLATE")
 public class Template {
+    @Id
     private String handle;
     private String templateLabel;
     private String templateType;

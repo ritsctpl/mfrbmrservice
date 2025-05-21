@@ -14,17 +14,5 @@ import java.util.Map;
 @Setter
 @Builder
 public class PreviewResponse {
-    private String handle;
-    private String site;
-    private String sectionLabel;
-    private String instructions;
-    private LocalDateTime effectiveDateTime;
-    private List<ComponentBuilder> componentIds;
-    private List<Map<String, Object>> componentList;
-    private String userId;
-    private Integer active;
-    private LocalDateTime createdDateTime;
-    private LocalDateTime modifiedDateTime;
-    private String createdBy;
-    private String modifiedBy;
+    private List<Component> componentList;
 }

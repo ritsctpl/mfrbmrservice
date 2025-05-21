@@ -1,24 +1,32 @@
 package com.rits.templatebuilderservice.service;
 
+
+import com.rits.templatebuilderservice.dto.GroupList;
 import com.rits.templatebuilderservice.dto.TemplateRequest;
 import com.rits.templatebuilderservice.dto.TemplateResponse;
 import com.rits.templatebuilderservice.model.MessageDetails;
-import com.rits.templatebuilderservice.model.MessageModel;
 import com.rits.templatebuilderservice.model.Template;
 import com.rits.templatebuilderservice.repository.TemplateRepository;
 import lombok.RequiredArgsConstructor;
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.*;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
-
+import com.rits.templatebuilderservice.model.MessageModel;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class TemplateServiceImpl implements TemplateService{
-
-@Autowired
-private TemplateRepository templateRepository;
+    private final MongoTemplate mongoTemplate;
+    private final TemplateRepository templateRepository;
 
     public Template createUpdateBuilder(Template template, TemplateRequest templateRequest, Boolean templateExists) {
         if(templateExists){
@@ -51,97 +59,245 @@ private TemplateRepository templateRepository;
         return template;
     }
 
-
     @Override
-    public MessageModel createTemplate(TemplateRequest templateRequest) throws Exception {
-        Boolean templateExists = templateRepository.existsByHandleAndSiteAndActiveEquals("TemplateBO:"+templateRequest.getSite()+","+templateRequest.getTemplateLabel()+","+templateRequest.getTemplateVersion(), templateRequest.getSite(), 1);
-        if(templateExists){
+    public MessageModel createTemplate (TemplateRequest templateRequest) throws Exception
+    {
+        Boolean templateExists = templateRepository.existsByHandleAndSiteAndActiveEquals("TemplateBO:"+ templateRequest.getSite() + "," + templateRequest.getTemplateLabel()+","+templateRequest.getTemplateVersion(), templateRequest.getSite(), 1);
+        if(templateExists)
+        {
             throw new Exception("Template with this label already exists");
         }
-        currentVersionUpdate(templateRequest);
-        Template template = createUpdateBuilder(new Template(), templateRequest, false);
-        return MessageModel.builder()
-                .response(templateRepository.save(template))
-                .message_details(MessageDetails.builder()
-                        .msg("Template created successfully")
-                        .msg_type("success")
-                        .build())
-                .build();
-    }
-
-    @Override
-    public MessageModel updateTemplate(TemplateRequest templateRequest) throws Exception {
-        Boolean templateExists = templateRepository.existsByHandleAndSiteAndActiveEquals("TemplateBO:"+templateRequest.getSite()+","+templateRequest.getTemplateLabel()+","+templateRequest.getTemplateVersion(), templateRequest.getSite(), 1);
-        if(!templateExists){
-            throw new Exception("Template with this label does not exist");
-        }
-        currentVersionUpdate(templateRequest);
-        Template template = createUpdateBuilder(templateRepository.findByHandleAndSiteAndActiveEquals("TemplateBO:"+templateRequest.getSite()+","+templateRequest.getTemplateLabel()+","+templateRequest.getTemplateVersion(), templateRequest.getSite(), 1), templateRequest, true);
-        return MessageModel.builder()
-                .response(templateRepository.save(template))
-                .message_details(MessageDetails.builder()
-                        .msg("Template updated successfully")
-                        .msg_type("success")
-                        .build())
-                .build();
-    }
-
-    @Override
-    public MessageModel deleteTemplate(TemplateRequest templateRequest) throws Exception {
-        Boolean templateExists = templateRepository.existsByHandleAndSiteAndActiveEquals("TemplateBO:" + templateRequest.getSite() + "," + templateRequest.getTemplateLabel() + "," + templateRequest.getTemplateVersion(), templateRequest.getSite(), 1);
-        if (!templateExists) {
-            throw new Exception("Template with this label does not exist");
-        }
-
-        Template template = templateRepository.findByHandleAndSiteAndActiveEquals("TemplateBO:" + templateRequest.getSite() + "," + templateRequest.getTemplateLabel() + "," + templateRequest.getTemplateVersion(), templateRequest.getSite(), 1);
-        template.setActive(0);
-        return MessageModel.builder()
-                .response(templateRepository.save(template))
-                .message_details(MessageDetails.builder()
-                        .msg("Template deleted successfully")
-                        .msg_type("success")
-                        .build())
-                .build();
-    }
-
-    @Override
-    public Template retrieveTemplate(TemplateRequest templateRequest) throws Exception {
-        Template template = templateRepository.findByHandleAndSiteAndActiveEquals("TemplateBO:" + templateRequest.getSite() + "," + templateRequest.getTemplateLabel() + "," + templateRequest.getTemplateVersion(), templateRequest.getSite(), 1);
-        if (template != null && template.getHandle() != null) {
-            return template;
-        } else {
-            throw new Exception("Template with this label does not exist");
+        else
+        {
+            Template template = createUpdateBuilder(null, templateRequest, false);
+            return MessageModel.builder().message_details(new MessageDetails(templateRequest.getTemplateLabel() + " Created SuccessFully", "S")).response(templateRepository.save(template)).build();
         }
     }
 
     @Override
-    public List<TemplateResponse> retrieveAllTemplates(TemplateRequest templateRequest) throws Exception {
-        List<TemplateResponse> templates = templateRepository.findBySiteAndTemplateLabelContainingIgnoreCaseAndActiveEquals(templateRequest.getSite(), templateRequest.getTemplateLabel(), 1);
-        if (templates != null && !templates.isEmpty()) {
-            return templates;
-        } else {
-            throw new Exception("No templates found");
+    public MessageModel UpdateTemplate (TemplateRequest templateRequest) throws Exception
+    {
+        Boolean templateExists = templateRepository.existsByHandleAndSiteAndActiveEquals("TemplateBO:"+ templateRequest.getSite() + "," + templateRequest.getTemplateLabel()+","+templateRequest.getTemplateVersion(), templateRequest.getSite(), 1);
+        if(!templateExists)
+        {
+            throw new Exception("Template with this label does not exists");
+        }
+        else
+        {
+            Template retrievedTemplate = templateRepository.findBySiteAndHandleAndActiveEquals(templateRequest.getSite(),"TemplateBO:"+ templateRequest.getSite() + "," + templateRequest.getTemplateLabel()+","+templateRequest.getTemplateVersion(),1);
+            Template template = createUpdateBuilder(retrievedTemplate, templateRequest, true);
+            return MessageModel.builder().message_details(new MessageDetails(templateRequest.getTemplateLabel() + " Updated SuccessFully", "S")).response(templateRepository.save(template)).build();
         }
     }
 
     @Override
-    public List<TemplateResponse> retrieveTop50Template(TemplateRequest templateRequest) throws Exception {
-        List<TemplateResponse> templates = templateRepository.findTop50BySiteAndActiveOrderByCreatedDateTimeDesc(templateRequest.getSite(), 1);
-        if (templates != null && !templates.isEmpty()) {
-            return templates;
-        } else {
-            throw new Exception("No templates found");
+    public MessageModel deleteTemplate (TemplateRequest templateRequest) throws Exception
+    {
+        Boolean templateExists = templateRepository.existsByHandleAndSiteAndActiveEquals("TemplateBO:"+ templateRequest.getSite() + "," + templateRequest.getTemplateLabel()+","+templateRequest.getTemplateVersion(), templateRequest.getSite(), 1);
+        if(!templateExists)
+        {
+            throw new Exception("Template with this label does not exists");
+        }
+        else
+        {
+            Template template = templateRepository.findBySiteAndHandleAndActiveEquals(templateRequest.getSite(),"TemplateBO:"+ templateRequest.getSite() + "," + templateRequest.getTemplateLabel()+","+templateRequest.getTemplateVersion(),1);
+            template.setActive(0);
+            return MessageModel.builder().message_details(new MessageDetails(templateRequest.getTemplateLabel() + " Deleted SuccessFully", "S")).response(templateRepository.save(template)).build();
         }
     }
 
     @Override
-    public void currentVersionUpdate(TemplateRequest templateRequest) throws Exception {
-        Template templates = templateRepository.findBySiteAndTemplateLabelAndCurrentVersionAndActiveEquals(templateRequest.getSite(), templateRequest.getTemplateLabel(), true, 1);
-        if (templates != null) {
-            templates.setCurrentVersion(false);
-            templateRepository.save(templates);
+    public Template retrieveTemplate(TemplateRequest templateRequest) throws Exception
+    {
+        return templateRepository.findBySiteAndHandleAndActiveEquals(templateRequest.getSite(),"TemplateBO:"+ templateRequest.getSite() + "," + templateRequest.getTemplateLabel()+","+templateRequest.getTemplateVersion(),1);
+    }
+
+    @Override
+    public  List<TemplateResponse> retrieveAllTemplate(TemplateRequest templateRequest)throws Exception
+    {
+       return templateRepository.findBySiteAndTemplateLabelContainingIgnoreCaseAndActiveEquals(templateRequest.getSite(), templateRequest.getTemplateLabel(), 1);
+    }
+
+    @Override
+    public  List<TemplateResponse> retrieveTop50Template(TemplateRequest templateRequest)throws Exception
+    {
+        return templateRepository.findTop50BySiteAndActiveEqualsOrderByCreatedDateTimeDesc(templateRequest.getSite(), 1);
+    }
+
+    @Override
+    public List preview(TemplateRequest templateRequest) throws Exception
+    {
+        List<String> groupIds = null;
+        List<Document> finalList = new ArrayList<>();
+        if(!templateRequest.getGroupIds().isEmpty())
+        {
+            groupIds = templateRequest.getGroupIds().stream()
+                    .map(GroupList::getHandle)
+                    .collect(Collectors.toList());
+        }else {
+            throw new Exception("No groups found");
         }
+        for (GroupList list : templateRequest.getGroupIds()) {
+            if (list.getHandle().contains("GroupBO:")) {
+                MatchOperation matchStage = Aggregation.match(
+                        Criteria.where("_id").in(list.getHandle())
+                );
+
+                AddFieldsOperation addOrderField = Aggregation.addFields()
+                        .addFieldWithValue("__inputOrder",
+                                new Document("$indexOfArray", Arrays.asList(list.getHandle(), "$_id")))
+                        .build();
+
+                // 3. First level unwind (sections → components)
+                UnwindOperation unwindComponents = Aggregation.unwind("sectionIds");
+
+                // 4. Lookup components
+                LookupOperation lookupComponents = Aggregation.lookup(
+                        "R_SECTION_BUILDER",
+                        "sectionIds.handle",
+                        "_id",
+                        "sectionDetails"
+                );
+
+                // 5. Unwind and lookup items (second level)
+                UnwindOperation unwindComponentDetails = Aggregation.unwind("sectionDetails");
+
+                AddFieldsOperation extractItemIds = Aggregation.addFields()
+                        .addFieldWithValue("extractedComponentIds",
+                                new Document("$map",
+                                        new Document("input", "sectionDetails.componentIds")
+                                                .append("as", "itemObj")
+                                                .append("in", "$$itemObj.id") // Change "id" to your actual ID field
+                                ))
+                        .build();
+
+                LookupOperation lookupItems = Aggregation.lookup(
+                        "R_COMPONENT",
+                        "extractedComponentIds",  // Assuming components have itemIds array
+                        "_id",
+                        "componentDetails"
+                );
+
+                // 6. Reconstruct hierarchy while preserving order
+                GroupOperation groupBySection = Aggregation.group("_id", "__inputOrder", "sectionLabel")
+                        .push(new Document()
+                                .append("component", "$sectionDetails")
+                                .append("items", "$componentDetails")
+                        ).as("components");
+
+                // 7. Final projection and sorting
+                ProjectionOperation projectStage = Aggregation.project()
+                        .and("_id").as("sectionId")
+                        .and("sectionLabel").as("sectionLabel")
+                        .and("components").as("components")
+                        .and("__inputOrder").as("__inputOrder");
+
+                SortOperation sortStage = Aggregation.sort(Sort.Direction.ASC, "__inputOrder");
+
+                ProjectionOperation finalProject = Aggregation.project()
+                        .and("_id").as("sectionId")
+                        .and("sectionLabel").as("sectionLabel")
+                        .and("components").as("components")
+                        .andExclude("__inputOrder");
+
+                Aggregation aggregation = Aggregation.newAggregation(
+                        matchStage,
+                        addOrderField,
+                        unwindComponents,
+                        lookupComponents,
+                        unwindComponentDetails,
+                        lookupItems,
+                        groupBySection,
+                        projectStage,
+                        sortStage,
+                        finalProject
+                );
+
+                Document templateDocument =  mongoTemplate.aggregate(
+                        aggregation,
+                        "R_GROUP_BUILDER",
+                        Document.class
+                ).getMappedResults().get(0);
+                finalList.add(templateDocument);
+            } else if (list.getHandle().contains("SectionBO:")) {
+                MatchOperation matchStage = Aggregation.match(
+                        Criteria.where("_id").in(list.getHandle())
+                );
+
+                UnwindOperation unwindStage = Aggregation.unwind("componentIds");
+
+                AddFieldsOperation addComponentId = Aggregation.addFields()
+                        .addFieldWithValue("componentId", "$componentIds.handle")
+                        .build();
+
+                LookupOperation lookupStage = Aggregation.lookup(
+                        "R_COMPONENT", // from collection
+                        "componentId",         // localField
+                        "_id",                 // foreignField
+                        "componentDetails"     // as
+                );
+
+                UnwindOperation unwindComponentDetails = Aggregation.unwind("componentDetails");
+
+                GroupOperation groupStage = Aggregation.group("sectionLabel")
+                        .push("componentDetails").as("components");
+
+                AddFieldsOperation addSectionLabelBack = Aggregation.addFields()
+                        .addFieldWithValue("sectionLabel", "$_id")
+                        .build();
+
+                ProjectionOperation projectStage = Aggregation.project("sectionLabel", "components");
+
+                Aggregation aggregation = Aggregation.newAggregation(
+                        matchStage,
+                        unwindStage,
+                        addComponentId,
+                        lookupStage,
+                        unwindComponentDetails,
+                        groupStage,
+                        addSectionLabelBack,
+                        projectStage
+                );
+
+                AggregationResults<Document> results = mongoTemplate.aggregate(
+                        aggregation,
+                        "R_SECTION_BUILDER",
+                        Document.class
+                );
+
+                Document groupDocument = results.getMappedResults().get(0);
+                finalList.add(groupDocument);
+            } else if (list.getHandle().contains("ComponentBO:")) {
+                MatchOperation matchStage = Aggregation.match(
+                        Criteria.where("_id").in(list.getHandle())
+                );
+
+                ProjectionOperation projectStage = Aggregation.project()
+                        .and("_id").as("handle")
+                        .and("componentLabel").as("componentLabel")
+                        .and("dataType").as("dataType")
+                        .and("unit").as("unit")
+                        .and("defaultValue").as("defaultValue")
+                        .and("required").as("required")
+                        .and("validation").as("validation");
+
+                Aggregation aggregation = Aggregation.newAggregation(
+                        matchStage,
+                        projectStage
+                );
+
+                Document sectionDocument = mongoTemplate.aggregate(
+                        aggregation,
+                        "R_COMPONENT",
+                        Document.class
+                ).getMappedResults().get(0);
+                finalList.add(sectionDocument);
+            }
+        }
+        return finalList;
     }
 
 }
+
+
 

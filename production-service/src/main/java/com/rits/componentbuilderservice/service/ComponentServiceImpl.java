@@ -17,8 +17,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ComponentServiceImpl implements ComponentService {
 
-    @Autowired
-    private ComponentRepository componentRepository;
+
+    private final ComponentRepository componentRepository;
 
     public Component createUpdateComponentBuilder(Component component, ComponentRequest componentRequest, Boolean componentExists) {
         if (componentExists) {

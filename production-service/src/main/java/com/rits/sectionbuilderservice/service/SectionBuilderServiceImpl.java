@@ -11,14 +11,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
+import org.bson.Document;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.project;
@@ -96,9 +95,9 @@ public class SectionBuilderServiceImpl implements SectionBuilderService {
         return MessageModel.builder().message_details(new MessageDetails(deleteMessage, "S")).build();
     }
     @Override
-    public List<SectionBuilder> retrieveAll(String site) {
+    public List<SectionBuilder> retrieveAll(String site, String sectionLabel) {
 
-        List<SectionBuilder> existingLineClearanceList = sectionBuilderRepository.findBySiteAndActive(site, 1);
+        List<SectionBuilder> existingLineClearanceList = sectionBuilderRepository.findBySiteAndSectionLabelContainingIgnoreCaseAndActiveEquals(site, sectionLabel,1);
         return existingLineClearanceList;
     }
 
@@ -157,38 +156,46 @@ public class SectionBuilderServiceImpl implements SectionBuilderService {
     }
     @Override
     public PreviewResponse preview(SectionBuilderRequest request) throws Exception {
-        // First match the section
-        MatchOperation match = Aggregation.match(
-                Criteria.where("_id").is("SectionBO:" + request.getSite() + "," + request.getSectionLabel())
+        // Add componentIds from request
+        AddFieldsOperation addFields = Aggregation.addFields()
+                .addFieldWithValue("componentIds", request.getComponentIds())
+                .build();
+
+        // Lookup components using $lookup with pipeline (more efficient than simple lookup)
+        AggregationOperation lookupOperation = context -> new Document("$lookup",
+                new Document("from", "R_COMPONENT")
+                        .append("let", new Document("handles", "$componentIds.handle"))
+                        .append("pipeline", Collections.singletonList(
+                                new Document("$match",
+                                        new Document("$expr",
+                                                new Document("$in", Arrays.asList("$_id", "$$handles"))
+                                        )
+                                )
+                        ))
+                        .append("as", "componentList")
         );
 
-        // Lookup components directly using the componentIds array
-        LookupOperation lookupC = LookupOperation.newLookup()
-                .from("R_COMPONENT")
-                .localField("componentIds.handle")  // Access handle field within componentIds
-                .foreignField("_id")
-                .as("componentList");
-
         // Project to include all necessary fields
-        ProjectionOperation projectFields = project()
-                .and("_id").as("handle")
-                .and("site").as("site")
-                .and("sectionLabel").as("sectionLabel")
-                .and("instructions").as("instructions")
-                .and("effectiveDateTime").as("effectiveDateTime")
-                .and("componentIds").as("componentIds")
-                .and("componentList").as("componentList")
-                .and("userId").as("userId")
-                .and("active").as("active")
-                .and("createdDateTime").as("createdDateTime")
-                .and("modifiedDateTime").as("modifiedDateTime")
-                .and("createdBy").as("createdBy")
-                .and("modifiedBy").as("modifiedBy");
+        ProjectionOperation projectFields = Aggregation.project()
+//                .and("_id").as("handle")
+//                .and("site").as("site")
+//                .and("sectionLabel").as("sectionLabel")
+//                .and("instructions").as("instructions")
+//                .and("effectiveDateTime").as("effectiveDateTime")
+//                .and("componentIds").as("componentIds")
+                .and("componentList").as("componentList");
+//                .and("userId").as("userId")
+//                .and("active").as("active")
+//                .and("createdDateTime").as("createdDateTime")
+//                .and("modifiedDateTime").as("modifiedDateTime")
+//                .and("createdBy").as("createdBy")
+//                .and("modifiedBy").as("modifiedBy");
 
-        Aggregation aggregation = newAggregation(
-                match,
-                lookupC,
-                projectFields
+        // Build aggregation with only needed stages
+        Aggregation aggregation = Aggregation.newAggregation(
+                addFields,     // First: add componentIds
+                lookupOperation, // Second: lookup components
+                projectFields  // Third: project the fields
         );
 
         AggregationResults<PreviewResponse> results = mongoTemplate.aggregate(

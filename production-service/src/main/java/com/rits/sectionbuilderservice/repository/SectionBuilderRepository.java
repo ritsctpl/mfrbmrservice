@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SectionBuilderRepository extends MongoRepository<SectionBuilder,String> {
     SectionBuilder findByHandleAndSiteAndActive(String handle, String site, int i);
-    List<SectionBuilder> findBySiteAndActive(String site, int i);
+    List<SectionBuilder> findBySiteAndSectionLabelContainingIgnoreCaseAndActiveEquals(String site,String sectionLabel, int i);
     List<SectionBuilder> findTop50BySiteAndActive(String site, int active);
     boolean existsBySiteAndActiveAndSectionLabel(String site, int i, String sectionLabel);
 

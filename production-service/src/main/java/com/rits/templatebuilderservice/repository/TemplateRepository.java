@@ -7,13 +7,13 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface TemplateRepository extends MongoRepository<Template, String> {
-    Boolean existsByHandleAndSiteAndActiveEquals(String handle, String site, int i);
+    Boolean existsByHandleAndSiteAndActiveEquals(String handle, String site, int active);
 
-    Template findByHandleAndSiteAndActiveEquals(String handle, String site, int i);
+    Template findBySiteAndHandleAndActiveEquals(String site, String handle, int active);
 
-    List<TemplateResponse> findBySiteAndTemplateLabelContainingIgnoreCaseAndActiveEquals(String site, String templateLabel, int active);
+    List<TemplateResponse> findBySiteAndTemplateLabelContainingIgnoreCaseAndActiveEquals(String site,String templateLabel, int active);
 
-    List<TemplateResponse> findTop50BySiteAndActiveOrderByCreatedDateTimeDesc(String site, int active);
+    List<TemplateResponse> findTop50BySiteAndActiveEqualsOrderByCreatedDateTimeDesc(String site, int active);
 
-    Template findBySiteAndTemplateLabelAndCurrentVersionAndActiveEquals(String site, String templateLabel, Boolean currentVersion, int active);
+    List<Template> findBySiteAndTemplateLabelAndCurrentVersionAndActiveEquals(String site, String templateLabel, Boolean currentVersion, int active);
 }

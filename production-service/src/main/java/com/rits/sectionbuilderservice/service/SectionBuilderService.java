@@ -16,7 +16,7 @@ public interface SectionBuilderService {
 
     SectionBuilder retrieve(SectionBuilderRequest request);
 
-    List<SectionBuilder> retrieveAll(String site);
+    List<SectionBuilder> retrieveAll(String site, String sectionLabel);
     List<SectionBuilder> retrieveTop50(String site);
     boolean isSectionBuilderExist(String site, String sectionLabel);
 
