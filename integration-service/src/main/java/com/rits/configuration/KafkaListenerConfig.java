@@ -30,6 +30,7 @@ public class KafkaListenerConfig {
         // Set the ack mode to manual if you want to control acknowledgment manually
         factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL);
         // Set concurrency to 1 so that only one thread processes sync-topic messages
+        factory.getContainerProperties().setMissingTopicsFatal(false);
         factory.setConcurrency(1);
         return factory;
     }
