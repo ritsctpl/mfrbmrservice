@@ -24,6 +24,9 @@ public class Component {
     private String defaultValue;
     private Boolean required;
     private String validation;
+    private String apiUrl;
+    private String minValue;
+    private String maxValue;
     private TableConfig tableConfig;
     private Integer active;
     private String userId;

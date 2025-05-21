@@ -31,6 +31,9 @@ public class ComponentServiceImpl implements ComponentService {
             component.setRequired(componentRequest.getRequired());
             component.setValidation(componentRequest.getValidation());
             component.setTableConfig(componentRequest.getTableConfig());
+            component.setApiUrl(componentRequest.getApiUrl());
+            component.setMaxValue(componentRequest.getMaxValue());
+            component.setMinValue(componentRequest.getMinValue());
             component.setUserId(componentRequest.getUserId());
             component.setActive(component.getActive());
             component.setCreatedDateTime(component.getCreatedDateTime());
@@ -45,6 +48,9 @@ public class ComponentServiceImpl implements ComponentService {
                     .defaultValue(componentRequest.getDefaultValue())
                     .required(componentRequest.getRequired())
                     .validation(componentRequest.getValidation())
+                    .apiUrl(component.getApiUrl())
+                    .minValue(componentRequest.getMinValue())
+                    .maxValue(componentRequest.getMaxValue())
                     .tableConfig(componentRequest.getTableConfig())
                     .userId(componentRequest.getUserId())
                     .active(1)

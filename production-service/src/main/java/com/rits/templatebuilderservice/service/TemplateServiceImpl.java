@@ -126,7 +126,7 @@ public class TemplateServiceImpl implements TemplateService{
     @Override
     public  List<TemplateResponse> retrieveAllTemplate(TemplateRequest templateRequest)throws Exception
     {
-       return templateRepository.findBySiteAndTemplateLabelContainingIgnoreCaseAndActiveEquals(templateRequest.getSite(), templateRequest.getTemplateLabel(), 1);
+       return templateRepository.findBySiteAndTemplateLabelContainingIgnoreCaseAndActiveEqualsOrderByCreatedDateTimeDesc(templateRequest.getSite(), templateRequest.getTemplateLabel(), 1);
     }
 
     @Override

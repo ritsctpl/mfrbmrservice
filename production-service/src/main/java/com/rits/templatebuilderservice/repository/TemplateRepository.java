@@ -11,7 +11,7 @@ public interface TemplateRepository extends MongoRepository<Template, String> {
 
     Template findBySiteAndHandleAndActiveEquals(String site, String handle, int active);
 
-    List<TemplateResponse> findBySiteAndTemplateLabelContainingIgnoreCaseAndActiveEquals(String site,String templateLabel, int active);
+    List<TemplateResponse> findBySiteAndTemplateLabelContainingIgnoreCaseAndActiveEqualsOrderByCreatedDateTimeDesc(String site,String templateLabel, int active);
 
     List<TemplateResponse> findTop50BySiteAndActiveEqualsOrderByCreatedDateTimeDesc(String site, int active);
 
