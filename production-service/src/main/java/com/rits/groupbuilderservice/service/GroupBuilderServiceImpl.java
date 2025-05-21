@@ -138,7 +138,7 @@ public class GroupBuilderServiceImpl implements GroupBuilderService {
 
     private String createHandle(GroupBuilderRequest groupBuilderRequest){
         validateRequest(groupBuilderRequest);
-        String groupLabelBO = "GroupBO:" + groupBuilderRequest.getSite() + "," + groupBuilderRequest.getGroupLabel();
+        String groupLabelBO = "GroupBO:" + groupBuilderRequest.getSite() + "," + groupBuilderRequest.getGroupLabel().replaceAll("\\s+", "_");
         return groupLabelBO;
     }
 

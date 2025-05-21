@@ -24,6 +24,7 @@ public class Component {
     private String defaultValue;
     private Boolean required;
     private String validation;
+    private TableConfig tableConfig;
     private Integer active;
     private String userId;
     private LocalDateTime createdDateTime;

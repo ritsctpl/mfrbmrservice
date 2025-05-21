@@ -30,6 +30,7 @@ public class ComponentServiceImpl implements ComponentService {
             component.setDefaultValue(componentRequest.getDefaultValue());
             component.setRequired(componentRequest.getRequired());
             component.setValidation(componentRequest.getValidation());
+            component.setTableConfig(componentRequest.getTableConfig());
             component.setUserId(componentRequest.getUserId());
             component.setActive(component.getActive());
             component.setCreatedDateTime(component.getCreatedDateTime());
@@ -37,13 +38,14 @@ public class ComponentServiceImpl implements ComponentService {
         } else {
             component = Component.builder()
                     .site(componentRequest.getSite())
-                    .handle("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel())
+                    .handle("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel().replaceAll("\\s+", "_"))
                     .componentLabel(componentRequest.getComponentLabel())
                     .dataType(componentRequest.getDataType())
                     .unit(componentRequest.getUnit())
                     .defaultValue(componentRequest.getDefaultValue())
                     .required(componentRequest.getRequired())
                     .validation(componentRequest.getValidation())
+                    .tableConfig(componentRequest.getTableConfig())
                     .userId(componentRequest.getUserId())
                     .active(1)
                     .createdDateTime(LocalDateTime.now())
@@ -55,7 +57,7 @@ public class ComponentServiceImpl implements ComponentService {
     @Override
     public MessageModel createComponent (ComponentRequest componentRequest) throws Exception
     {
-        Boolean componentExists = componentRepository.existsByHandleAndSiteAndActiveEquals("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel(), componentRequest.getSite(), 1);
+        Boolean componentExists = componentRepository.existsByHandleAndSiteAndActiveEquals("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel().replaceAll("\\s+", "_"), componentRequest.getSite(), 1);
         if(componentExists)
         {
             throw new Exception("Component with this label already exists");
@@ -70,10 +72,10 @@ public class ComponentServiceImpl implements ComponentService {
     @Override
     public MessageModel updateComponent (ComponentRequest componentRequest) throws Exception
     {
-        Boolean componentExists = componentRepository.existsByHandleAndSiteAndActiveEquals("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel(), componentRequest.getSite(), 1);
+        Boolean componentExists = componentRepository.existsByHandleAndSiteAndActiveEquals("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel().replaceAll("\\s+", "_"), componentRequest.getSite(), 1);
         if(componentExists)
         {
-            Component retrievedComponent = componentRepository.findByHandleAndSiteAndActiveEquals("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel(), componentRequest.getSite(), 1);
+            Component retrievedComponent = componentRepository.findByHandleAndSiteAndActiveEquals("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel().replaceAll("\\s+", "_"), componentRequest.getSite(), 1);
             Component component = createUpdateComponentBuilder(retrievedComponent, componentRequest, true);
             return MessageModel.builder().message_details(new MessageDetails(componentRequest.getComponentLabel() + " Updated SuccessFully", "S")).response(componentRepository.save(component)).build();
         }
@@ -86,10 +88,10 @@ public class ComponentServiceImpl implements ComponentService {
     @Override
     public MessageModel deleteComponent (ComponentRequest componentRequest) throws Exception
     {
-        Boolean componentExists = componentRepository.existsByHandleAndSiteAndActiveEquals("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel(), componentRequest.getSite(), 1);
+        Boolean componentExists = componentRepository.existsByHandleAndSiteAndActiveEquals("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel().replaceAll("\\s+", "_"), componentRequest.getSite(), 1);
         if(componentExists)
         {
-            Component retrievedComponent = componentRepository.findByHandleAndSiteAndActiveEquals("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel(), componentRequest.getSite(), 1);
+            Component retrievedComponent = componentRepository.findByHandleAndSiteAndActiveEquals("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel().replaceAll("\\s+", "_"), componentRequest.getSite(), 1);
             retrievedComponent.setActive(0);
             return MessageModel.builder().message_details(new MessageDetails(componentRequest.getComponentLabel() + " Deleted SuccessFully", "S")).response(componentRepository.save(retrievedComponent)).build();
         }
@@ -101,7 +103,7 @@ public class ComponentServiceImpl implements ComponentService {
 
     @Override
     public Component retrieveComponent(ComponentRequest componentRequest) throws Exception {
-        Component component = componentRepository.findByHandleAndSiteAndActiveEquals("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel(), componentRequest.getSite(), 1);
+        Component component = componentRepository.findByHandleAndSiteAndActiveEquals("ComponentBO:"+ componentRequest.getSite() + "," + componentRequest.getComponentLabel().replaceAll("\\s+", "_"), componentRequest.getSite(), 1);
         if(component != null && component.getHandle() != null)
         {
             return component;

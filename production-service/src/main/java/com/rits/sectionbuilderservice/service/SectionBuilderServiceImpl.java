@@ -141,7 +141,7 @@ public class SectionBuilderServiceImpl implements SectionBuilderService {
 
     private String createHandle(SectionBuilderRequest sectionBuilderRequest){
         validateRequest(sectionBuilderRequest);
-        String sectionLabelBO = "SectionBO:" + sectionBuilderRequest.getSite() + "," + sectionBuilderRequest.getSectionLabel();
+        String sectionLabelBO = "SectionBO:" + sectionBuilderRequest.getSite() + "," + sectionBuilderRequest.getSectionLabel().replaceAll("\\s+", "_");
         return sectionLabelBO;
     }
 

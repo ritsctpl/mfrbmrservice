@@ -1,5 +1,6 @@
 package com.rits.componentbuilderservice.dto;
 
+import com.rits.componentbuilderservice.model.TableConfig;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -15,6 +16,7 @@ public class ComponentRequest {
     private String unit;
     private String defaultValue;
     private Boolean required;
+    private TableConfig tableConfig;
     private String validation;
     private String userId;
 }

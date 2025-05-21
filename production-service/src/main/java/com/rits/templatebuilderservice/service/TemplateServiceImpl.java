@@ -66,6 +66,10 @@ public class TemplateServiceImpl implements TemplateService{
     public MessageModel createTemplate (TemplateRequest templateRequest) throws Exception
     {
         Boolean templateExists = templateRepository.existsByHandleAndSiteAndActiveEquals("TemplateBO:"+ templateRequest.getSite() + "," + templateRequest.getTemplateLabel()+","+templateRequest.getTemplateVersion(), templateRequest.getSite(), 1);
+        if(templateRequest.getCurrentVersion())
+        {
+            updateCurrentVersion(templateRequest);
+        }
         if(templateExists)
         {
             throw new Exception("Template with this label already exists");
@@ -81,6 +85,10 @@ public class TemplateServiceImpl implements TemplateService{
     public MessageModel UpdateTemplate (TemplateRequest templateRequest) throws Exception
     {
         Boolean templateExists = templateRepository.existsByHandleAndSiteAndActiveEquals("TemplateBO:"+ templateRequest.getSite() + "," + templateRequest.getTemplateLabel()+","+templateRequest.getTemplateVersion(), templateRequest.getSite(), 1);
+        if(templateRequest.getCurrentVersion())
+        {
+            updateCurrentVersion(templateRequest);
+        }
         if(!templateExists)
         {
             throw new Exception("Template with this label does not exists");
@@ -127,6 +135,15 @@ public class TemplateServiceImpl implements TemplateService{
         return templateRepository.findTop50BySiteAndActiveEqualsOrderByCreatedDateTimeDesc(templateRequest.getSite(), 1);
     }
 
+    public void updateCurrentVersion(TemplateRequest templateRequest)
+    {
+        List<Template> retrievedTemplate = templateRepository.findBySiteAndTemplateLabelAndCurrentVersionAndActiveEquals(templateRequest.getSite(), templateRequest.getTemplateLabel(), true,1);
+        for(Template template:retrievedTemplate)
+        {
+            template.setCurrentVersion(false);
+            templateRepository.save(template);
+        }
+    }
     @Override
     public List preview(TemplateRequest templateRequest) throws Exception
     {
