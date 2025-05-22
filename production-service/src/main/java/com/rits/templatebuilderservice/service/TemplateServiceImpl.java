@@ -284,9 +284,13 @@ public class TemplateServiceImpl implements TemplateService{
                         .and("unit").as("unit")
                         .and("defaultValue").as("defaultValue")
                         .and("required").as("required")
-                        .and("validation").as("validation");
+                        .and("validation").as("validation")
+                        .and("tableConfig").as("tableConfig")
+                        .and("apiUrl").as("apiUrl")
+                        .and("minValue").as("minValue")
+                        .and("maxValue").as("maxValue");
 
-                Aggregation aggregation = Aggregation.newAggregation(
+                          Aggregation aggregation = Aggregation.newAggregation(
                         matchStage,
                         projectStage
                 );
