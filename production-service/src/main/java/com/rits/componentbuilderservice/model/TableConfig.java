@@ -13,5 +13,5 @@ public class TableConfig {
     private String columns;
     private List<Column> columnNames;
     private String rows;
-    private List<Object> rowData;
+    private Object rowData;
 }
