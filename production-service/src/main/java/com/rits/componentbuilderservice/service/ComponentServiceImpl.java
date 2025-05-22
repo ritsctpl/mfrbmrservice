@@ -48,7 +48,7 @@ public class ComponentServiceImpl implements ComponentService {
                     .defaultValue(componentRequest.getDefaultValue())
                     .required(componentRequest.getRequired())
                     .validation(componentRequest.getValidation())
-                    .apiUrl(component.getApiUrl())
+                    .apiUrl(componentRequest.getApiUrl())
                     .minValue(componentRequest.getMinValue())
                     .maxValue(componentRequest.getMaxValue())
                     .tableConfig(componentRequest.getTableConfig())
