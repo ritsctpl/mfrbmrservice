@@ -1,4 +1,5 @@
 package com.rits.groupbuilderservice.dto;
+import com.rits.groupbuilderservice.model.SectionBuilder;
 import lombok.*;
 
 import java.util.List;
@@ -8,5 +9,5 @@ import java.util.List;
 @Setter
 @Builder
 public class PreviewGroupRequest {
-    private List<String> sectionsIds;
+    private List<SectionBuilder> sectionsIds;
 }

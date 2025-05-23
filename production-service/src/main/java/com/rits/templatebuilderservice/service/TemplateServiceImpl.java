@@ -225,53 +225,81 @@ public class TemplateServiceImpl implements TemplateService{
                         .collect(Collectors.toList()).get(0);
                 finalList.add(templateDocument);
             } else if (list.getHandle().contains("SectionBO:")) {
-                MatchOperation matchStage = Aggregation.match(
-                        Criteria.where("_id").in(list.getHandle())
+                Map<String, List<Integer>> orderMap = new HashMap<>();
+                for (int i = 0; i < groupIds.size(); i++) {
+                    String id = groupIds.get(i);
+                    orderMap.computeIfAbsent(id, k -> new ArrayList<>()).add(i);
+                }
+
+                // First get all unique sections
+                List<Document> uniqueSections = mongoTemplate.find(
+                        Query.query(Criteria.where("_id").in(new ArrayList<>(new LinkedHashSet<>(groupIds)))),
+                        Document.class,
+                        "R_SECTION_BUILDER"
                 );
 
-                UnwindOperation unwindStage = Aggregation.unwind("componentIds");
+                // Build a map of sections by ID
+                Map<String, Document> sectionMap = uniqueSections.stream()
+                        .collect(Collectors.toMap(doc -> doc.getString("_id"), Function.identity()));
 
-                AddFieldsOperation addComponentId = Aggregation.addFields()
-                        .addFieldWithValue("componentId", "$componentIds.handle")
-                        .build();
+                // Reconstruct results with duplicates
+                List<Document> result = new ArrayList<>();
+                for (String id : groupIds) {
+                    Document section = sectionMap.get(id);
+                    if (section != null) {
+                        // Create a new document to avoid reference sharing
+                        result.add(new Document(section));
+                    }
+                }
 
-                LookupOperation lookupStage = Aggregation.lookup(
-                        "R_COMPONENT", // from collection
-                        "componentId",         // localField
-                        "_id",                 // foreignField
-                        "componentDetails"     // as
-                );
+                // Now process components for all unique sections
+                if (!uniqueSections.isEmpty()) {
+                    MatchOperation matchStage = Aggregation.match(
+                            Criteria.where("_id").in(new ArrayList<>(sectionMap.keySet()))
+                    );
 
-                UnwindOperation unwindComponentDetails = Aggregation.unwind("componentDetails");
+                    // Rest of your aggregation pipeline...
+                    UnwindOperation unwindStage = Aggregation.unwind("componentIds");
+                    LookupOperation lookupStage = Aggregation.lookup(
+                            "R_COMPONENT",
+                            "componentIds.handle",
+                            "_id",
+                            "componentDetails"
+                    );
+                    UnwindOperation unwindComponentDetails = Aggregation.unwind("componentDetails");
+                    GroupOperation groupStage = Aggregation.group("_id")
+                            .first("sectionLabel").as("sectionLabel")
+                            .push("componentDetails").as("components");
 
-                GroupOperation groupStage = Aggregation.group("sectionLabel")
-                        .push("componentDetails").as("components");
+                    Aggregation aggregation = Aggregation.newAggregation(
+                            matchStage,
+                            unwindStage,
+                            lookupStage,
+                            unwindComponentDetails,
+                            groupStage
+                    );
 
-                AddFieldsOperation addSectionLabelBack = Aggregation.addFields()
-                        .addFieldWithValue("sectionLabel", "$_id")
-                        .build();
+                    AggregationResults<Document> componentResults = mongoTemplate.aggregate(
+                            aggregation,
+                            "R_SECTION_BUILDER",
+                            Document.class
+                    );
 
-                ProjectionOperation projectStage = Aggregation.project("sectionLabel", "components");
+                    // Map components to sections
+                    Map<String, List<Document>> componentsMap = componentResults.getMappedResults()
+                            .stream()
+                            .collect(Collectors.toMap(
+                                    doc -> doc.getString("_id"),
+                                    doc -> doc.getList("components", Document.class)
+                            ));
 
-                Aggregation aggregation = Aggregation.newAggregation(
-                        matchStage,
-                        unwindStage,
-                        addComponentId,
-                        lookupStage,
-                        unwindComponentDetails,
-                        groupStage,
-                        addSectionLabelBack,
-                        projectStage
-                );
-
-                AggregationResults<Document> results = mongoTemplate.aggregate(
-                        aggregation,
-                        "R_SECTION_BUILDER",
-                        Document.class
-                );
-
-                Document groupDocument = results.getMappedResults().get(0);
-                finalList.add(groupDocument);
+                    // Merge components into final results
+                    for (Document doc : result) {
+                        List<Document> components = componentsMap.get(doc.getString("_id"));
+                        doc.put("components", components != null ? components : Collections.emptyList());
+                    }
+                }
+                finalList.add(result.get(0));
             } else if (list.getHandle().contains("ComponentBO:")) {
                 MatchOperation matchStage = Aggregation.match(
                         Criteria.where("_id").in(list.getHandle())

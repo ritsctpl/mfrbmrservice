@@ -6,20 +6,25 @@ import com.rits.groupbuilderservice.exception.GroupBuilderException;
 import com.rits.groupbuilderservice.model.GroupBuilder;
 import com.rits.groupbuilderservice.model.MessageDetails;
 import com.rits.groupbuilderservice.model.MessageModel;
+import com.rits.groupbuilderservice.model.SectionBuilder;
 import com.rits.groupbuilderservice.repository.GroupBuilderRepository;
 
+import com.rits.templatebuilderservice.dto.GroupList;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.context.MessageSource;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.bson.Document;
 @Service
@@ -154,51 +159,91 @@ public class GroupBuilderServiceImpl implements GroupBuilderService {
 
     @Override
     public List<Document> previewGroups(PreviewGroupRequest request) {
-        MatchOperation matchStage = Aggregation.match(
-                Criteria.where("_id").in(request.getSectionsIds())
+        // Extract handles preserving duplicates
+        List<String> sectionIds = request.getSectionsIds().stream()
+                .map(SectionBuilder::getHandle)
+                .collect(Collectors.toList());
+
+        if (sectionIds.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        // Create order mapping with duplicate support
+        Map<String, List<Integer>> orderMap = new HashMap<>();
+        for (int i = 0; i < sectionIds.size(); i++) {
+            String id = sectionIds.get(i);
+            orderMap.computeIfAbsent(id, k -> new ArrayList<>()).add(i);
+        }
+
+        // First get all unique sections
+        List<Document> uniqueSections = mongoTemplate.find(
+                Query.query(Criteria.where("_id").in(new ArrayList<>(new LinkedHashSet<>(sectionIds)))),
+                Document.class,
+                "R_SECTION_BUILDER"
         );
 
-        UnwindOperation unwindStage = Aggregation.unwind("componentIds");
+        // Build a map of sections by ID
+        Map<String, Document> sectionMap = uniqueSections.stream()
+                .collect(Collectors.toMap(doc -> doc.getString("_id"), Function.identity()));
 
-        AddFieldsOperation addComponentId = Aggregation.addFields()
-                .addFieldWithValue("componentId", "$componentIds.handle")
-                .build();
+        // Reconstruct results with duplicates
+        List<Document> result = new ArrayList<>();
+        for (String id : sectionIds) {
+            Document section = sectionMap.get(id);
+            if (section != null) {
+                // Create a new document to avoid reference sharing
+                result.add(new Document(section));
+            }
+        }
 
-        LookupOperation lookupStage = Aggregation.lookup(
-                "R_COMPONENT", // from collection
-                "componentId",         // localField
-                "_id",                 // foreignField
-                "componentDetails"     // as
-        );
+        // Now process components for all unique sections
+        if (!uniqueSections.isEmpty()) {
+            MatchOperation matchStage = Aggregation.match(
+                    Criteria.where("_id").in(new ArrayList<>(sectionMap.keySet()))
+            );
 
-        UnwindOperation unwindComponentDetails = Aggregation.unwind("componentDetails");
+            // Rest of your aggregation pipeline...
+            UnwindOperation unwindStage = Aggregation.unwind("componentIds");
+            LookupOperation lookupStage = Aggregation.lookup(
+                    "R_COMPONENT",
+                    "componentIds.handle",
+                    "_id",
+                    "componentDetails"
+            );
+            UnwindOperation unwindComponentDetails = Aggregation.unwind("componentDetails");
+            GroupOperation groupStage = Aggregation.group("_id")
+                    .first("sectionLabel").as("sectionLabel")
+                    .push("componentDetails").as("components");
 
-        GroupOperation groupStage = Aggregation.group("sectionLabel")
-                .push("componentDetails").as("components");
+            Aggregation aggregation = Aggregation.newAggregation(
+                    matchStage,
+                    unwindStage,
+                    lookupStage,
+                    unwindComponentDetails,
+                    groupStage
+            );
 
-        AddFieldsOperation addSectionLabelBack = Aggregation.addFields()
-                .addFieldWithValue("sectionLabel", "$_id")
-                .build();
+            AggregationResults<Document> componentResults = mongoTemplate.aggregate(
+                    aggregation,
+                    "R_SECTION_BUILDER",
+                    Document.class
+            );
 
-        ProjectionOperation projectStage = Aggregation.project("sectionLabel", "components");
+            // Map components to sections
+            Map<String, List<Document>> componentsMap = componentResults.getMappedResults()
+                    .stream()
+                    .collect(Collectors.toMap(
+                            doc -> doc.getString("_id"),
+                            doc -> doc.getList("components", Document.class)
+                    ));
 
-        Aggregation aggregation = Aggregation.newAggregation(
-                matchStage,
-                unwindStage,
-                addComponentId,
-                lookupStage,
-                unwindComponentDetails,
-                groupStage,
-                addSectionLabelBack,
-                projectStage
-        );
+            // Merge components into final results
+            for (Document doc : result) {
+                List<Document> components = componentsMap.get(doc.getString("_id"));
+                doc.put("components", components != null ? components : Collections.emptyList());
+            }
+        }
 
-        AggregationResults<Document> results = mongoTemplate.aggregate(
-                aggregation,
-                "R_SECTION_BUILDER",
-                Document.class
-        );
-
-        return results.getMappedResults();
+        return result;
     }
 }
