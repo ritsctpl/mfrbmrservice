@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface WorkFlowStatesMasterRepository extends MongoRepository<WorkFlowStatesMaster, String> {
 
-Boolean existBySiteAndHandleAndActiveEquals(String site, String name, int active);
+Boolean existsBySiteAndHandleAndActiveEquals(String site, String name, int active);
 WorkFlowStatesMaster findBySiteAndHandleAndActiveEquals(String site, String handle, int active);
 
 List<WorkFlowStatesMaster> findBySiteAndNameContainsIgnoreCaseAndActiveEquals(String site, String name, int active);

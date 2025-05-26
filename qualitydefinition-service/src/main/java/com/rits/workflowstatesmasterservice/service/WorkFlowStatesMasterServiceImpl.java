@@ -47,7 +47,7 @@ public class WorkFlowStatesMasterServiceImpl implements WorkFlowStatesMasterServ
     @Override
     public MessageModel createWorkFlow(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception
     {
-        Boolean   isExist =  workFlowStatesMasterRepository.existBySiteAndHandleAndActiveEquals(workFlowStatesMasterRequest.getSite(), "WorkFlowBO:" + workFlowStatesMasterRequest.getSite() + "," + workFlowStatesMasterRequest.getName(), 1);
+        Boolean   isExist =  workFlowStatesMasterRepository.existsBySiteAndHandleAndActiveEquals(workFlowStatesMasterRequest.getSite(), "WorkFlowBO:" + workFlowStatesMasterRequest.getSite() + "," + workFlowStatesMasterRequest.getName(), 1);
         if(isExist)
         {
           throw new Exception(workFlowStatesMasterRequest.getName() +" already exist");
@@ -59,7 +59,7 @@ public class WorkFlowStatesMasterServiceImpl implements WorkFlowStatesMasterServ
     @Override
     public MessageModel updateWorkFlow(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception
     {
-        Boolean   isExist =  workFlowStatesMasterRepository.existBySiteAndHandleAndActiveEquals(workFlowStatesMasterRequest.getSite(), "WorkFlowBO:" + workFlowStatesMasterRequest.getSite() + "," + workFlowStatesMasterRequest.getName(), 1);
+        Boolean   isExist =  workFlowStatesMasterRepository.existsBySiteAndHandleAndActiveEquals(workFlowStatesMasterRequest.getSite(), "WorkFlowBO:" + workFlowStatesMasterRequest.getSite() + "," + workFlowStatesMasterRequest.getName(), 1);
         if(!isExist)
         {
           throw new Exception(workFlowStatesMasterRequest.getName() + " does not exist");
@@ -72,7 +72,7 @@ public class WorkFlowStatesMasterServiceImpl implements WorkFlowStatesMasterServ
     @Override
     public WorkFlowStatesMaster retrieveWorkFlowStates(WorkFlowStatesMasterRequest workFlowStatesRequest) throws Exception
     {
-        Boolean   isExist =  workFlowStatesMasterRepository.existBySiteAndHandleAndActiveEquals(workFlowStatesRequest.getSite(), "WorkFlowBO:" + workFlowStatesRequest.getSite() + "," + workFlowStatesRequest.getName(), 1);
+        Boolean   isExist =  workFlowStatesMasterRepository.existsBySiteAndHandleAndActiveEquals(workFlowStatesRequest.getSite(), "WorkFlowBO:" + workFlowStatesRequest.getSite() + "," + workFlowStatesRequest.getName(), 1);
         if(!isExist)
         {
           throw new Exception(workFlowStatesRequest.getName() + " does not exist");
@@ -97,7 +97,7 @@ public class WorkFlowStatesMasterServiceImpl implements WorkFlowStatesMasterServ
 
     @Override
     public MessageModel deleteWorkFlow(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
-        Boolean isExist = workFlowStatesMasterRepository.existBySiteAndHandleAndActiveEquals(workFlowStatesMasterRequest.getSite(), "WorkFlowBO:" + workFlowStatesMasterRequest.getSite() + "," + workFlowStatesMasterRequest.getName(), 1);
+        Boolean isExist = workFlowStatesMasterRepository.existsBySiteAndHandleAndActiveEquals(workFlowStatesMasterRequest.getSite(), "WorkFlowBO:" + workFlowStatesMasterRequest.getSite() + "," + workFlowStatesMasterRequest.getName(), 1);
         if (!isExist) {
             throw new Exception(workFlowStatesMasterRequest.getName() + " does not exist");
         }
