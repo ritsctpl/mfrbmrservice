@@ -21,6 +21,10 @@ public class WorkFlowStatesMasterServiceImpl implements WorkFlowStatesMasterServ
     {
      if(isRecordExist)
      {
+        if(workFlowStatesMaster.getDescription() == null & workFlowStatesMasterRequest.getDescription() == null)
+        {
+            workFlowStatesMasterRequest.setDescription(workFlowStatesMaster.getName());
+        }
         workFlowStatesMaster.setDescription(workFlowStatesMasterRequest.getDescription());
         workFlowStatesMaster.setAppliesTo(workFlowStatesMasterRequest.getAppliesTo());
         workFlowStatesMaster.setEditableFields(workFlowStatesMasterRequest.getEditableFields());
@@ -30,6 +34,10 @@ public class WorkFlowStatesMasterServiceImpl implements WorkFlowStatesMasterServ
         workFlowStatesMaster.setModifiedDateTime(LocalDateTime.now());
         workFlowStatesMaster.setIsActive(workFlowStatesMasterRequest.getIsActive());
      }else{
+         if(workFlowStatesMasterRequest.getDescription() == null)
+         {
+             workFlowStatesMasterRequest.setDescription(workFlowStatesMaster.getName());
+         }
          workFlowStatesMaster = WorkFlowStatesMaster.builder()
                  .handle("WorkFlowBO:" + workFlowStatesMasterRequest.getSite() + "," + workFlowStatesMasterRequest.getName())
                  .site(workFlowStatesMasterRequest.getSite())
@@ -90,7 +98,7 @@ public class WorkFlowStatesMasterServiceImpl implements WorkFlowStatesMasterServ
 
     @Override
     public List<WorkFlowStatesResponse> retrieveTop50WorkFlowStates(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
-        return workFlowStatesMasterRepository.findTop50BySiteAndActiveEquals(workFlowStatesMasterRequest.getSite(), 1);
+        return workFlowStatesMasterRepository.findTop50BySiteAndActiveEqualsOrderByCreatedDateTimeDesc(workFlowStatesMasterRequest.getSite(), 1);
     }
 
     @Override

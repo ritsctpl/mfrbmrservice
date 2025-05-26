@@ -13,7 +13,7 @@ WorkFlowStatesMaster findBySiteAndHandleAndActiveEquals(String site, String hand
 
 List<WorkFlowStatesResponse> findBySiteAndNameContainsIgnoreCaseAndActiveEquals(String site, String name, int active);
 
-List<WorkFlowStatesResponse> findTop50BySiteAndActiveEquals(String site, int active);
+List<WorkFlowStatesResponse> findTop50BySiteAndActiveEqualsOrderByCreatedDateTimeDesc(String site, int active);
 
 List<WorkFlowStatesResponse> findBySiteAndIsEndAndActiveEquals(String site, Boolean isEnd, int active);
 
