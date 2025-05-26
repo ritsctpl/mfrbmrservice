@@ -1,6 +1,7 @@
 package com.rits.workflowstatesmasterservice.service;
 
 import com.rits.workflowstatesmasterservice.dto.WorkFlowStatesMasterRequest;
+import com.rits.workflowstatesmasterservice.dto.WorkFlowStatesResponse;
 import com.rits.workflowstatesmasterservice.model.MessageDetails;
 import com.rits.workflowstatesmasterservice.model.MessageModel;
 import com.rits.workflowstatesmasterservice.model.WorkFlowStatesMaster;
@@ -27,6 +28,7 @@ public class WorkFlowStatesMasterServiceImpl implements WorkFlowStatesMasterServ
         workFlowStatesMaster.setEntityType(workFlowStatesMasterRequest.getEntityType());
         workFlowStatesMaster.setModifiedBy(workFlowStatesMasterRequest.getUserId());
         workFlowStatesMaster.setModifiedDateTime(LocalDateTime.now());
+        workFlowStatesMaster.setIsActive(workFlowStatesMasterRequest.getIsActive());
      }else{
          workFlowStatesMaster = WorkFlowStatesMaster.builder()
                  .handle("WorkFlowBO:" + workFlowStatesMasterRequest.getSite() + "," + workFlowStatesMasterRequest.getName())
@@ -36,6 +38,7 @@ public class WorkFlowStatesMasterServiceImpl implements WorkFlowStatesMasterServ
                  .appliesTo(workFlowStatesMasterRequest.getAppliesTo())
                  .editableFields(workFlowStatesMasterRequest.getEditableFields())
                  .isEnd(workFlowStatesMasterRequest.getIsEnd())
+                 .isActive(workFlowStatesMasterRequest.getIsActive())
                  .entityType(workFlowStatesMasterRequest.getEntityType())
                  .createdBy(workFlowStatesMasterRequest.getUserId())
                  .createdDateTime(LocalDateTime.now())
@@ -81,17 +84,17 @@ public class WorkFlowStatesMasterServiceImpl implements WorkFlowStatesMasterServ
     }
 
     @Override
-    public List<WorkFlowStatesMaster> retrieveAllWorkFlowStates(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+    public List<WorkFlowStatesResponse> retrieveAllWorkFlowStates(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
         return workFlowStatesMasterRepository.findBySiteAndNameContainsIgnoreCaseAndActiveEquals(workFlowStatesMasterRequest.getSite(), workFlowStatesMasterRequest.getName(), 1);
     }
 
     @Override
-    public List<WorkFlowStatesMaster> retrieveTop50WorkFlowStates(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+    public List<WorkFlowStatesResponse> retrieveTop50WorkFlowStates(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
         return workFlowStatesMasterRepository.findTop50BySiteAndActiveEquals(workFlowStatesMasterRequest.getSite(), 1);
     }
 
     @Override
-    public List<WorkFlowStatesMaster> retrieveWorkFlowStatesByIsEnd(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+    public List<WorkFlowStatesResponse> retrieveWorkFlowStatesByIsEnd(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
         return workFlowStatesMasterRepository.findBySiteAndIsEndAndActiveEquals(workFlowStatesMasterRequest.getSite(), workFlowStatesMasterRequest.getIsEnd(), 1);
     }
 

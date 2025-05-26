@@ -23,6 +23,7 @@ public class WorkFlowStatesMaster {
     private List editableFields;
     private String entityType;
     private Boolean isEnd;
+    private Boolean isActive;
     private int active;
     private String createdBy;
     private String modifiedBy;

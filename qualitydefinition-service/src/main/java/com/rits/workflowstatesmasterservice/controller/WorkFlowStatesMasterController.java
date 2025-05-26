@@ -1,6 +1,7 @@
 package com.rits.workflowstatesmasterservice.controller;
 
 import com.rits.workflowstatesmasterservice.dto.WorkFlowStatesMasterRequest;
+import com.rits.workflowstatesmasterservice.dto.WorkFlowStatesResponse;
 import com.rits.workflowstatesmasterservice.exception.WorkFlowStatesMasterException;
 import com.rits.workflowstatesmasterservice.model.WorkFlowStatesMaster;
 import com.rits.workflowstatesmasterservice.service.WorkFlowStatesMasterServiceImpl;
@@ -56,7 +57,7 @@ private final WorkFlowStatesMasterServiceImpl workFlowStatesMasterService;
 
     @PostMapping("/getAllWorkFlowStatesMaster")
     @ResponseStatus(HttpStatus.OK)
-    public List<WorkFlowStatesMaster> getAllWorkFlowStatesMaster(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+    public List<WorkFlowStatesResponse> getAllWorkFlowStatesMaster(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
         try {
             return workFlowStatesMasterService.retrieveAllWorkFlowStates(workFlowStatesMasterRequest);
         } catch (WorkFlowStatesMasterException e) {
@@ -68,7 +69,7 @@ private final WorkFlowStatesMasterServiceImpl workFlowStatesMasterService;
 
     @PostMapping("/getTop50WorkFlowStatesMaster")
     @ResponseStatus(HttpStatus.OK)
-    public List<WorkFlowStatesMaster> getTop50WorkFlowStatesMaster(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+    public List<WorkFlowStatesResponse> getTop50WorkFlowStatesMaster(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
         try {
             return workFlowStatesMasterService.retrieveTop50WorkFlowStates(workFlowStatesMasterRequest);
         } catch (WorkFlowStatesMasterException e) {
@@ -80,7 +81,7 @@ private final WorkFlowStatesMasterServiceImpl workFlowStatesMasterService;
 
     @PostMapping("/getAllIsEnd")
     @ResponseStatus(HttpStatus.OK)
-    public List<WorkFlowStatesMaster> getAllIsEnd(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+    public List<WorkFlowStatesResponse> getAllIsEnd(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
         try {
             return workFlowStatesMasterService.retrieveWorkFlowStatesByIsEnd(workFlowStatesMasterRequest);
         } catch (WorkFlowStatesMasterException e) {

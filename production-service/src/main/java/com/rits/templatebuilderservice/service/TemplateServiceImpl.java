@@ -225,37 +225,37 @@ public class TemplateServiceImpl implements TemplateService{
                         .collect(Collectors.toList()).get(0);
                 finalList.add(templateDocument);
             } else if (list.getHandle().contains("SectionBO:")) {
-                Map<String, List<Integer>> orderMap = new HashMap<>();
-                for (int i = 0; i < groupIds.size(); i++) {
-                    String id = groupIds.get(i);
-                    orderMap.computeIfAbsent(id, k -> new ArrayList<>()).add(i);
-                }
-
-                // First get all unique sections
-                List<Document> uniqueSections = mongoTemplate.find(
-                        Query.query(Criteria.where("_id").in(new ArrayList<>(new LinkedHashSet<>(groupIds)))),
-                        Document.class,
-                        "R_SECTION_BUILDER"
-                );
-
-                // Build a map of sections by ID
-                Map<String, Document> sectionMap = uniqueSections.stream()
-                        .collect(Collectors.toMap(doc -> doc.getString("_id"), Function.identity()));
-
-                // Reconstruct results with duplicates
-                List<Document> result = new ArrayList<>();
-                for (String id : groupIds) {
-                    Document section = sectionMap.get(id);
-                    if (section != null) {
-                        // Create a new document to avoid reference sharing
-                        result.add(new Document(section));
-                    }
-                }
-
-                // Now process components for all unique sections
-                if (!uniqueSections.isEmpty()) {
+////                Map<String, List<Integer>> orderMap = new HashMap<>();
+////                for (int i = 0; i < groupIds.size(); i++) {
+////                    String id = groupIds.get(i);
+////                    orderMap.computeIfAbsent(id, k -> new ArrayList<>()).add(i);
+////                }
+//
+//                // First get all unique sections
+//                List<Document> uniqueSections = mongoTemplate.find(
+//                        Query.query(Criteria.where("_id").in(new ArrayList<>(new LinkedHashSet<>(groupIds)))),
+//                        Document.class,
+//                        "R_SECTION_BUILDER"
+//                );
+//
+//                // Build a map of sections by ID
+//                Map<String, Document> sectionMap = uniqueSections.stream()
+//                        .collect(Collectors.toMap(doc -> doc.getString("_id"), Function.identity()));
+//
+//                // Reconstruct results with duplicates
+//                List<Document> result = new ArrayList<>();
+//                for (String id : groupIds) {
+//                    Document section = sectionMap.get(id);
+//                    if (section != null) {
+//                        // Create a new document to avoid reference sharing
+//                        result.add(new Document(section));
+//                    }
+//                }
+//
+//                // Now process components for all unique sections
+//                if (!uniqueSections.isEmpty()) {
                     MatchOperation matchStage = Aggregation.match(
-                            Criteria.where("_id").in(new ArrayList<>(sectionMap.keySet()))
+                            Criteria.where("_id").in(list.getHandle())
                     );
 
                     // Rest of your aggregation pipeline...
@@ -279,27 +279,27 @@ public class TemplateServiceImpl implements TemplateService{
                             groupStage
                     );
 
-                    AggregationResults<Document> componentResults = mongoTemplate.aggregate(
+                    Document componentResults = mongoTemplate.aggregate(
                             aggregation,
                             "R_SECTION_BUILDER",
                             Document.class
-                    );
+                    ).getMappedResults().get(0);
 
                     // Map components to sections
-                    Map<String, List<Document>> componentsMap = componentResults.getMappedResults()
-                            .stream()
-                            .collect(Collectors.toMap(
-                                    doc -> doc.getString("_id"),
-                                    doc -> doc.getList("components", Document.class)
-                            ));
-
-                    // Merge components into final results
-                    for (Document doc : result) {
-                        List<Document> components = componentsMap.get(doc.getString("_id"));
-                        doc.put("components", components != null ? components : Collections.emptyList());
-                    }
-                }
-                finalList.add(result.get(0));
+//                    Map<String, List<Document>> componentsMap = componentResults.getMappedResults()
+//                            .stream()
+//                            .collect(Collectors.toMap(
+//                                    doc -> doc.getString("_id"),
+//                                    doc -> doc.getList("components", Document.class)
+//                            ));
+//
+//                    // Merge components into final results
+//                    for (Document doc : result) {
+//                        List<Document> components = componentsMap.get(doc.getString("_id"));
+//                        doc.put("components", components != null ? components : Collections.emptyList());
+//                    }
+//                }
+                finalList.add(componentResults);
             } else if (list.getHandle().contains("ComponentBO:")) {
                 MatchOperation matchStage = Aggregation.match(
                         Criteria.where("_id").in(list.getHandle())

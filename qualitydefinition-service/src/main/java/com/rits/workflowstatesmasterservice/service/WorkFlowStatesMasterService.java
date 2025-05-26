@@ -1,6 +1,7 @@
 package com.rits.workflowstatesmasterservice.service;
 
 import com.rits.workflowstatesmasterservice.dto.WorkFlowStatesMasterRequest;
+import com.rits.workflowstatesmasterservice.dto.WorkFlowStatesResponse;
 import com.rits.workflowstatesmasterservice.model.MessageModel;
 import com.rits.workflowstatesmasterservice.model.WorkFlowStatesMaster;
 
@@ -13,11 +14,11 @@ public interface WorkFlowStatesMasterService {
 
     WorkFlowStatesMaster retrieveWorkFlowStates(WorkFlowStatesMasterRequest workFlowStatesMasterRequest)throws Exception;
 
-    List<WorkFlowStatesMaster> retrieveAllWorkFlowStates(WorkFlowStatesMasterRequest workFlowStatesMasterRequest)throws Exception;
+    List<WorkFlowStatesResponse> retrieveAllWorkFlowStates(WorkFlowStatesMasterRequest workFlowStatesMasterRequest)throws Exception;
 
-    List<WorkFlowStatesMaster> retrieveTop50WorkFlowStates(WorkFlowStatesMasterRequest workFlowStatesMasterRequest)throws Exception;
+    List<WorkFlowStatesResponse> retrieveTop50WorkFlowStates(WorkFlowStatesMasterRequest workFlowStatesMasterRequest)throws Exception;
 
-    List<WorkFlowStatesMaster> retrieveWorkFlowStatesByIsEnd(WorkFlowStatesMasterRequest workFlowStatesMasterRequest)throws Exception;
+    List<WorkFlowStatesResponse> retrieveWorkFlowStatesByIsEnd(WorkFlowStatesMasterRequest workFlowStatesMasterRequest)throws Exception;
 
     MessageModel deleteWorkFlow(WorkFlowStatesMasterRequest workFlowStatesMasterRequest)throws Exception;
 }
