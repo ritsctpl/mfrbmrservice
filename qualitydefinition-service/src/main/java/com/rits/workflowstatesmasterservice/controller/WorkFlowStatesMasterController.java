@@ -7,10 +7,7 @@ import com.rits.workflowstatesmasterservice.service.WorkFlowStatesMasterServiceI
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +19,7 @@ private final WorkFlowStatesMasterServiceImpl workFlowStatesMasterService;
 
     @PostMapping("/createWorkFlowStatesMaster")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> createWorkFlowStatesMaster(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+    public ResponseEntity<?> createWorkFlowStatesMaster(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
         try {
             return ResponseEntity.ok(workFlowStatesMasterService.createWorkFlow(workFlowStatesMasterRequest));
         }catch (WorkFlowStatesMasterException e) {
@@ -35,7 +32,7 @@ private final WorkFlowStatesMasterServiceImpl workFlowStatesMasterService;
 
     @PostMapping("/updateWorkFlowStatesMaster")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> updateWorkFlowStatesMaster(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+    public ResponseEntity<?> updateWorkFlowStatesMaster(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
         try {
             return ResponseEntity.ok(workFlowStatesMasterService.updateWorkFlow(workFlowStatesMasterRequest));
         } catch (WorkFlowStatesMasterException e) {
@@ -47,7 +44,7 @@ private final WorkFlowStatesMasterServiceImpl workFlowStatesMasterService;
 
     @PostMapping("/getWorkFlowStatesMaster")
     @ResponseStatus(HttpStatus.OK)
-    public WorkFlowStatesMaster getWorkFlowStatesMaster(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+    public WorkFlowStatesMaster getWorkFlowStatesMaster(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
         try {
             return workFlowStatesMasterService.retrieveWorkFlowStates(workFlowStatesMasterRequest);
         } catch (WorkFlowStatesMasterException e) {
@@ -59,7 +56,7 @@ private final WorkFlowStatesMasterServiceImpl workFlowStatesMasterService;
 
     @PostMapping("/getAllWorkFlowStatesMaster")
     @ResponseStatus(HttpStatus.OK)
-    public List<WorkFlowStatesMaster> getAllWorkFlowStatesMaster(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+    public List<WorkFlowStatesMaster> getAllWorkFlowStatesMaster(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
         try {
             return workFlowStatesMasterService.retrieveAllWorkFlowStates(workFlowStatesMasterRequest);
         } catch (WorkFlowStatesMasterException e) {
@@ -71,7 +68,7 @@ private final WorkFlowStatesMasterServiceImpl workFlowStatesMasterService;
 
     @PostMapping("/getTop50WorkFlowStatesMaster")
     @ResponseStatus(HttpStatus.OK)
-    public List<WorkFlowStatesMaster> getTop50WorkFlowStatesMaster(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+    public List<WorkFlowStatesMaster> getTop50WorkFlowStatesMaster(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
         try {
             return workFlowStatesMasterService.retrieveTop50WorkFlowStates(workFlowStatesMasterRequest);
         } catch (WorkFlowStatesMasterException e) {
@@ -83,7 +80,7 @@ private final WorkFlowStatesMasterServiceImpl workFlowStatesMasterService;
 
     @PostMapping("/getAllIsEnd")
     @ResponseStatus(HttpStatus.OK)
-    public List<WorkFlowStatesMaster> getAllIsEnd(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+    public List<WorkFlowStatesMaster> getAllIsEnd(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
         try {
             return workFlowStatesMasterService.retrieveWorkFlowStatesByIsEnd(workFlowStatesMasterRequest);
         } catch (WorkFlowStatesMasterException e) {
@@ -95,7 +92,7 @@ private final WorkFlowStatesMasterServiceImpl workFlowStatesMasterService;
 
     @PostMapping("/deleteWorkFlowStatesMaster")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> deleteWorkFlowStatesMaster(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+    public ResponseEntity<?> deleteWorkFlowStatesMaster(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
         try {
             return ResponseEntity.ok(workFlowStatesMasterService.deleteWorkFlow(workFlowStatesMasterRequest));
         } catch (WorkFlowStatesMasterException e) {
