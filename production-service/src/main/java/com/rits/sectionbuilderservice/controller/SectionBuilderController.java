@@ -3,6 +3,7 @@ package com.rits.sectionbuilderservice.controller;
 
 import com.rits.sectionbuilderservice.dto.PreviewResponse;
 import com.rits.sectionbuilderservice.dto.SectionBuilderRequest;
+import com.rits.sectionbuilderservice.dto.SectionResponse;
 import com.rits.sectionbuilderservice.exception.SectionBuilderException;
 import com.rits.sectionbuilderservice.model.MessageModel;
 import com.rits.sectionbuilderservice.model.SectionBuilder;
@@ -126,7 +127,7 @@ public class SectionBuilderController {
     }
     //
     @PostMapping("getAllSection")
-    public List<SectionBuilder> retrieveAll(@RequestBody SectionBuilderRequest request) throws Exception {
+    public List<SectionResponse> retrieveAll(@RequestBody SectionBuilderRequest request) throws Exception {
         if(request.getSite() != null && !request.getSite().isEmpty()) {
             try {
                 return sectionBuilderService.retrieveAll(request.getSite(), request.getSectionLabel());
@@ -140,7 +141,7 @@ public class SectionBuilderController {
     }
 
     @PostMapping("getTop50")
-    public List<SectionBuilder> retrieveTop50(@RequestBody SectionBuilderRequest request) throws Exception {
+    public List<SectionResponse> retrieveTop50(@RequestBody SectionBuilderRequest request) throws Exception {
         if(request.getSite() != null && !request.getSite().isEmpty()) {
             try {
                 return sectionBuilderService.retrieveTop50(request.getSite());

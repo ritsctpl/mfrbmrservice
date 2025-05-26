@@ -2,10 +2,12 @@ package com.rits.sectionbuilderservice.service;
 
 import com.rits.sectionbuilderservice.dto.PreviewResponse;
 import com.rits.sectionbuilderservice.dto.SectionBuilderRequest;
+import com.rits.sectionbuilderservice.dto.SectionResponse;
 import com.rits.sectionbuilderservice.exception.SectionBuilderException;
 import com.rits.sectionbuilderservice.model.MessageDetails;
 import com.rits.sectionbuilderservice.model.MessageModel;
 import com.rits.sectionbuilderservice.model.SectionBuilder;
+
 import com.rits.sectionbuilderservice.repository.SectionBuilderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
@@ -95,9 +97,9 @@ public class SectionBuilderServiceImpl implements SectionBuilderService {
         return MessageModel.builder().message_details(new MessageDetails(deleteMessage, "S")).build();
     }
     @Override
-    public List<SectionBuilder> retrieveAll(String site, String sectionLabel) {
+    public List<SectionResponse> retrieveAll(String site, String sectionLabel) {
 
-        List<SectionBuilder> existingLineClearanceList = sectionBuilderRepository.findBySiteAndSectionLabelContainingIgnoreCaseAndActiveEquals(site, sectionLabel,1);
+        List<SectionResponse> existingLineClearanceList = sectionBuilderRepository.findBySiteAndSectionLabelContainingIgnoreCaseAndActiveEquals(site, sectionLabel,1);
         return existingLineClearanceList;
     }
 
@@ -113,8 +115,8 @@ public class SectionBuilderServiceImpl implements SectionBuilderService {
     }
 
     @Override
-    public List<SectionBuilder> retrieveTop50(String site) {
-        List<SectionBuilder> existingSectionBuilderList = sectionBuilderRepository.findTop50BySiteAndActive(site, 1);
+    public List<SectionResponse> retrieveTop50(String site) {
+        List<SectionResponse> existingSectionBuilderList = sectionBuilderRepository.findTop50BySiteAndActive(site, 1);
         return existingSectionBuilderList;
     }
 
