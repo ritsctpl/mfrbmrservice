@@ -103,4 +103,28 @@ private final WorkFlowStatesMasterServiceImpl workFlowStatesMasterService;
         }
     }
 
+    @PostMapping("/deactivate")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<?> deactivateRecord(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+        try {
+            return ResponseEntity.ok(workFlowStatesMasterService.deactivateRecord(workFlowStatesMasterRequest));
+        } catch (WorkFlowStatesMasterException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @PostMapping("/reactivate")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<?> reactivateRecord(@RequestBody WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+        try {
+            return ResponseEntity.ok(workFlowStatesMasterService.reactivateRecord(workFlowStatesMasterRequest));
+        } catch (WorkFlowStatesMasterException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

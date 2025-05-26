@@ -108,4 +108,26 @@ public class WorkFlowStatesMasterServiceImpl implements WorkFlowStatesMasterServ
         workFlowStatesMaster.setActive(0);
         return MessageModel.builder().message_details(new MessageDetails(workFlowStatesMasterRequest.getName() + " Deleted SuccessFully", "S")).response(workFlowStatesMasterRepository.save(workFlowStatesMaster)).build();
     }
+
+    @Override
+    public MessageModel deactivateRecord(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+        Boolean isExist = workFlowStatesMasterRepository.existsBySiteAndHandleAndActiveEquals(workFlowStatesMasterRequest.getSite(), "WorkFlowBO:" + workFlowStatesMasterRequest.getSite() + "," + workFlowStatesMasterRequest.getName(), 1);
+        if (!isExist) {
+            throw new Exception(workFlowStatesMasterRequest.getName() + " does not exist");
+        }
+        WorkFlowStatesMaster workFlowStatesMaster = workFlowStatesMasterRepository.findBySiteAndHandleAndActiveEquals(workFlowStatesMasterRequest.getSite(), "WorkFlowBO:" + workFlowStatesMasterRequest.getSite() + "," + workFlowStatesMasterRequest.getName(), 1);
+        workFlowStatesMaster.setIsActive(false);
+        return MessageModel.builder().message_details(new MessageDetails(workFlowStatesMasterRequest.getName() + " Deactivated SuccessFully", "S")).response(workFlowStatesMasterRepository.save(workFlowStatesMaster)).build();
+    }
+
+    @Override
+    public MessageModel reactivateRecord(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception {
+        Boolean isExist = workFlowStatesMasterRepository.existsBySiteAndHandleAndActiveEquals(workFlowStatesMasterRequest.getSite(), "WorkFlowBO:" + workFlowStatesMasterRequest.getSite() + "," + workFlowStatesMasterRequest.getName(), 1);
+        if (!isExist) {
+            throw new Exception(workFlowStatesMasterRequest.getName() + " does not exist");
+        }
+        WorkFlowStatesMaster workFlowStatesMaster = workFlowStatesMasterRepository.findBySiteAndHandleAndActiveEquals(workFlowStatesMasterRequest.getSite(), "WorkFlowBO:" + workFlowStatesMasterRequest.getSite() + "," + workFlowStatesMasterRequest.getName(), 1);
+        workFlowStatesMaster.setIsActive(true);
+        return MessageModel.builder().message_details(new MessageDetails(workFlowStatesMasterRequest.getName() + " Reactivated SuccessFully", "S")).response(workFlowStatesMasterRepository.save(workFlowStatesMaster)).build();
+    }
 }

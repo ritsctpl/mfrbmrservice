@@ -21,4 +21,8 @@ public interface WorkFlowStatesMasterService {
     List<WorkFlowStatesResponse> retrieveWorkFlowStatesByIsEnd(WorkFlowStatesMasterRequest workFlowStatesMasterRequest)throws Exception;
 
     MessageModel deleteWorkFlow(WorkFlowStatesMasterRequest workFlowStatesMasterRequest)throws Exception;
+
+    MessageModel deactivateRecord(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception;
+
+    MessageModel reactivateRecord(WorkFlowStatesMasterRequest workFlowStatesMasterRequest) throws Exception;
 }
