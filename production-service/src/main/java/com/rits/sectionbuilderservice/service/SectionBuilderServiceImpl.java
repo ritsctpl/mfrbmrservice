@@ -49,6 +49,8 @@ public class SectionBuilderServiceImpl implements SectionBuilderService {
         sectionBuilder.setCreatedBy(request.getUserId());
         sectionBuilder.setCreatedDateTime(LocalDateTime.now());
         sectionBuilder.setModifiedBy(request.getUserId());
+        sectionBuilder.setStructureType(request.getStructureType());
+        sectionBuilder.setStyle(request.getStyle());
         sectionBuilder.setModifiedDateTime(LocalDateTime.now());
 
 
@@ -72,6 +74,8 @@ public class SectionBuilderServiceImpl implements SectionBuilderService {
         sectionBuilder.setCreatedBy(existingSectionBuilder.getCreatedBy());
         sectionBuilder.setCreatedDateTime(existingSectionBuilder.getCreatedDateTime());
         sectionBuilder.setModifiedBy(request.getUserId());
+        sectionBuilder.setStructureType(request.getStructureType());
+        sectionBuilder.setStyle(request.getStyle());
         sectionBuilder.setModifiedDateTime(LocalDateTime.now());
 
         sectionBuilderRepository.save(sectionBuilder);

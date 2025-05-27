@@ -1,5 +1,6 @@
 package com.rits.sectionbuilderservice.model;
 
+import com.rits.sectionbuilderservice.dto.Style;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,7 +26,8 @@ public class SectionBuilder {
     private List<ComponentBuilder> componentIds;
     private String userId;
     private Integer active;
-
+    private String structureType;
+    private Style style;
     private LocalDateTime createdDateTime;
     private LocalDateTime modifiedDateTime;
     private String createdBy;

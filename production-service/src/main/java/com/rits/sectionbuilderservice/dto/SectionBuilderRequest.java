@@ -16,6 +16,8 @@ public class SectionBuilderRequest {
     private String sectionLabel;
     private String instructions;
     private LocalDateTime effectiveDateTime;
+    private String structureType;
+    private Style style;
     private List<ComponentBuilder> componentIds;
     private String userId;
     private Integer active;
