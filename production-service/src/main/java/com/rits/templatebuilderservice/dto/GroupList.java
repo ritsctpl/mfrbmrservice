@@ -10,4 +10,5 @@ import lombok.*;
 public class GroupList {
     private String handle;
     private String label;
+    private Config config;
 }
