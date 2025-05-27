@@ -269,6 +269,15 @@ public class TemplateServiceImpl implements TemplateService{
                     UnwindOperation unwindComponentDetails = Aggregation.unwind("componentDetails");
                     GroupOperation groupStage = Aggregation.group("_id")
                             .first("sectionLabel").as("sectionLabel")
+                            .first("handle").as("handle")
+                            .first("instructions").as("instructions")
+                            .first("effectiveDateTime").as("affectiveDateTime")
+                            .first("style").as("style")
+                            .first("createdDateTime").as("createdDateTime")
+                            .first("modifiedDateTime").as("modifiedDateTime")
+                            .first("userId").as("userId")
+                            .first("active").as("active")
+                            .first("structureType").as("structureType")
                             .push("componentDetails").as("components");
 
                     Aggregation aggregation = Aggregation.newAggregation(
