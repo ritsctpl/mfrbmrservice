@@ -12,4 +12,5 @@ private Boolean marginsEnabled;
 private String textAlignment;
 private String tableAlignment;
 private int splitColumns;
+private Boolean showHeading;
 }
