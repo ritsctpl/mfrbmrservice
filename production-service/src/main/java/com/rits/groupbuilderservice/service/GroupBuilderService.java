@@ -18,7 +18,7 @@ public interface GroupBuilderService {
 
     GroupBuilder retrieve(GroupBuilderRequest request);
 
-    List<GroupBuilder> retrieveAll(String site);
+    List<GroupBuilder> retrieveAll(String site, String groupLabel);
     List<GroupBuilder> retrieveTop50(String site);
     boolean isGroupBuilderExist(String site, String groupLabel);
 

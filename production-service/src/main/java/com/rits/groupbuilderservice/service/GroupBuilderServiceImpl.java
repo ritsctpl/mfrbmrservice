@@ -99,9 +99,9 @@ public class GroupBuilderServiceImpl implements GroupBuilderService {
         return MessageModel.builder().message_details(new MessageDetails(deleteMessage, "S")).build();
     }
     @Override
-    public List<GroupBuilder> retrieveAll(String site) {
+    public List<GroupBuilder> retrieveAll(String site, String groupLabel) {
 
-        List<GroupBuilder> existingGroupBuilderList = groupBuilderRepository.findBySiteAndActive(site, 1);
+        List<GroupBuilder> existingGroupBuilderList = groupBuilderRepository.findBySiteAndGroupLabelContainingIgnoreCaseAndActiveEquals(site, groupLabel,1);
         return existingGroupBuilderList;
     }
 

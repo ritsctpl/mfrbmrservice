@@ -129,7 +129,7 @@ public class GroupBuilderController {
     public List<GroupBuilder> retrieveAll(@RequestBody GroupBuilderRequest request) throws Exception {
         if(request.getSite() != null && !request.getSite().isEmpty()) {
             try {
-                return groupBuilderService.retrieveAll(request.getSite());
+                return groupBuilderService.retrieveAll(request.getSite(),request.getGroupLabel());
             } catch (GroupBuilderException groupBuilderException) {
                 throw groupBuilderException;
             } catch (Exception e) {
