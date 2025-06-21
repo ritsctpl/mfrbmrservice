@@ -41,6 +41,8 @@ public class AggregationServiceImpl implements AggregationService {
 
     @Value("${insights.enabled:false}")
     private boolean isInsightsEnabled;
+    @Value("${performance.useLiveMaterialCycleTimes:false}")
+    private boolean isLiveEnabled;
 
 
     // URLs from configuration
@@ -1042,7 +1044,7 @@ public class AggregationServiceImpl implements AggregationService {
                 totalDowntime += result.getTotalDowntime();
                 totalActualTime += result.getActualTime();
                 totalActualProductionTime += result.getActualProductionTime();*/
-if(isInsightsEnabled){
+if(isLiveEnabled){
     totalPlannedProductionTime +=result.getPlannedProductionTime();
     totalBreakTime += result.getBreakTime();
     totalDowntime += result.getTotalDowntime();
