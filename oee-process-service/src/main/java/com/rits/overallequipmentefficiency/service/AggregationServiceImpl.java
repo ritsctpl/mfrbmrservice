@@ -1042,12 +1042,20 @@ public class AggregationServiceImpl implements AggregationService {
                 totalDowntime += result.getTotalDowntime();
                 totalActualTime += result.getActualTime();
                 totalActualProductionTime += result.getActualProductionTime();*/
-
-                totalPlannedProductionTime = Math.min(totalPlannedProductionTime, result.getPlannedProductionTime());
-                totalBreakTime = Math.max(totalBreakTime, result.getBreakTime());
-                totalDowntime = Math.max(totalDowntime, result.getTotalDowntime());
-                totalActualTime = Math.min(totalActualTime, result.getActualTime());
-                totalActualProductionTime = Math.min(totalActualProductionTime, result.getActualProductionTime());
+if(isInsightsEnabled){
+    totalPlannedProductionTime +=result.getPlannedProductionTime();
+    totalBreakTime += result.getBreakTime();
+    totalDowntime += result.getTotalDowntime();
+    totalActualTime +=result.getActualTime();
+    totalActualProductionTime +=result.getActualProductionTime();
+}
+              else {
+    totalPlannedProductionTime = Math.min(totalPlannedProductionTime, result.getPlannedProductionTime());
+    totalBreakTime = Math.max(totalBreakTime, result.getBreakTime());
+    totalDowntime = Math.max(totalDowntime, result.getTotalDowntime());
+    totalActualTime = Math.min(totalActualTime, result.getActualTime());
+    totalActualProductionTime = Math.min(totalActualProductionTime, result.getActualProductionTime());
+}
             }
 
             // Compute the overall availability percentage using the total planned and actual times.
